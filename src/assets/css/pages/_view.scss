@@ -1,0 +1,44 @@
+.container {
+  padding-top: 50px;
+}
+
+.content {
+  width: 1210px;
+  margin: 0 auto;
+}
+
+.sub-title {
+  border-bottom: 1px solid #d5d5d5;
+  width: 1210px;
+  margin: 0 auto 30px auto;
+  padding: 0 5px;
+  padding-bottom: 30px;
+
+  strong {
+    background: url('#{$imgPath}ico_home01.png') no-repeat left center;
+    padding-left: 18px;
+    color: #adadad;
+    display: block;
+  }
+
+  h2 {
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 100;
+    color: #000;
+  }
+
+  h3 {
+    font-size: 12px;
+    font-weight: 100;
+    color: #333333;
+    margin-top: 10px;
+  }
+}
+
+.status-board {
+  border: 1px solid red;
+  text-align: center;
+  font-size: 30px;
+  padding: 20px 0;
+}

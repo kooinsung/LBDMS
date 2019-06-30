@@ -5,12 +5,17 @@
 @import "base/fonts";
 //@import
 //'verndors/jquery.ui';
-@import 'ui/dialog';
+@import "ui/grid";
+@import "ui/dialog";
+@import "ui/button";
+@import "ui/tabs";
+@import "ui/table";
+@import "ui/label";
+@import "ui/select";
 //'ui/carousel',
 //'ui/cover',
 //'ui/dropdown';
 @import "layout/header";
-@import "layout/footer";
-@import "pages/index";
-@import "pages/sub";
+//@import "layout/footer";
+@import "pages/view";
 @import "pages/login";

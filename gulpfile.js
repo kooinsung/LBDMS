@@ -20,6 +20,11 @@ var paths = {
     src: 'src',
     dest: 'dist'
   },
+  fonts: {
+    file: 'src/assets/fonts/**/*',
+    src: 'src/assets/fonts',
+    dest: 'dist/assets/fonts'
+  },
   styles: {
     file: 'src/assets/css/**/*.scss',
     src: 'src/assets/css',
@@ -42,6 +47,17 @@ var paths = {
     dest: 'dist/html'
   }
 };
+
+//fonts
+function fonts() {
+  return gulp.src(paths.fonts.file)
+    .pipe(gulpPlumber())
+    .pipe(gulpClean(paths.fonts.dest))
+    .pipe(gulpNewer(paths.fonts.dest))
+    .pipe(gulp.dest(paths.fonts.dest))
+    .pipe(browserSync.reload({stream: true}))
+    .pipe(gulpCount('<%= counter %> font files'));
+}
 
 //css
 function styles() {
@@ -113,10 +129,11 @@ function watch() {
   browserSync.init({
     server: {
       baseDir: paths.root.dest + "/",
-      index: "./html/index.html"
+      index: "./html/page1.html"
     }
   });
 
+  gulp.watch(paths.fonts.file, fonts);
   gulp.watch(paths.styles.file, styles);
   gulp.watch(paths.scripts.file, scripts);
   gulp.watch(paths.images.file, images);
@@ -124,7 +141,7 @@ function watch() {
 }
 
 // var build = gulp.parallel(clean, styles, scripts, images, html, watch);
-var build = gulp.series(clean, styles, scripts, images, html, watch);
+var build = gulp.series(clean, fonts, styles, scripts, images, html, watch);
 
 gulp.task(build);
 gulp.task('default', build);
