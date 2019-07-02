@@ -124,8 +124,9 @@
 
     &.col-sm12 {
       width: 100%;
-      &>.col{
-        padding:0;
+
+      & > .col {
+        padding: 0;
       }
     }
 

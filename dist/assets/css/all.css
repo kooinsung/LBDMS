@@ -1936,8 +1936,8 @@ select::-ms-expand { display: none; }
     display: inline-block;
     box-sizing: border-box;
     vertical-align: top;
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     border: 1px solid #CCC9CB;
     margin: 0 1px;
 }
@@ -1956,15 +1956,15 @@ select::-ms-expand { display: none; }
     display: block;
     height: 100%;
     font-size: 14px;
-    line-height: 30px;
+    line-height: 34px;
 }
 
 .paging span {
     display: inline-block;
     box-sizing: border-box;
     vertical-align: top;
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     border: 1px solid #CCC9CB;
     margin: 0 1px;
 }
@@ -1973,7 +1973,7 @@ select::-ms-expand { display: none; }
     display: block;
     font-size: 14px;
     height: 100%;
-    line-height: 30px;
+    line-height: 34px;
 }
 
 /*! jQuery UI - v1.11.4 - 2019-07-02 http://jqueryui.com Includes: core.css, datepicker.css Copyright jQuery Foundation and other contributors; Licensed MIT */
