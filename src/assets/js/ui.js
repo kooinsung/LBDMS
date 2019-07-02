@@ -7,10 +7,14 @@ LBDMSUI = (function () {
      */
     common: {
       init: function () {
-        LBDMSUI.common.select();
+        LBDMSUI.common.datepicker();
       },
-      select: function () {
-        $('select').selectBox();
+      datepicker: function () {
+        $( ".datepicker > input" ).datepicker({
+          showOn: "button",
+          buttonImage: "images/calendar.gif",
+          buttonImageOnly: true,
+        });
       },
     }
   };
