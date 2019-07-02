@@ -8,7 +8,6 @@ body {
   margin: 0;
   padding: 0;
   -webkit-text-size-adjust: none;
-  min-width: 320px;
   word-wrap: break-word;
 }
 
@@ -27,6 +26,22 @@ blockquote, q {
 blockquote:before, blockquote:after, q:before, q:after {
   content: '';
   content: none
+}
+
+
+input[type=checkbox], input[type=radio], input[type=text], input[type=password], input[type=email] {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: none;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 input, select, textarea, button {

@@ -1,18 +1,17 @@
 .container {
-  padding-top: 50px;
+  width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 50px 10px 0 10px;
 }
 
 .content {
-  width: 1210px;
-  margin: 0 auto;
 }
 
 .sub-title {
   border-bottom: 1px solid #d5d5d5;
-  width: 1210px;
   margin: 0 auto 30px auto;
-  padding: 0 5px;
-  padding-bottom: 30px;
+  padding: 0 5px 30px 5px;
 
   strong {
     background: url('#{$imgPath}ico_home01.png') no-repeat left center;
@@ -36,9 +35,63 @@
   }
 }
 
+
+.srch-form {
+  //border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 0;
+
+  .row {
+    margin: 5px 0;
+  }
+}
+
+.view-container {
+  margin: 50px 0 0 0;
+
+  .row {
+    margin-bottom: 50px;
+  }
+
+  .tits {
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 5px 0;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+
 .status-board {
   border: 1px solid red;
   text-align: center;
   font-size: 30px;
   padding: 20px 0;
+}
+
+
+.status-board2 {
+  font-size: 0;
+
+  dl {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    box-sizing: border-box;
+    text-align: center;
+
+    dt {
+      font-size: 14px;
+    }
+
+    dd {
+      font-size: 30px;
+    }
+  }
 }
