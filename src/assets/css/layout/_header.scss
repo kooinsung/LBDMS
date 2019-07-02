@@ -1,5 +1,8 @@
 .header {
   border-bottom: 1px solid #e5e5e5;
+  min-width: 1200px;
+  overflow: hidden;
+  padding: 0 10px;
 
   .inner {
     position: relative;
@@ -74,7 +77,6 @@
       padding: 0 15px;
       height: 25px;
       line-height: 25px;
-      border-radius: 25px;
       margin-right: 10px;
 
       em {
@@ -85,6 +87,7 @@
     button {
       display: inline-block;
       vertical-align: top;
+      width: 90px;
     }
   }
 }
