@@ -133,7 +133,7 @@
       position: relative;
       box-sizing: border-box;
       font-size: 0;
-      margin-right: 10px;
+      //margin-right: 5px;
       overflow: hidden;
 
       .picker-item {
@@ -193,8 +193,11 @@
 }
 
 .label {
+  display:inline-block;
   color: #fff;
   padding: 5px 8px;
+  min-width:40px;
+  box-sizing: border-box;
 
   &.c1 {
     background: #5cb85c;
@@ -206,6 +209,9 @@
 
   &.c3 {
     background: #de5b5b;
+  }
+  &.c4 {
+    background: #dece5b;
   }
 }
 
@@ -469,6 +475,47 @@
 
   &.angular {
     border-radius: 0;
+  }
+}
+
+.tabs-txt{
+  font-size:0;
+  li{
+    position:relative;
+    display:inline-block;
+    vertical-align: top;
+    padding:0 10px;
+    &.is-active{
+      a{
+        color: #d71826;
+        text-decoration: underline;
+        font-weight:700;
+        font-size:17px;
+      }
+    }
+    &:after{
+      content:'';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      font-size:15px;
+      line-height:100%;
+      width:1px;
+      height:15px;
+      background:#333;
+    }
+    &:last-child{
+      &:after{
+        display:none;
+      }
+    }
+  }
+  a{
+    display:block;
+    font-size:13px;
+    color: #333;
   }
 }
 
@@ -758,8 +805,8 @@
       display: inline-block;
       box-sizing: border-box;
       vertical-align: top;
-      width: 34px;
-      height: 34px;
+      width: 37px;
+      height: 37px;
       border: 1px solid #CCC9CB;
       margin: 0 1px;
 
@@ -777,8 +824,8 @@
     a {
       display: block;
       height: 100%;
-      font-size: 14px;
-      line-height: 34px;
+      font-size: 12px;
+      line-height: 37px;
 
     }
   }
@@ -787,16 +834,16 @@
     display: inline-block;
     box-sizing: border-box;
     vertical-align: top;
-    width: 34px;
-    height: 34px;
+    width: 37px;
+    height: 37px;
     border: 1px solid #CCC9CB;
     margin: 0 1px;
 
     a {
       display: block;
-      font-size: 14px;
+      font-size: 12px;
       height: 100%;
-      line-height: 34px;
+      line-height: 37px;
     }
   }
 }
