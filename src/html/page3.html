@@ -84,9 +84,192 @@
           <div class="tits">
             <h4>이용자 접속현황</h4>
           </div>
+          <div class="chars-area">
+            <div class="chart-total">
+              평균 방문자수 : 3.26명 / 누적 방문자 수 : 101명
+            </div>
+            <canvas id="chart" width="1180" height="400"></canvas>
+          </div>
+          <div class="tbs1 blue">
+            <div class="tb-tit">
+              <div class="tit-utils">
+                <button type="button" class="btn lager line angular">다운로드</button>
+              </div>
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:70px;">
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+              </colgroup>
+              <thead>
+              <tr>
+                <th class="sm">&nbsp;</th>
+                <th class="sm">06월</th>
+                <th class="sm">07월</th>
+                <th class="sm">08월</th>
+                <th class="sm">09월</th>
+                <th class="sm">10월</th>
+                <th class="sm">11월</th>
+                <th class="sm">12월</th>
+                <th class="sm">13월</th>
+                <th class="sm">14월</th>
+                <th class="sm">15월</th>
+                <th class="sm">16월</th>
+                <th class="sm">17월</th>
+                <th class="sm">18월</th>
+                <th class="sm">19월</th>
+                <th class="sm">20월</th>
+                <th class="sm">21월</th>
+                <th class="sm">22월</th>
+                <th class="sm">23월</th>
+                <th class="sm">24월</th>
+                <th class="sm">25월</th>
+                <th class="sm">26월</th>
+                <th class="sm">27월</th>
+                <th class="sm">28월</th>
+                <th class="sm">29월</th>
+                <th class="sm">30월</th>
+                <th class="sm">01월</th>
+                <th class="sm">02월</th>
+                <th class="sm">03월</th>
+                <th class="sm">04월</th>
+                <th class="sm">05월</th>
+                <th class="sm">06월</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>방문자</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="paging">
+                  <span class="first"><a href="">
+                      <<</a> </span> <span class="prev"><a href="">
+                          <</a> </span>
+            <ul>
+              <li class="is-active"><a href="">1</a></li>
+              <li><a href="">2</a></li>
+              <li><a href="">3</a></li>
+              <li><a href="">4</a></li>
+              <li><a href="">5</a></li>
+              <li><a href="">6</a></li>
+              <li><a href="">7</a></li>
+              <li><a href="">8</a></li>
+              <li><a href="">9</a></li>
+              <li><a href="">10</a></li>
+            </ul>
+            <span class="end"><a href="">></a></span>
+            <span class="next"><a href="">>></a></span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <!-- @@close -->
+
+<!-- @@block  =  chart-->
+<script>
+  var ctx = document.getElementById('chart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['06일', '07일', '08일', '09일', '10일', '11일', '12일', '13일', '14일', '15일', '16일', '17일', '18일',
+        '19일', '20일', '21일', '22일', '23일', '24일', '25일', '26일', '27일', '28일', '29일', '30일', '01일', '02일',
+        '03일', '04일', '05일', '06일'],
+      datasets: [{
+        label: '방문자수',
+        data: [12, 19, 3, 5, 2, 12, 19, 3, 5, 2, 12, 19, 3, 5, 2, 12, 19, 3, 5, 2, 12, 19, 3, 5, 2, 12, 19, 3, 5, 2, 1],
+        backgroundColor: 'rgba(0, 43, 255, 0.5)'
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: '2019-06-06 ~ 2019-07-06',
+        fontSize: 18,
+        fontStyle: 'normal'
+      },
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          fontSize: 15,
+          padding: 30
+        },
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+</script>
+<!-- @@close-->
+

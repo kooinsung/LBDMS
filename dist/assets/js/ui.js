@@ -12,7 +12,7 @@ LBDMSUI = (function () {
       datepicker: function () {
         $( ".datepicker > input" ).datepicker({
           showOn: "button",
-          buttonImage: "images/calendar.gif",
+          buttonImage: "../assets/images/ico_cal.svg",
           buttonImageOnly: true,
         });
       },
