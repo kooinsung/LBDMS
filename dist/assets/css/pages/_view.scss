@@ -14,8 +14,8 @@
   padding: 0 5px 30px 5px;
 
   strong {
-    background: url('#{$imgPath}ico_home01.png') no-repeat left center;
-    padding-left: 18px;
+    //background: url('#{$imgPath}ico_home01.png') no-repeat left center;
+    //padding-left: 18px;
     color: #adadad;
     display: block;
   }
@@ -42,7 +42,8 @@
   padding: 20px 0;
 
   .row {
-    margin: 5px 0;
+    padding: 5px 0;
+    margin: 0;
   }
 }
 
@@ -93,5 +94,62 @@
     dd {
       font-size: 30px;
     }
+  }
+}
+
+.status-lists {
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 0;
+  padding: 20px 10px;
+
+  li {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    padding: 10px 0;
+  }
+
+  dl {
+
+  }
+
+  dt {
+    position: relative;
+    font-size: 15px;
+    display: inline-block;
+    vertical-align: top;
+    height: 24px;
+    line-height: 24px;
+
+    &:after {
+      content: '/';
+      font-size: 15px;
+      display: inline-block;
+      padding-left: 10px;
+    }
+  }
+
+  dd {
+    font-size: 15px;
+    display: inline-block;
+    vertical-align: top;
+    height: 24px;
+    line-height: 24px;
+    margin-left: 10px;
+  }
+}
+
+.zone {
+  dl {
+
+  }
+
+  dt {
+    font-size: 15px;
+    font-weigh: 700;
+  }
+
+  dd {
+    font-size: 13px;
   }
 }

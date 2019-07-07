@@ -1,0 +1,82 @@
+<!-- @@master ../include/layout.html -->
+<!-- @@block content -->
+<div class="sub-title">
+  <strong class="home">업무자동화</strong>
+  <h2>데이터 자동화 설정</h2>
+  <h3>데이터 별 업무 진행 순서를 확인하고 관리하실 수 있습니다.</h3>
+</div>
+<div class="view-container">
+  <div class="row">
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs2">
+            <div class="tb-tit">
+              업무 정보
+              <div class="tit-utils">
+                <div class="btn-group line">
+                  <button type="button">저장</button>
+                  <button type="button">목록</button>
+                </div>
+              </div>
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:40%">
+                <col style="width:10%">
+                <col style="width:40%">
+              </colgroup>
+              <tbody>
+              <tr>
+                <th class="require">단계 선택</th>
+                <td colspan="3">
+                  <span class="radios"><input type="radio" id="choice1"><label for="choice1">가공</label></span>
+                  <span class="radios"><input type="radio" id="choice2"><label for="choice2">검증</label></span>
+                  <span class="radios"><input type="radio" id="choice3"><label for="choice3">위치정보부여</label></span>
+                  <span class="radios"><input type="radio" id="choice4"><label for="choice4">좌표계변환</label></span>
+                  <span class="radios"><input type="radio" id="choice5"><label for="choice5">하이브 가공</label></span>
+                  <span class="radios"><input type="radio" id="choice6"><label for="choice6">하이브 검증</label></span>
+                  <span class="radios"><input type="radio" id="choice7"><label for="choice7">전송</label></span>
+                  <span class="radios"><input type="radio" id="choice8"><label for="choice8">수집</label></span>
+                  <span class="radios"><input type="radio" id="choice9"><label for="choice9">쉘 실행</label></span>
+                  <span class="radios"><input type="radio" id="choice10"><label for="choice10">카이로스 가공</label></span>
+                  <p class="tips">* 선택한 단계로 업무가 진행되며 저장 후 화면에 단계가 나타납니다.</p>
+                </td>
+              </tr>
+              <tr>
+                <th class="require">업무 명</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" placeholder="업무명을 입력해주세요."></span>
+                </td>
+              </tr>
+              <tr>
+                <th>설명</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" placeholder="설명을 입력해주세요."></span>
+                </td>
+              </tr>
+              <tr>
+                <th>분류</th>
+                <td>
+                  <span class="inputs"><input type="text" placeholder="분류명을 입력해주세요."></span>
+                </td>
+                <th>분류 선택</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">태그를 선택해주세요</option>
+                    </select>
+                  </span>
+                  <p class="tips">* 분류명을 직접 입력할 경우 새 분류로 추가됩니다</p>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- @@close -->
