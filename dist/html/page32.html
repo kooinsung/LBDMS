@@ -49,8 +49,8 @@
 
     <div class="sub-title">
       <strong class="home">업무자동화</strong>
-      <h2>데이터 자동화</h2>
-      <h3>데이터 별 업무 진행 순서를 확인하고 관리하실 수 있습니다.</h3>
+      <h2> 데이터 업무 프로젝트 실행</h2>
+      <h3>업무 별 프로젝트 진행 순서를 확인하고 관리하실 수 있습니다.</h3>
     </div>
     <div class="srch-form">
       <div class="row">
@@ -59,7 +59,7 @@
             <div class="in-box">
                 <span class="select">
                   <select name="" id="">
-                    <option value="">업무명</option>
+                    <option value="">프로젝트명</option>
                   </select>
                 </span>
             </div>
@@ -92,14 +92,15 @@
             <div class="in-box">
               <div class="tbs1">
                 <div class="tb-tit">
-                  데이터 자동화 목록 : <em class="total">1 / 221 페이지 총 2210건</em>
+                  데이터 자동화 프로젝트 목록 : <em class="total">1 / 221 페이지 총 2210건</em>
                   <div class="tit-utils">
-                    <div class="btn-group line">
-                      <button type="button"> + 히든기능</button>
-                      <button type="button"> + 새 업무</button>
-                      <button type="button">복사</button>
-                      <button type="button">삭제</button>
-                      <button type="button">업무배정</button>
+                    <div class="btn-group color">
+                      <button type="button" class="c1">전체</button>
+                      <button type="button" class="c10">대기</button>
+                      <button type="button" class="c7">실행중</button>
+                      <button type="button" class="c9">중지</button>
+                      <button type="button" class="c8">실패</button>
+                      <button type="button" class="c6">완료</button>
                     </div>
                     <span class="select">
                         <select name="" id="">
@@ -112,33 +113,75 @@
                 </div>
                 <table>
                   <colgroup>
-                    <col style="width:45px;">
-                    <col style="width:60px;">
-                    <col>
-                    <col style="width:170px;">
                     <col style="width:100px;">
+                    <col>
                   </colgroup>
                   <thead>
-                  <tr>
-                    <th><span class="checkbox solo"><input type="checkbox" id="all"><label
-                        for="all">&nbsp;</label></span>
-                    </th>
-                    <th>번호</th>
-                    <th>업무명</th>
-                    <th>최종 수정일</th>
-                    <th>담당자</th>
-                  </tr>
                   </thead>
                   <tbody>
                   <tr>
-                    <td><span class="checkbox solo"><input type="checkbox" id="c1"><label for="c1">&nbsp;</label></span>
+                    <td class="td-projectnum">1</td>
+                    <td class="tb-projectlist">
+                      <div class="projectlist-tit">
+                        <div class="text">
+                          <em class="label c5">단일실행</em><strong>국토부수집</strong> | <strong>2018-09-20 18:38:31</strong>
+                        </div>
+                        <div class="projectlist-util">
+                          <div class="btn-group line sm">
+                            <button type="button">일괄-단일 변환</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="projectlist-steps">
+                        <ul>
+                          <li>
+                            <button type="button" class="c1">1</button>
+                            <span>ATB001_ODB_SRV_DT_TECHBIZ_RESID_PPLTN_CNT_RANK_SGG.SQL</span>
+                          </li>
+                        </ul>
+                      </div>
                     </td>
-                    <td>2210</td>
-                    <td class="title">
-                      <a href="">test_0726</a>
+                  </tr>
+                  <tr>
+                    <td class="td-projectnum">1</td>
+                    <td class="tb-projectlist">
+                      <div class="projectlist-tit">
+                        <div class="text">
+                          <strong>ALO_BU_004(개방형DB 분석_살고싶은우리동네 경계갱신주기 004)</strong> | <strong>시작일 : 2019-07-08
+                          02:04:01</strong> | <strong>종료일 : 2019-07-08 02:04:09</strong> | <strong>소요시간 :
+                          00:00:08.0</strong>
+                        </div>
+                        <div class="projectlist-util">
+                          <div class="btn-group line sm">
+                            <button type="button">일괄-단일 변환</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="projectlist-steps">
+                        <ul>
+                          <li>
+                            <button type="button" class="c1">1</button>
+                            <span>ATB001_ODB_SRV_DT_TECHBIZ_RESID_PPLTN_CNT_RANK_SGG.SQL</span>
+                          </li>
+                          <li>
+                            <button type="button" class="c2">2</button>
+                            <span>ATB001_ODB_SRV_DT_TECHBIZ_RESID_PPLTN_CNT_RANK_SGG.SQL</span>
+                          </li>
+                          <li>
+                            <button type="button" class="c3">3</button>
+                            <span>ATB001_ODB_SRV_DT_TECHBIZ_RESID_PPLTN_CNT_RANK_SGG.SQL</span>
+                          </li>
+                          <li>
+                            <button type="button" class="c4">4</button>
+                            <span>ATB001_ODB_SRV_DT_TECHBIZ_RESID_PPLTN_CNT_RANK_SGG.SQL</span>
+                          </li>
+                          <li>
+                            <button type="button" class="c5">5</button>
+                            <span>ATB001_ODB_SRV_DT_TECHBIZ_RESID_PPLTN_CNT_RANK_SGG.SQL</span>
+                          </li>
+                        </ul>
+                      </div>
                     </td>
-                    <td>2018-07-26 17:00:49</td>
-                    <td>담당자</td>
                   </tr>
                   </tbody>
                 </table>

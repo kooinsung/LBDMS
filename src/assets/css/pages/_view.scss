@@ -39,8 +39,8 @@
 .srch-form {
   //border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
-  padding: 20px 0;
-
+  padding: 10px 0 20px 0;
+  margin-bottom: 30px;
   .row {
     padding: 5px 0;
     margin: 0;
@@ -48,7 +48,7 @@
 }
 
 .view-container {
-  margin: 50px 0 0 0;
+  margin: 0 0 0 0;
 
   .row {
     margin-bottom: 50px;
@@ -152,4 +152,32 @@
   dd {
     font-size: 13px;
   }
+}
+
+.sel-lists {
+  font-size: 0;
+
+  .col {
+    &:first-child {
+      .select {
+        margin-left: 0;
+      }
+    }
+
+    &:last-child {
+      .select {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .select {
+    margin: 0 5px;
+  }
+}
+
+.script-box {
+  margin-top: 10px;
+  min-height: 300px;
+  border: 1px solid #ddd
 }
