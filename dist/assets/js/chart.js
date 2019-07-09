@@ -1224,6 +1224,7 @@
   /* MIT license */
 
 
+
   var Color = function (obj) {
     if (obj instanceof Color) {
       return obj;
@@ -9813,7 +9814,6 @@
 
       return 'none';
     }
-
     // returns Number or undefined if no constraint
     helpers$1.getConstraintWidth = function (domNode) {
       return getConstraintDimension(domNode, 'max-width', 'clientWidth');
@@ -11785,7 +11785,6 @@
       var data = chart.data;
       var datasets = data.datasets;
       var isHorizontal = me.isHorizontal();
-
       function IDMatches(meta) {
         return isHorizontal ? meta.xAxisID === me.id : meta.yAxisID === me.id;
       }
