@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1380">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="Description" content="">
+  <meta property="og:title" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:site_name" content="">
+  <meta property="og:description" content="">
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <link rel="stylesheet" href="../assets/css/all.min.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="inner">
+      <div class="logo">
+        <h1>통계청 LBDMS</h1>
+        <span>Location Based Data Management System</span>
+      </div>
+      <div class="gnb">
+        <ul>
+          <li><a href="">시스템운영</a></li>
+          <li><a href="">업무자동화</a></li>
+          <li><a href="">주소DB</a></li>
+          <li><a href="">데이터수집</a></li>
+          <li><a href="">데이터분석</a></li>
+          <li><a href="">데이터관리</a></li>
+        </ul>
+      </div>
+      <div class="util">
+        <div><em>관리자</em>님 로그인 중</div>
+        <button type="button" class="btn sm line angular">로그아웃</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="content">
+
+      <div class="sub-title">
+        <strong class="home">주소DB</strong>
+        <h2>주소 DB 관리</h2>
+        <h3>주소 데이터베이스를 관리합니다</h3>
+      </div>
+      <div class="tabs">
+        <ul>
+          <li class="is-active"><a href="">조회 및 수정</a></li>
+          <li><a href="">유의어 관리</a></li>
+          <li><a href="">업데이트 현황</a></li>
+        </ul>
+      </div>
+      <div class="view-container">
+        <div class="row">
+          <div class="cols">
+            <div class="col col-sm3">
+              <div class="in-box line">
+                <div class="tbs1">
+                  <div class="tb-tit">
+                    조회 조건 설정
+                  </div>
+                  <div class="tabs round per3 mt10">
+                    <ul>
+                      <li class="is-active"><a href="">행정동</a></li>
+                      <li><a href="">법정동</a></li>
+                      <li><a href="">도로명</a></li>
+                    </ul>
+                  </div>
+                  <div class="mix-form3">
+                    <label for="">시도</label>
+                    <span class="select">
+                      <select name="" id="">
+                        <option value="">전체</option>
+                      </select>
+                    </span>
+                  </div>
+                  <div class="mix-form3">
+                    <label for="">시군구</label>
+                    <span class="select">
+                      <select name="" id="">
+                        <option value="">전체</option>
+                      </select>
+                    </span>
+                  </div>
+                  <div class="mix-form3">
+                    <label for="">행정동</label>
+                    <span class="select">
+                      <select name="" id="">
+                        <option value="">전체</option>
+                      </select>
+                    </span>
+                  </div>
+                  <div class="mix-form3">
+                    <label for="">주번</label>
+                    <span class="inputs">
+                      <input type="text">
+                    </span>
+                  </div>
+                  <div class="mix-form3">
+                    <label for="">부번</label>
+                    <span class="inputs">
+                      <input type="text">
+                    </span>
+                  </div>
+                  <div class="mix-form3">
+                    <label for="">건물 부번</label>
+                    <span class="select">
+                      <select name="" id="">
+                        <option value="">전체</option>
+                      </select>
+                    </span>
+                  </div>
+                  <div class="mix-form4">
+                    <label for="">업데이트 날짜</label>
+                    <span class="inputs datepicker">
+                      <input type="text">
+                    </span>
+                    <em class="bar">~</em>
+                    <span class="inputs datepicker">
+                      <input type="text">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col col-sm9">
+              <div class="in-box line">
+                <div class="tbs1">
+                  <div class="tb-tit">
+                    조회조건 (WHERE) 입력
+                  </div>
+                  <div class="script-box">
+
+                  </div>
+                  <div class="btn-right">
+                    <div class="btn-group line">
+                      <button type="button" class="c1">▶ 실행</button>
+                      <button type="button">조건 적용</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="in-box line">
+                <div class="tabs round  mt10">
+                  <ul>
+                    <li class="is-active"><a href="">결과</a></li>
+                    <li><a href="">지도</a></li>
+                    <li><a href="">수정 이력 조회</a></li>
+                  </ul>
+                </div>
+
+                <div class="scroll-tbs">
+                  <div class="util">
+                    <div class="btn-right">
+                      <div class="check-items">
+                        <span class="checkbox"><input type="checkbox" id="api1"><label for="api1">SOP API</label></span>
+                        <span class="checkbox"><input type="checkbox" id="api2"><label for="api2">DAUM API</label></span>
+                      </div>
+                      <div class="btn-group line">
+                        <button type="button">선택한 데이터 검증</button>
+                      </div>
+                    </div>
+                    <button type="button" class="big-view"></button>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="width:40px;"><span class="checkbox solo"><input type="checkbox" id="all"><label for="all">&nbsp;</label></span>
+                        </th>
+                        <th>ID</th>
+                        <th>PNU</th>
+                        <th>주소종류</th>
+                        <th>시도명</th>
+                        <th>시도유의어</th>
+                        <th>시도코드</th>
+                        <th>시군구명</th>
+                        <th>시군구유의어</th>
+                        <th>시군구코드</th>
+                        <th>행정동명</th>
+                        <th>행정동코드</th>
+                        <th>법정동명</th>
+                        <th>법정동코드</th>
+                        <th>도로명</th>
+                        <th>도로명코드</th>
+                        <th>읍면동유의어</th>
+                        <th>리명</th>
+                        <th>리유의어</th>
+                        <th>리코드</th>
+                        <th>건물명</th>
+                        <th>건물명유의어</th>
+                        <th>부건물명</th>
+                        <th>도로명본번</th>
+                        <th>도로명부번</th>
+                        <th>지번코드</th>
+                        <th>x좌표</th>
+                        <th>y좌표</th>
+                        <th>건물관리번호</th>
+                        <th>지번 본번</th>
+                        <th>지번 부번</th>
+                        <th>건물 메인 여부</th>
+                        <th>지번주소 산여부</th>
+                        <th>도로명DB 기준일</th>
+                        <th>지번DB 기준일</th>
+                        <th>업데이트기준일</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tbs1">
+                  <table>
+                    <colgroup>
+                      <col>
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <td class="opts">
+                          <div class="sel-lists">
+                            <div class="col col-5">
+                              <strong>x좌표</strong>
+                              <span class="select">
+                                <select name="" id="">
+                                  <option value="">x좌표</option>
+                                </select>
+                              </span>
+                            </div>
+                            <div class="col col-5">
+                              <strong>y좌표</strong>
+                              <span class="select">
+                                <select name="" id="">
+                                  <option value="">y좌표</option>
+                                </select>
+                              </span>
+                            </div>
+                            <div class="col col-5">
+                              <strong>마커</strong>
+                              <span class="select">
+                                <select name="" id="">
+                                  <option value="">선택해주세요</option>
+                                </select>
+                              </span>
+                            </div>
+                            <button type="button" class="big-view"></button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="maps">
+                          지도 영역
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <colgroup>
+                      <col style="width:60px;">
+                      <col style="width:90px;">
+                      <col style="width:100px;">
+                      <col>
+                      <col>
+                      <col style="width:110px;">
+                      <col style="width:100px;">
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th>번호</th>
+                        <th>ID</th>
+                        <th>대상 컬럼</th>
+                        <th>기존 값</th>
+                        <th>변경 값</th>
+                        <th>변경일자</th>
+                        <th>사용자</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>38</td>
+                        <td>시군구</td>
+                        <td>sgg_syn</td>
+                        <td>가평군</td>
+                        <td>가평군 가평</td>
+                        <td>2016-12-13</td>
+                        <td>sunrain66</td>
+                      </tr>
+                      <tr>
+                        <td>38</td>
+                        <td>시군구</td>
+                        <td>sgg_syn</td>
+                        <td>성남시수정구 성남시 수정구</td>
+                        <td>성남시수정구 성남시 수정구 성남수정구</td>
+                        <td>2016-12-13</td>
+                        <td>sunrain66</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table>
+                    <colgroup>
+                      <col>
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <td>결과없음</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="paging">
+                  <span class="first"><a href="">
+                      <<</a> </span> <span class="prev"><a href="">
+                          <</a> </span> <ul>
+                            <li class="is-active"><a href="">1</a></li>
+                            <li><a href="">2</a></li>
+                            </ul>
+                            <span class="end"><a href="">></a></span>
+                            <span class="next"><a href="">>></a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../assets/js/jquery.js" type="text/javascript"></script>
+  <script src="../assets/js/chart.js" type="text/javascript"></script>
+  <script src="../assets/js/ui.js" type="text/javascript"></script>
+
+
+
+
+
+
+</body>
+
+</html>
