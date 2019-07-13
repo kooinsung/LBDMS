@@ -1,0 +1,198 @@
+<!-- @@master ../include/layout.html -->
+<!-- @@block content -->
+<div class="sub-title">
+  <strong class="home">데이터수집</strong>
+  <h2>수집 정보</h2>
+  <h3>LBDMS에 데이터를 수집하기 위한 정보를 확인하고 관리 (생성, 삭제, 수정) 합니다</h3>
+</div>
+<div class="radio-tabs">
+  <ul>
+    <li>
+      <span class="radios"><input type="radio" id="api" name="sle-type"><label for="api">API</label></span>
+    </li>
+    <li>
+      <span class="radios"><input type="radio" id="file" name="sle-type"><label for="file">파일</label></span>
+    </li>
+    <li>
+      <span class="radios"><input type="radio" id="db" name="sle-type" checked><label for="db">DB</label></span>
+    </li>
+  </ul>
+</div>
+<div class="view-container">
+  <div class="row">
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs2">
+            <div class="tb-tit">
+              수집 설정정보
+              <div class="tit-utils">
+                <div class="btn-group line">
+                  <button type="button">실행저장</button>
+                  <button type="button">테스트</button>
+                  <button type="button" disabled>실행</button>
+                  <button type="button">목록</button>
+                </div>
+              </div>
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:40%">
+                <col style="width:10%">
+                <col style="width:40%">
+              </colgroup>
+              <tbody>
+              <tr>
+                <th class="require">수집이름</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" placeholder="수집 이름을 입력해주십시오"></span>
+                </td>
+              </tr>
+              <tr>
+                <th>설명</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" placeholder="수집 설명을 입력해주십시오"></span>
+                </td>
+              </tr>
+              <tr>
+                <th>태그</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" placeholder="태그1,태그2,태그3..."></span>
+                </td>
+              </tr>
+              <tr>
+                <th>출처</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">기타</option>
+                    </select>
+                  </span>
+                </td>
+                <th>분류</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">기타</option>
+                    </select>
+                  </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs2">
+            <div class="tb-tit">
+              수집데이터 정보
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:40%">
+                <col style="width:10%">
+                <col style="width:40%">
+              </colgroup>
+              <tbody>
+              <tr>
+                <th class="require">수집망</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">외부망</option>
+                    </select>
+                  </span>
+                </td>
+                <th class="require">DB종류</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">선택해주세요</option>
+                    </select>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <th class="require">ID</th>
+                <td>
+                  <span class="inputs"><input type="text"></span>
+                </td>
+                <th class="require">PASSWORD</th>
+                <td>
+                  <span class="inputs"><input type="text"></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="require">IP</th>
+                <td>
+                  <span class="inputs"><input type="text"></span>
+                </td>
+                <th class="require">포트</th>
+                <td>
+                  <span class="inputs"><input type="text"></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="require">데이터베이스<br>명</th>
+                <td>
+                  <span class="inputs"><input type="text"></span>
+                </td>
+                <th class="require">테이블 명</th>
+                <td>
+                  <span class="inputs"><input type="text"></span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs2">
+            <div class="tb-tit">
+              저장
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:40%">
+                <col style="width:10%">
+                <col style="width:40%">
+              </colgroup>
+              <tbody>
+              <tr>
+                <th class="require">데이터명</th>
+                <td>
+                  <span class="inputs"><input type="text" placeholder="저장명을 입력해주세요"></span>
+                </td>
+                <th>같은 파일<br>존재 시</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">저장하는 파일로 대상 파일 덮어쓰기</option>
+                    </select>
+                  </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- @@close -->

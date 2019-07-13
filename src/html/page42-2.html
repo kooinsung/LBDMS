@@ -1,0 +1,127 @@
+<!-- @@master ../include/layout.html -->
+<!-- @@block content -->
+<div class="sub-title">
+  <strong class="home">데이터 관리</strong>
+  <h2>하이브로 보내기</h2>
+  <h3>LBDMS에 생성된 데이터를 전송,관리 할 수 있습니다</h3>
+</div>
+<div class="view-container">
+  <div class="row">
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs2">
+            <div class="tb-tit">
+              전송 설정 정보
+              <div class="tit-utils">
+                <div class="btn-group line">
+                  <button type="button">저장</button>
+                  <button type="button" disabled>실행</button>
+                  <button type="button">목록</button>
+                </div>
+              </div>
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:40%">
+                <col style="width:10%">
+                <col style="width:40%">
+              </colgroup>
+              <tbody>
+              <tr>
+                <th>데이터 이름</th>
+                <td colspan="3">
+                  <div class="file-field solo">
+                    <span class="inputs"><input type="text" placeholder="데이터명을 입력하거나 찾기 버튼을 클릭하세요"></span>
+                    <div class="bt">
+                      <button type="button" class="btn lager line angular">찾기</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>전송<br>작업이름</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" placeholder="전송 작업이름을 입력해주십시오"></span>
+                </td>
+              </tr>
+              <tr>
+                <th>테이블 명</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" placeholder="테이블명을 입력해주십시오"></span>
+                </td>
+              </tr>
+              <tr>
+                <th>설명</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" placeholder="설명을 입력해주세요"></span>
+                </td>
+              </tr>
+              <tr>
+                <th>태그</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" placeholder="태그명을 입력해주세요"></span>
+                </td>
+              </tr>
+              <tr>
+                <th>출처</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">기타</option>
+                    </select>
+                  </span>
+                </td>
+                <th>분류</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">기타</option>
+                    </select>
+                  </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs2">
+            <div class="tb-tit">
+              보내기
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:40%">
+                <col style="width:10%">
+                <col style="width:40%">
+              </colgroup>
+              <tbody>
+              <tr>
+                <th>HIVE<br></br>저장위치</th>
+                <td colspan="3">
+                  <span class="radios line"><input type="radio" id="save1" name="save"><label
+                      for="save1">수집</label></span>
+                  <span class="radios line"><input type="radio" id="save2" name="save"><label
+                      for="save2">가공</label></span>
+                  <span class="radios line"><input type="radio" id="save3" name="save"><label
+                      for="save3">분석</label></span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- @@close -->

@@ -93,12 +93,16 @@ a {
   }
 }
 
+.center {
+  text-align: center !important;
+}
+
 .left {
   text-align: left !important;
 }
 
 .right {
-  text-align: left !important;
+  text-align: right !important;
 }
 /* common */
 .blind {
