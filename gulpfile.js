@@ -127,6 +127,7 @@ function clean() {
 //watch
 function watch() {
   browserSync.init({
+    port : 3030,
     server: {
       baseDir: paths.root.dest + "/",
       index: "./html/page1.html"

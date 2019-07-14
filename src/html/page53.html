@@ -1,0 +1,183 @@
+<!-- @@master ../include/layout.html -->
+<!-- @@block content -->
+<div class="sub-title">
+  <strong class="home">데이터수집</strong>
+  <h2>수집 데이터</h2>
+  <h3>LBDMS에 올린 내 데이터와 수집된 데이터를 올리고 관리 할 수 있습니다</h3>
+</div>
+<div class="srch-form">
+  <div class="row">
+    <div class="cols">
+      <div class="col col-sm1 col-txt">
+        <div class="in-box">저장 종류</div>
+      </div>
+      <div class="col col-sm3">
+        <div class="in-box">
+          <span class="select">
+            <select name="" id="">
+              <option value="">전체</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="col col-sm1 col-txt">
+        <div class="in-box">출처</div>
+      </div>
+      <div class="col col-sm3">
+        <div class="in-box">
+          <span class="select">
+            <select name="" id="">
+              <option value="">전체</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="col col-sm1 col-txt">
+        <div class="in-box">분류</div>
+      </div>
+      <div class="col col-sm3">
+        <div class="in-box">
+          <span class="select">
+            <select name="" id="">
+              <option value="">전체</option>
+            </select>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="cols">
+      <div class="col col-sm6">
+        <div class="col col-sm2 col-txt">
+          기간
+        </div>
+        <div class="col col-sm9">
+          <div class="picker-group">
+            <div class="picker-item"><span class="inputs datepicker"><input type="text" id="dp1563042269293"
+                                                                            class="hasDatepicker"><img
+                class="ui-datepicker-trigger" src="../assets/images/ico_cal.svg" alt="..." title="..."></span></div>
+            <div class="picker-item"><span class="inputs datepicker"><input type="text" id="dp1563042269294"
+                                                                            class="hasDatepicker"><img
+                class="ui-datepicker-trigger" src="../assets/images/ico_cal.svg" alt="..." title="..."></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-sm2">
+        <div class="in-box">
+                <span class="select">
+                  <select name="" id="">
+                    <option value="">업무명</option>
+                  </select>
+                </span>
+        </div>
+      </div>
+      <div class="col col-sm4">
+        <div class="in-box">
+          <div class="srch-group">
+            <span class="inputs"><input type="text" placeholder="검색어를 입력해주세요"></span>
+            <button type="button" class="btn lager line angular">검색</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="view-container">
+  <div class="row">
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs1">
+            <div class="tb-tit">
+              전체 데이터 목록 : <em class="total">1 / 221 페이지 총 2210건</em>
+              <div class="tit-utils">
+                <div class="btn-group color">
+                  <button type="button" class="c1">전체목록</button>
+                  <button type="button" class="c2">파일</button>
+                  <button type="button" class="c4">HIVE</button>
+                  <button type="button" class="c3">DB</button>
+                </div>
+                <div class="btn-group line">
+                  <button type="button">다운로드</button>
+                  <button type="button">삭제</button>
+                </div>
+                <span class="select">
+                  <select name="" id="">
+                    <option value="">10개보기</option>
+                    <option value="">50개보기</option>
+                    <option value="">100개보기</option>
+                  </select>
+                </span>
+              </div>
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:45px;">
+                <col style="width:60px;">
+                <col>
+                <col style="width:100px;">
+                <col style="width:90px;">
+                <col style="width:100px;">
+                <col style="width:110px;">
+                <col style="width:110px;">
+                <col>
+                <col style="width:100px;">
+              </colgroup>
+              <thead>
+              <tr>
+                <th><span class="checkbox solo"><input type="checkbox" id="all"><label for="all">&nbsp;</label></span>
+                </th>
+                <th>번호</th>
+                <th>데이터명</th>
+                <th>설명</th>
+                <th>저장 종류</th>
+                <th>크기</th>
+                <th>출처</th>
+                <th>분류</th>
+                <th>최종 수정일</th>
+                <th>사용자</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td><span class="checkbox solo"><input type="checkbox" id="c1"><label for="c1">&nbsp;</label></span>
+                </td>
+                <td>9999</td>
+                <td class="title left"><a href="">ti_sprd_manage_1901</a></td>
+                <td>도로명수집</td>
+                <td>DB</td>
+                <td>687.9 MB</td>
+                <td>도로명주소</td>
+                <td>도로명주소</td>
+                <td>2019-01-11 14:41:12</td>
+                <td><a href="">tshong</a></td>
+              </tr>
+              </tbody>
+            </table>
+            <p clsas="tb-tips">전체목록 버튼을 누르면 진행상태가 리프레쉬 됩니다.</p>
+          </div>
+          <div class="paging">
+            <span class="first"><a href=""><<</a></span>
+            <span class="prev"><a href=""><</a></span>
+            <ul>
+              <li class="is-active"><a href="">1</a></li>
+              <li><a href="">2</a></li>
+              <li><a href="">3</a></li>
+              <li><a href="">4</a></li>
+              <li><a href="">5</a></li>
+              <li><a href="">6</a></li>
+              <li><a href="">7</a></li>
+              <li><a href="">8</a></li>
+              <li><a href="">9</a></li>
+              <li><a href="">10</a></li>
+            </ul>
+            <span class="end"><a href="">></a></span>
+            <span class="next"><a href="">>></a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- @@close -->
