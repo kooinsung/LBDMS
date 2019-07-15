@@ -2320,7 +2320,7 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner { border: 
 
 .default-ment { font-size: 14px; height: auto; overflow: hidden; text-align: center; margin: 20px auto; line-height: 25px; word-wrap: break-word; }
 
-.dialog-inner { padding: 20px; }
+.dialog-inner { padding: 20px; background: #fff; }
 
 .dialog-bts { font-size: 0; height: 49px; border-top: 1px solid #e7e7e7; background-color: #f5f5f5; text-align: center; }
 
