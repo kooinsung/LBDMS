@@ -165,7 +165,9 @@
 
     <script>
       $(function() {
-        $("#dialog").dialog();
+        $("#dialog").dialog({
+          autoOpen: false
+        });
         $(".default-pop-open").button().on("click", function() {
           $("#dialog").dialog("open");
         });
