@@ -1,0 +1,167 @@
+<!-- @@master ../include/layout.html -->
+<!-- @@block content -->
+<div class="sub-title">
+  <strong class="home">주소DB</strong>
+  <h2>주소DB 업무자동화 관리</h2>
+  <h3>업무자동화 기능을 이용하여 주소DB를 생성합니다</h3>
+</div>
+<div class="view-container">
+  <div class="row">
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs2">
+            <div class="tb-tit">
+              업무 정보 <em class="sub-tit">* 업무의 기본 설정 정보를 입력해주세요</em>
+              <div class="tit-utils">
+                <div class="btn-group line">
+                  <button type="button">저장</button>
+                  <button type="button" disabled>실행</button>
+                  <button type="button">취소</button>
+                </div>
+              </div>
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:40%">
+                <col style="width:10%">
+                <col style="width:40%">
+              </colgroup>
+              <tbody>
+              <tr>
+                <th class="require">업무 이름</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" value="" placeholder="업무 이름을 입력해주세요."></span>
+                </td>
+              </tr>
+              <tr>
+                <th>설명</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" value="" placeholder="설명을 입력해주세요."></span>
+                </td>
+              </tr>
+              <tr>
+                <th>태그</th>
+                <td colspan="3">
+                  <span class="inputs"><input type="text" value="" placeholder="태그1, 태그2, 태그3..."></span>
+                </td>
+              </tr>
+              <tr>
+                <th>출처</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">기타</option>
+                    </select>
+                  </span>
+                </td>
+                <th>분류</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">기타</option>
+                    </select>
+                  </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs2">
+            <div class="tb-tit">
+              스케쥴 설정 <span class="sub-tit">* 스케쥴을 사용하시면 지정한 시간에 업무가 실행됩니다</span>
+            </div>
+            <table>
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:40%">
+                <col style="width:10%">
+                <col style="width:40%">
+              </colgroup>
+              <tbody>
+              <tr>
+                <th class="require">사용여부</th>
+                <td colspan="3" class="left">
+                  <span class="radios"><input type="radio" id="use" name="use-type" checked><label for="use">사용</label></span>
+                  <span class="radios"><input type="radio" id="not-use" name="use-type"><label for="not-use">미사용</label></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="require">주기 종류</th>
+                <td>
+                  <span class="select">
+                    <select name="" id="">
+                      <option value="">매일</option>
+                    </select>
+                  </span>
+                </td>
+                <th class="require">시간류</th>
+                <td>
+                  <span class="inputs timepicker"><input type="text"></span>
+                </td>
+              </tr>
+              <tr>
+                <th>시작날짜</th>
+                <td>
+                  <span class="inputs datepicker"><input type="text"></span>
+                </td>
+                <th>종료날짜</th>
+                <td>
+                  <span class="inputs datepicker"><input type="text"></span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="btn-group line mt10">
+            <button type="button">+ 업무 추가</button>
+            <button type="button">+ 프로젝트 추가</button>
+            <button type="button">+ 정지기능 추가</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col col-1">
+        <div class="in-box">
+          <div class="tbs1">
+            <div class="tb-tit">
+              업무 흐름 구성 <span class="sub-tit">* 업무 추가 버튼을 클릭하시면 업무 흐름을 구성하실 수 있습니다</span>
+            </div>
+            <table>
+              <tbody>
+              <tr>
+                <td>
+                  <div class="mix-form2">
+                    <strong>업무</strong>
+                    <span class="inputs"><input type="text" value="ALO001_LVBOT_BASE_IDX_HM0214_TMP.SQL"
+                                                disabled=""></span>
+                    <div class="btn-group line">
+                      <button type="button">위로</button>
+                      <button type="button">아래로</button>
+                      <button type="button">삭제</button>
+                      <button type="button">단위업무변경</button>
+                      <button type="button">스크립트 내용 조회</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="btn-group line mt10">
+            <button type="button">+ 업무 추가</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- @@close -->

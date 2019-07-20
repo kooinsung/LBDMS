@@ -33,10 +33,16 @@ LBDMSUI = (function () {
           showOn: "button",
           buttonImage: "../assets/images/ico_cal.svg",
           buttonImageOnly: true,
+          beforeShow: function (input, inst) {
+            // setTimeout(function(){
+            //   inst.dpDiv.outerWidth($(input).outerWidth());
+            // },0);
+          },
         });
         $(".datepicker input").click(function () {
           $(this).parent().find('input').datepicker("show");
         });
+
 
 
         var currentYear = (new Date()).getFullYear();
@@ -50,6 +56,8 @@ LBDMSUI = (function () {
         $(".datepicker-month > button").click(function () {
           $(this).parent().find('input').monthpicker("show");
         })
+
+        $('.timepicker > input').timepicker();
       },
     }
   };

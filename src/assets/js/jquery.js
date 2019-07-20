@@ -4,7 +4,7 @@
   },cur:function(){var a=Zb.propHooks[this.prop];return a&&a.get?a.get(this):Zb.propHooks._default.get(this)},run:function(a){var b,c=Zb.propHooks[this.prop];return this.pos=b=this.options.duration?m.easing[this.easing](a,this.options.duration*a,0,1,this.options.duration):a,this.now=(this.end-this.start)*b+this.start,this.options.step&&this.options.step.call(this.elem,this.now,this),c&&c.set?c.set(this):Zb.propHooks._default.set(this),this}},Zb.prototype.init.prototype=Zb.prototype,Zb.propHooks={_default:{get:function(a){var b;return null==a.elem[a.prop]||a.elem.style&&null!=a.elem.style[a.prop]?(b=m.css(a.elem,a.prop,""),b&&"auto"!==b?b:0):a.elem[a.prop]},set:function(a){m.fx.step[a.prop]?m.fx.step[a.prop](a):a.elem.style&&(null!=a.elem.style[m.cssProps[a.prop]]||m.cssHooks[a.prop])?m.style(a.elem,a.prop,a.now+a.unit):a.elem[a.prop]=a.now}}},Zb.propHooks.scrollTop=Zb.propHooks.scrollLeft={set:function(a){a.elem.nodeType&&a.elem.parentNode&&(a.elem[a.prop]=a.now)}},m.easing={linear:function(a){return a},swing:function(a){return.5-Math.cos(a*Math.PI)/2}},m.fx=Zb.prototype.init,m.fx.step={};var $b,_b,ac=/^(?:toggle|show|hide)$/,bc=new RegExp("^(?:([+-])=|)("+S+")([a-z%]*)$","i"),cc=/queueHooks$/,dc=[ic],ec={"*":[function(a,b){var c=this.createTween(a,b),d=c.cur(),e=bc.exec(b),f=e&&e[3]||(m.cssNumber[a]?"":"px"),g=(m.cssNumber[a]||"px"!==f&&+d)&&bc.exec(m.css(c.elem,a)),h=1,i=20;if(g&&g[3]!==f){f=f||g[3],e=e||[],g=+d||1;do h=h||".5",g/=h,m.style(c.elem,a,g+f);while(h!==(h=c.cur()/d)&&1!==h&&--i)}return e&&(g=c.start=+g||+d||0,c.unit=f,c.end=e[1]?g+(e[1]+1)*e[2]:+e[2]),c}]};function fc(){return setTimeout(function(){$b=void 0}),$b=m.now()}function gc(a,b){var c,d={height:a},e=0;for(b=b?1:0;4>e;e+=2-b)c=T[e],d["margin"+c]=d["padding"+c]=a;return b&&(d.opacity=d.width=a),d}function hc(a,b,c){for(var d,e=(ec[b]||[]).concat(ec["*"]),f=0,g=e.length;g>f;f++)if(d=e[f].call(c,b,a))return d}function ic(a,b,c){var d,e,f,g,h,i,j,l,n=this,o={},p=a.style,q=a.nodeType&&U(a),r=m._data(a,"fxshow");c.queue||(h=m._queueHooks(a,"fx"),null==h.unqueued&&(h.unqueued=0,i=h.empty.fire,h.empty.fire=function(){h.unqueued||i()}),h.unqueued++,n.always(function(){n.always(function(){h.unqueued--,m.queue(a,"fx").length||h.empty.fire()})})),1===a.nodeType&&("height"in b||"width"in b)&&(c.overflow=[p.overflow,p.overflowX,p.overflowY],j=m.css(a,"display"),l="none"===j?m._data(a,"olddisplay")||Fb(a.nodeName):j,"inline"===l&&"none"===m.css(a,"float")&&(k.inlineBlockNeedsLayout&&"inline"!==Fb(a.nodeName)?p.zoom=1:p.display="inline-block")),c.overflow&&(p.overflow="hidden",k.shrinkWrapBlocks()||n.always(function(){p.overflow=c.overflow[0],p.overflowX=c.overflow[1],p.overflowY=c.overflow[2]}));for(d in b)if(e=b[d],ac.exec(e)){if(delete b[d],f=f||"toggle"===e,e===(q?"hide":"show")){if("show"!==e||!r||void 0===r[d])continue;q=!0}o[d]=r&&r[d]||m.style(a,d)}else j=void 0;if(m.isEmptyObject(o))"inline"===("none"===j?Fb(a.nodeName):j)&&(p.display=j);else{r?"hidden"in r&&(q=r.hidden):r=m._data(a,"fxshow",{}),f&&(r.hidden=!q),q?m(a).show():n.done(function(){m(a).hide()}),n.done(function(){var b;m._removeData(a,"fxshow");for(b in o)m.style(a,b,o[b])});for(d in o)g=hc(q?r[d]:0,d,n),d in r||(r[d]=g.start,q&&(g.end=g.start,g.start="width"===d||"height"===d?1:0))}}function jc(a,b){var c,d,e,f,g;for(c in a)if(d=m.camelCase(c),e=b[d],f=a[c],m.isArray(f)&&(e=f[1],f=a[c]=f[0]),c!==d&&(a[d]=f,delete a[c]),g=m.cssHooks[d],g&&"expand"in g){f=g.expand(f),delete a[d];for(c in f)c in a||(a[c]=f[c],b[c]=e)}else b[d]=e}function kc(a,b,c){var d,e,f=0,g=dc.length,h=m.Deferred().always(function(){delete i.elem}),i=function(){if(e)return!1;for(var b=$b||fc(),c=Math.max(0,j.startTime+j.duration-b),d=c/j.duration||0,f=1-d,g=0,i=j.tweens.length;i>g;g++)j.tweens[g].run(f);return h.notifyWith(a,[j,f,c]),1>f&&i?c:(h.resolveWith(a,[j]),!1)},j=h.promise({elem:a,props:m.extend({},b),opts:m.extend(!0,{specialEasing:{}},c),originalProperties:b,originalOptions:c,startTime:$b||fc(),duration:c.duration,tweens:[],createTween:function(b,c){var d=m.Tween(a,j.opts,b,c,j.opts.specialEasing[b]||j.opts.easing);return j.tweens.push(d),d},stop:function(b){var c=0,d=b?j.tweens.length:0;if(e)return this;for(e=!0;d>c;c++)j.tweens[c].run(1);return b?h.resolveWith(a,[j,b]):h.rejectWith(a,[j,b]),this}}),k=j.props;for(jc(k,j.opts.specialEasing);g>f;f++)if(d=dc[f].call(j,a,k,j.opts))return d;return m.map(k,hc,j),m.isFunction(j.opts.start)&&j.opts.start.call(a,j),m.fx.timer(m.extend(i,{elem:a,anim:j,queue:j.opts.queue})),j.progress(j.opts.progress).done(j.opts.done,j.opts.complete).fail(j.opts.fail).always(j.opts.always)}m.Animation=m.extend(kc,{tweener:function(a,b){m.isFunction(a)?(b=a,a=["*"]):a=a.split(" ");for(var c,d=0,e=a.length;e>d;d++)c=a[d],ec[c]=ec[c]||[],ec[c].unshift(b)},prefilter:function(a,b){b?dc.unshift(a):dc.push(a)}}),m.speed=function(a,b,c){var d=a&&"object"==typeof a?m.extend({},a):{complete:c||!c&&b||m.isFunction(a)&&a,duration:a,easing:c&&b||b&&!m.isFunction(b)&&b};return d.duration=m.fx.off?0:"number"==typeof d.duration?d.duration:d.duration in m.fx.speeds?m.fx.speeds[d.duration]:m.fx.speeds._default,(null==d.queue||d.queue===!0)&&(d.queue="fx"),d.old=d.complete,d.complete=function(){m.isFunction(d.old)&&d.old.call(this),d.queue&&m.dequeue(this,d.queue)},d},m.fn.extend({fadeTo:function(a,b,c,d){return this.filter(U).css("opacity",0).show().end().animate({opacity:b},a,c,d)},animate:function(a,b,c,d){var e=m.isEmptyObject(a),f=m.speed(b,c,d),g=function(){var b=kc(this,m.extend({},a),f);(e||m._data(this,"finish"))&&b.stop(!0)};return g.finish=g,e||f.queue===!1?this.each(g):this.queue(f.queue,g)},stop:function(a,b,c){var d=function(a){var b=a.stop;delete a.stop,b(c)};return"string"!=typeof a&&(c=b,b=a,a=void 0),b&&a!==!1&&this.queue(a||"fx",[]),this.each(function(){var b=!0,e=null!=a&&a+"queueHooks",f=m.timers,g=m._data(this);if(e)g[e]&&g[e].stop&&d(g[e]);else for(e in g)g[e]&&g[e].stop&&cc.test(e)&&d(g[e]);for(e=f.length;e--;)f[e].elem!==this||null!=a&&f[e].queue!==a||(f[e].anim.stop(c),b=!1,f.splice(e,1));(b||!c)&&m.dequeue(this,a)})},finish:function(a){return a!==!1&&(a=a||"fx"),this.each(function(){var b,c=m._data(this),d=c[a+"queue"],e=c[a+"queueHooks"],f=m.timers,g=d?d.length:0;for(c.finish=!0,m.queue(this,a,[]),e&&e.stop&&e.stop.call(this,!0),b=f.length;b--;)f[b].elem===this&&f[b].queue===a&&(f[b].anim.stop(!0),f.splice(b,1));for(b=0;g>b;b++)d[b]&&d[b].finish&&d[b].finish.call(this);delete c.finish})}}),m.each(["toggle","show","hide"],function(a,b){var c=m.fn[b];m.fn[b]=function(a,d,e){return null==a||"boolean"==typeof a?c.apply(this,arguments):this.animate(gc(b,!0),a,d,e)}}),m.each({slideDown:gc("show"),slideUp:gc("hide"),slideToggle:gc("toggle"),fadeIn:{opacity:"show"},fadeOut:{opacity:"hide"},fadeToggle:{opacity:"toggle"}},function(a,b){m.fn[a]=function(a,c,d){return this.animate(b,a,c,d)}}),m.timers=[],m.fx.tick=function(){var a,b=m.timers,c=0;for($b=m.now();c<b.length;c++)a=b[c],a()||b[c]!==a||b.splice(c--,1);b.length||m.fx.stop(),$b=void 0},m.fx.timer=function(a){m.timers.push(a),a()?m.fx.start():m.timers.pop()},m.fx.interval=13,m.fx.start=function(){_b||(_b=setInterval(m.fx.tick,m.fx.interval))},m.fx.stop=function(){clearInterval(_b),_b=null},m.fx.speeds={slow:600,fast:200,_default:400},m.fn.delay=function(a,b){return a=m.fx?m.fx.speeds[a]||a:a,b=b||"fx",this.queue(b,function(b,c){var d=setTimeout(b,a);c.stop=function(){clearTimeout(d)}})},function(){var a,b,c,d,e;b=y.createElement("div"),b.setAttribute("className","t"),b.innerHTML="  <link/><table></table><a href='/a'>a</a><input type='checkbox'/>",d=b.getElementsByTagName("a")[0],c=y.createElement("select"),e=c.appendChild(y.createElement("option")),a=b.getElementsByTagName("input")[0],d.style.cssText="top:1px",k.getSetAttribute="t"!==b.className,k.style=/top/.test(d.getAttribute("style")),k.hrefNormalized="/a"===d.getAttribute("href"),k.checkOn=!!a.value,k.optSelected=e.selected,k.enctype=!!y.createElement("form").enctype,c.disabled=!0,k.optDisabled=!e.disabled,a=y.createElement("input"),a.setAttribute("value",""),k.input=""===a.getAttribute("value"),a.value="t",a.setAttribute("type","radio"),k.radioValue="t"===a.value}();var lc=/\r/g;m.fn.extend({val:function(a){var b,c,d,e=this[0];{if(arguments.length)return d=m.isFunction(a),this.each(function(c){var e;1===this.nodeType&&(e=d?a.call(this,c,m(this).val()):a,null==e?e="":"number"==typeof e?e+="":m.isArray(e)&&(e=m.map(e,function(a){return null==a?"":a+""})),b=m.valHooks[this.type]||m.valHooks[this.nodeName.toLowerCase()],b&&"set"in b&&void 0!==b.set(this,e,"value")||(this.value=e))});if(e)return b=m.valHooks[e.type]||m.valHooks[e.nodeName.toLowerCase()],b&&"get"in b&&void 0!==(c=b.get(e,"value"))?c:(c=e.value,"string"==typeof c?c.replace(lc,""):null==c?"":c)}}}),m.extend({valHooks:{option:{get:function(a){var b=m.find.attr(a,"value");return null!=b?b:m.trim(m.text(a))}},select:{get:function(a){for(var b,c,d=a.options,e=a.selectedIndex,f="select-one"===a.type||0>e,g=f?null:[],h=f?e+1:d.length,i=0>e?h:f?e:0;h>i;i++)if(c=d[i],!(!c.selected&&i!==e||(k.optDisabled?c.disabled:null!==c.getAttribute("disabled"))||c.parentNode.disabled&&m.nodeName(c.parentNode,"optgroup"))){if(b=m(c).val(),f)return b;g.push(b)}return g},set:function(a,b){var c,d,e=a.options,f=m.makeArray(b),g=e.length;while(g--)if(d=e[g],m.inArray(m.valHooks.option.get(d),f)>=0)try{d.selected=c=!0}catch(h){d.scrollHeight}else d.selected=!1;return c||(a.selectedIndex=-1),e}}}}),m.each(["radio","checkbox"],function(){m.valHooks[this]={set:function(a,b){return m.isArray(b)?a.checked=m.inArray(m(a).val(),b)>=0:void 0}},k.checkOn||(m.valHooks[this].get=function(a){return null===a.getAttribute("value")?"on":a.value})});var mc,nc,oc=m.expr.attrHandle,pc=/^(?:checked|selected)$/i,qc=k.getSetAttribute,rc=k.input;m.fn.extend({attr:function(a,b){return V(this,m.attr,a,b,arguments.length>1)},removeAttr:function(a){return this.each(function(){m.removeAttr(this,a)})}}),m.extend({attr:function(a,b,c){var d,e,f=a.nodeType;if(a&&3!==f&&8!==f&&2!==f)return typeof a.getAttribute===K?m.prop(a,b,c):(1===f&&m.isXMLDoc(a)||(b=b.toLowerCase(),d=m.attrHooks[b]||(m.expr.match.bool.test(b)?nc:mc)),void 0===c?d&&"get"in d&&null!==(e=d.get(a,b))?e:(e=m.find.attr(a,b),null==e?void 0:e):null!==c?d&&"set"in d&&void 0!==(e=d.set(a,c,b))?e:(a.setAttribute(b,c+""),c):void m.removeAttr(a,b))},removeAttr:function(a,b){var c,d,e=0,f=b&&b.match(E);if(f&&1===a.nodeType)while(c=f[e++])d=m.propFix[c]||c,m.expr.match.bool.test(c)?rc&&qc||!pc.test(c)?a[d]=!1:a[m.camelCase("default-"+c)]=a[d]=!1:m.attr(a,c,""),a.removeAttribute(qc?c:d)},attrHooks:{type:{set:function(a,b){if(!k.radioValue&&"radio"===b&&m.nodeName(a,"input")){var c=a.value;return a.setAttribute("type",b),c&&(a.value=c),b}}}}}),nc={set:function(a,b,c){return b===!1?m.removeAttr(a,c):rc&&qc||!pc.test(c)?a.setAttribute(!qc&&m.propFix[c]||c,c):a[m.camelCase("default-"+c)]=a[c]=!0,c}},m.each(m.expr.match.bool.source.match(/\w+/g),function(a,b){var c=oc[b]||m.find.attr;oc[b]=rc&&qc||!pc.test(b)?function(a,b,d){var e,f;return d||(f=oc[b],oc[b]=e,e=null!=c(a,b,d)?b.toLowerCase():null,oc[b]=f),e}:function(a,b,c){return c?void 0:a[m.camelCase("default-"+b)]?b.toLowerCase():null}}),rc&&qc||(m.attrHooks.value={set:function(a,b,c){return m.nodeName(a,"input")?void(a.defaultValue=b):mc&&mc.set(a,b,c)}}),qc||(mc={set:function(a,b,c){var d=a.getAttributeNode(c);return d||a.setAttributeNode(d=a.ownerDocument.createAttribute(c)),d.value=b+="","value"===c||b===a.getAttribute(c)?b:void 0}},oc.id=oc.name=oc.coords=function(a,b,c){var d;return c?void 0:(d=a.getAttributeNode(b))&&""!==d.value?d.value:null},m.valHooks.button={get:function(a,b){var c=a.getAttributeNode(b);return c&&c.specified?c.value:void 0},set:mc.set},m.attrHooks.contenteditable={set:function(a,b,c){mc.set(a,""===b?!1:b,c)}},m.each(["width","height"],function(a,b){m.attrHooks[b]={set:function(a,c){return""===c?(a.setAttribute(b,"auto"),c):void 0}}})),k.style||(m.attrHooks.style={get:function(a){return a.style.cssText||void 0},set:function(a,b){return a.style.cssText=b+""}});var sc=/^(?:input|select|textarea|button|object)$/i,tc=/^(?:a|area)$/i;m.fn.extend({prop:function(a,b){return V(this,m.prop,a,b,arguments.length>1)},removeProp:function(a){return a=m.propFix[a]||a,this.each(function(){try{this[a]=void 0,delete this[a]}catch(b){}})}}),m.extend({propFix:{"for":"htmlFor","class":"className"},prop:function(a,b,c){var d,e,f,g=a.nodeType;if(a&&3!==g&&8!==g&&2!==g)return f=1!==g||!m.isXMLDoc(a),f&&(b=m.propFix[b]||b,e=m.propHooks[b]),void 0!==c?e&&"set"in e&&void 0!==(d=e.set(a,c,b))?d:a[b]=c:e&&"get"in e&&null!==(d=e.get(a,b))?d:a[b]},propHooks:{tabIndex:{get:function(a){var b=m.find.attr(a,"tabindex");return b?parseInt(b,10):sc.test(a.nodeName)||tc.test(a.nodeName)&&a.href?0:-1}}}}),k.hrefNormalized||m.each(["href","src"],function(a,b){m.propHooks[b]={get:function(a){return a.getAttribute(b,4)}}}),k.optSelected||(m.propHooks.selected={get:function(a){var b=a.parentNode;return b&&(b.selectedIndex,b.parentNode&&b.parentNode.selectedIndex),null}}),m.each(["tabIndex","readOnly","maxLength","cellSpacing","cellPadding","rowSpan","colSpan","useMap","frameBorder","contentEditable"],function(){m.propFix[this.toLowerCase()]=this}),k.enctype||(m.propFix.enctype="encoding");var uc=/[\t\r\n\f]/g;m.fn.extend({addClass:function(a){var b,c,d,e,f,g,h=0,i=this.length,j="string"==typeof a&&a;if(m.isFunction(a))return this.each(function(b){m(this).addClass(a.call(this,b,this.className))});if(j)for(b=(a||"").match(E)||[];i>h;h++)if(c=this[h],d=1===c.nodeType&&(c.className?(" "+c.className+" ").replace(uc," "):" ")){f=0;while(e=b[f++])d.indexOf(" "+e+" ")<0&&(d+=e+" ");g=m.trim(d),c.className!==g&&(c.className=g)}return this},removeClass:function(a){var b,c,d,e,f,g,h=0,i=this.length,j=0===arguments.length||"string"==typeof a&&a;if(m.isFunction(a))return this.each(function(b){m(this).removeClass(a.call(this,b,this.className))});if(j)for(b=(a||"").match(E)||[];i>h;h++)if(c=this[h],d=1===c.nodeType&&(c.className?(" "+c.className+" ").replace(uc," "):"")){f=0;while(e=b[f++])while(d.indexOf(" "+e+" ")>=0)d=d.replace(" "+e+" "," ");g=a?m.trim(d):"",c.className!==g&&(c.className=g)}return this},toggleClass:function(a,b){var c=typeof a;return"boolean"==typeof b&&"string"===c?b?this.addClass(a):this.removeClass(a):this.each(m.isFunction(a)?function(c){m(this).toggleClass(a.call(this,c,this.className,b),b)}:function(){if("string"===c){var b,d=0,e=m(this),f=a.match(E)||[];while(b=f[d++])e.hasClass(b)?e.removeClass(b):e.addClass(b)}else(c===K||"boolean"===c)&&(this.className&&m._data(this,"__className__",this.className),this.className=this.className||a===!1?"":m._data(this,"__className__")||"")})},hasClass:function(a){for(var b=" "+a+" ",c=0,d=this.length;d>c;c++)if(1===this[c].nodeType&&(" "+this[c].className+" ").replace(uc," ").indexOf(b)>=0)return!0;return!1}}),m.each("blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu".split(" "),function(a,b){m.fn[b]=function(a,c){return arguments.length>0?this.on(b,null,a,c):this.trigger(b)}}),m.fn.extend({hover:function(a,b){return this.mouseenter(a).mouseleave(b||a)},bind:function(a,b,c){return this.on(a,null,b,c)},unbind:function(a,b){return this.off(a,null,b)},delegate:function(a,b,c,d){return this.on(b,a,c,d)},undelegate:function(a,b,c){return 1===arguments.length?this.off(a,"**"):this.off(b,a||"**",c)}});var vc=m.now(),wc=/\?/,xc=/(,)|(\[|{)|(}|])|"(?:[^"\\\r\n]|\\["\\\/bfnrt]|\\u[\da-fA-F]{4})*"\s*:?|true|false|null|-?(?!0\d)\d+(?:\.\d+|)(?:[eE][+-]?\d+|)/g;m.parseJSON=function(b){if(a.JSON&&a.JSON.parse)return a.JSON.parse(b+"");var c,d=null,e=m.trim(b+"");return e&&!m.trim(e.replace(xc,function(a,b,e,f){return c&&b&&(d=0),0===d?a:(c=e||b,d+=!f-!e,"")}))?Function("return "+e)():m.error("Invalid JSON: "+b)},m.parseXML=function(b){var c,d;if(!b||"string"!=typeof b)return null;try{a.DOMParser?(d=new DOMParser,c=d.parseFromString(b,"text/xml")):(c=new ActiveXObject("Microsoft.XMLDOM"),c.async="false",c.loadXML(b))}catch(e){c=void 0}return c&&c.documentElement&&!c.getElementsByTagName("parsererror").length||m.error("Invalid XML: "+b),c};var yc,zc,Ac=/#.*$/,Bc=/([?&])_=[^&]*/,Cc=/^(.*?):[ \t]*([^\r\n]*)\r?$/gm,Dc=/^(?:about|app|app-storage|.+-extension|file|res|widget):$/,Ec=/^(?:GET|HEAD)$/,Fc=/^\/\//,Gc=/^([\w.+-]+:)(?:\/\/(?:[^\/?#]*@|)([^\/?#:]*)(?::(\d+)|)|)/,Hc={},Ic={},Jc="*/".concat("*");try{zc=location.href}catch(Kc){zc=y.createElement("a"),zc.href="",zc=zc.href}yc=Gc.exec(zc.toLowerCase())||[];function Lc(a){return function(b,c){"string"!=typeof b&&(c=b,b="*");var d,e=0,f=b.toLowerCase().match(E)||[];if(m.isFunction(c))while(d=f[e++])"+"===d.charAt(0)?(d=d.slice(1)||"*",(a[d]=a[d]||[]).unshift(c)):(a[d]=a[d]||[]).push(c)}}function Mc(a,b,c,d){var e={},f=a===Ic;function g(h){var i;return e[h]=!0,m.each(a[h]||[],function(a,h){var j=h(b,c,d);return"string"!=typeof j||f||e[j]?f?!(i=j):void 0:(b.dataTypes.unshift(j),g(j),!1)}),i}return g(b.dataTypes[0])||!e["*"]&&g("*")}function Nc(a,b){var c,d,e=m.ajaxSettings.flatOptions||{};for(d in b)void 0!==b[d]&&((e[d]?a:c||(c={}))[d]=b[d]);return c&&m.extend(!0,a,c),a}function Oc(a,b,c){var d,e,f,g,h=a.contents,i=a.dataTypes;while("*"===i[0])i.shift(),void 0===e&&(e=a.mimeType||b.getResponseHeader("Content-Type"));if(e)for(g in h)if(h[g]&&h[g].test(e)){i.unshift(g);break}if(i[0]in c)f=i[0];else{for(g in c){if(!i[0]||a.converters[g+" "+i[0]]){f=g;break}d||(d=g)}f=f||d}return f?(f!==i[0]&&i.unshift(f),c[f]):void 0}function Pc(a,b,c,d){var e,f,g,h,i,j={},k=a.dataTypes.slice();if(k[1])for(g in a.converters)j[g.toLowerCase()]=a.converters[g];f=k.shift();while(f)if(a.responseFields[f]&&(c[a.responseFields[f]]=b),!i&&d&&a.dataFilter&&(b=a.dataFilter(b,a.dataType)),i=f,f=k.shift())if("*"===f)f=i;else if("*"!==i&&i!==f){if(g=j[i+" "+f]||j["* "+f],!g)for(e in j)if(h=e.split(" "),h[1]===f&&(g=j[i+" "+h[0]]||j["* "+h[0]])){g===!0?g=j[e]:j[e]!==!0&&(f=h[0],k.unshift(h[1]));break}if(g!==!0)if(g&&a["throws"])b=g(b);else try{b=g(b)}catch(l){return{state:"parsererror",error:g?l:"No conversion from "+i+" to "+f}}}return{state:"success",data:b}}m.extend({active:0,lastModified:{},etag:{},ajaxSettings:{url:zc,type:"GET",isLocal:Dc.test(yc[1]),global:!0,processData:!0,async:!0,contentType:"application/x-www-form-urlencoded; charset=UTF-8",accepts:{"*":Jc,text:"text/plain",html:"text/html",xml:"application/xml, text/xml",json:"application/json, text/javascript"},contents:{xml:/xml/,html:/html/,json:/json/},responseFields:{xml:"responseXML",text:"responseText",json:"responseJSON"},converters:{"* text":String,"text html":!0,"text json":m.parseJSON,"text xml":m.parseXML},flatOptions:{url:!0,context:!0}},ajaxSetup:function(a,b){return b?Nc(Nc(a,m.ajaxSettings),b):Nc(m.ajaxSettings,a)},ajaxPrefilter:Lc(Hc),ajaxTransport:Lc(Ic),ajax:function(a,b){"object"==typeof a&&(b=a,a=void 0),b=b||{};var c,d,e,f,g,h,i,j,k=m.ajaxSetup({},b),l=k.context||k,n=k.context&&(l.nodeType||l.jquery)?m(l):m.event,o=m.Deferred(),p=m.Callbacks("once memory"),q=k.statusCode||{},r={},s={},t=0,u="canceled",v={readyState:0,getResponseHeader:function(a){var b;if(2===t){if(!j){j={};while(b=Cc.exec(f))j[b[1].toLowerCase()]=b[2]}b=j[a.toLowerCase()]}return null==b?null:b},getAllResponseHeaders:function(){return 2===t?f:null},setRequestHeader:function(a,b){var c=a.toLowerCase();return t||(a=s[c]=s[c]||a,r[a]=b),this},overrideMimeType:function(a){return t||(k.mimeType=a),this},statusCode:function(a){var b;if(a)if(2>t)for(b in a)q[b]=[q[b],a[b]];else v.always(a[v.status]);return this},abort:function(a){var b=a||u;return i&&i.abort(b),x(0,b),this}};if(o.promise(v).complete=p.add,v.success=v.done,v.error=v.fail,k.url=((a||k.url||zc)+"").replace(Ac,"").replace(Fc,yc[1]+"//"),k.type=b.method||b.type||k.method||k.type,k.dataTypes=m.trim(k.dataType||"*").toLowerCase().match(E)||[""],null==k.crossDomain&&(c=Gc.exec(k.url.toLowerCase()),k.crossDomain=!(!c||c[1]===yc[1]&&c[2]===yc[2]&&(c[3]||("http:"===c[1]?"80":"443"))===(yc[3]||("http:"===yc[1]?"80":"443")))),k.data&&k.processData&&"string"!=typeof k.data&&(k.data=m.param(k.data,k.traditional)),Mc(Hc,k,b,v),2===t)return v;h=k.global,h&&0===m.active++&&m.event.trigger("ajaxStart"),k.type=k.type.toUpperCase(),k.hasContent=!Ec.test(k.type),e=k.url,k.hasContent||(k.data&&(e=k.url+=(wc.test(e)?"&":"?")+k.data,delete k.data),k.cache===!1&&(k.url=Bc.test(e)?e.replace(Bc,"$1_="+vc++):e+(wc.test(e)?"&":"?")+"_="+vc++)),k.ifModified&&(m.lastModified[e]&&v.setRequestHeader("If-Modified-Since",m.lastModified[e]),m.etag[e]&&v.setRequestHeader("If-None-Match",m.etag[e])),(k.data&&k.hasContent&&k.contentType!==!1||b.contentType)&&v.setRequestHeader("Content-Type",k.contentType),v.setRequestHeader("Accept",k.dataTypes[0]&&k.accepts[k.dataTypes[0]]?k.accepts[k.dataTypes[0]]+("*"!==k.dataTypes[0]?", "+Jc+"; q=0.01":""):k.accepts["*"]);for(d in k.headers)v.setRequestHeader(d,k.headers[d]);if(k.beforeSend&&(k.beforeSend.call(l,v,k)===!1||2===t))return v.abort();u="abort";for(d in{success:1,error:1,complete:1})v[d](k[d]);if(i=Mc(Ic,k,b,v)){v.readyState=1,h&&n.trigger("ajaxSend",[v,k]),k.async&&k.timeout>0&&(g=setTimeout(function(){v.abort("timeout")},k.timeout));try{t=1,i.send(r,x)}catch(w){if(!(2>t))throw w;x(-1,w)}}else x(-1,"No Transport");function x(a,b,c,d){var j,r,s,u,w,x=b;2!==t&&(t=2,g&&clearTimeout(g),i=void 0,f=d||"",v.readyState=a>0?4:0,j=a>=200&&300>a||304===a,c&&(u=Oc(k,v,c)),u=Pc(k,u,v,j),j?(k.ifModified&&(w=v.getResponseHeader("Last-Modified"),w&&(m.lastModified[e]=w),w=v.getResponseHeader("etag"),w&&(m.etag[e]=w)),204===a||"HEAD"===k.type?x="nocontent":304===a?x="notmodified":(x=u.state,r=u.data,s=u.error,j=!s)):(s=x,(a||!x)&&(x="error",0>a&&(a=0))),v.status=a,v.statusText=(b||x)+"",j?o.resolveWith(l,[r,x,v]):o.rejectWith(l,[v,x,s]),v.statusCode(q),q=void 0,h&&n.trigger(j?"ajaxSuccess":"ajaxError",[v,k,j?r:s]),p.fireWith(l,[v,x]),h&&(n.trigger("ajaxComplete",[v,k]),--m.active||m.event.trigger("ajaxStop")))}return v},getJSON:function(a,b,c){return m.get(a,b,c,"json")},getScript:function(a,b){return m.get(a,void 0,b,"script")}}),m.each(["get","post"],function(a,b){m[b]=function(a,c,d,e){return m.isFunction(c)&&(e=e||d,d=c,c=void 0),m.ajax({url:a,type:b,dataType:e,data:c,success:d})}}),m.each(["ajaxStart","ajaxStop","ajaxComplete","ajaxError","ajaxSuccess","ajaxSend"],function(a,b){m.fn[b]=function(a){return this.on(b,a)}}),m._evalUrl=function(a){return m.ajax({url:a,type:"GET",dataType:"script",async:!1,global:!1,"throws":!0})},m.fn.extend({wrapAll:function(a){if(m.isFunction(a))return this.each(function(b){m(this).wrapAll(a.call(this,b))});if(this[0]){var b=m(a,this[0].ownerDocument).eq(0).clone(!0);this[0].parentNode&&b.insertBefore(this[0]),b.map(function(){var a=this;while(a.firstChild&&1===a.firstChild.nodeType)a=a.firstChild;return a}).append(this)}return this},wrapInner:function(a){return this.each(m.isFunction(a)?function(b){m(this).wrapInner(a.call(this,b))}:function(){var b=m(this),c=b.contents();c.length?c.wrapAll(a):b.append(a)})},wrap:function(a){var b=m.isFunction(a);return this.each(function(c){m(this).wrapAll(b?a.call(this,c):a)})},unwrap:function(){return this.parent().each(function(){m.nodeName(this,"body")||m(this).replaceWith(this.childNodes)}).end()}}),m.expr.filters.hidden=function(a){return a.offsetWidth<=0&&a.offsetHeight<=0||!k.reliableHiddenOffsets()&&"none"===(a.style&&a.style.display||m.css(a,"display"))},m.expr.filters.visible=function(a){return!m.expr.filters.hidden(a)};var Qc=/%20/g,Rc=/\[\]$/,Sc=/\r?\n/g,Tc=/^(?:submit|button|image|reset|file)$/i,Uc=/^(?:input|select|textarea|keygen)/i;function Vc(a,b,c,d){var e;if(m.isArray(b))m.each(b,function(b,e){c||Rc.test(a)?d(a,e):Vc(a+"["+("object"==typeof e?b:"")+"]",e,c,d)});else if(c||"object"!==m.type(b))d(a,b);else for(e in b)Vc(a+"["+e+"]",b[e],c,d)}m.param=function(a,b){var c,d=[],e=function(a,b){b=m.isFunction(b)?b():null==b?"":b,d[d.length]=encodeURIComponent(a)+"="+encodeURIComponent(b)};if(void 0===b&&(b=m.ajaxSettings&&m.ajaxSettings.traditional),m.isArray(a)||a.jquery&&!m.isPlainObject(a))m.each(a,function(){e(this.name,this.value)});else for(c in a)Vc(c,a[c],b,e);return d.join("&").replace(Qc,"+")},m.fn.extend({serialize:function(){return m.param(this.serializeArray())},serializeArray:function(){return this.map(function(){var a=m.prop(this,"elements");return a?m.makeArray(a):this}).filter(function(){var a=this.type;return this.name&&!m(this).is(":disabled")&&Uc.test(this.nodeName)&&!Tc.test(a)&&(this.checked||!W.test(a))}).map(function(a,b){var c=m(this).val();return null==c?null:m.isArray(c)?m.map(c,function(a){return{name:b.name,value:a.replace(Sc,"\r\n")}}):{name:b.name,value:c.replace(Sc,"\r\n")}}).get()}}),m.ajaxSettings.xhr=void 0!==a.ActiveXObject?function(){return!this.isLocal&&/^(get|post|head|put|delete|options)$/i.test(this.type)&&Zc()||$c()}:Zc;var Wc=0,Xc={},Yc=m.ajaxSettings.xhr();a.ActiveXObject&&m(a).on("unload",function(){for(var a in Xc)Xc[a](void 0,!0)}),k.cors=!!Yc&&"withCredentials"in Yc,Yc=k.ajax=!!Yc,Yc&&m.ajaxTransport(function(a){if(!a.crossDomain||k.cors){var b;return{send:function(c,d){var e,f=a.xhr(),g=++Wc;if(f.open(a.type,a.url,a.async,a.username,a.password),a.xhrFields)for(e in a.xhrFields)f[e]=a.xhrFields[e];a.mimeType&&f.overrideMimeType&&f.overrideMimeType(a.mimeType),a.crossDomain||c["X-Requested-With"]||(c["X-Requested-With"]="XMLHttpRequest");for(e in c)void 0!==c[e]&&f.setRequestHeader(e,c[e]+"");f.send(a.hasContent&&a.data||null),b=function(c,e){var h,i,j;if(b&&(e||4===f.readyState))if(delete Xc[g],b=void 0,f.onreadystatechange=m.noop,e)4!==f.readyState&&f.abort();else{j={},h=f.status,"string"==typeof f.responseText&&(j.text=f.responseText);try{i=f.statusText}catch(k){i=""}h||!a.isLocal||a.crossDomain?1223===h&&(h=204):h=j.text?200:404}j&&d(h,i,j,f.getAllResponseHeaders())},a.async?4===f.readyState?setTimeout(b):f.onreadystatechange=Xc[g]=b:b()},abort:function(){b&&b(void 0,!0)}}}});function Zc(){try{return new a.XMLHttpRequest}catch(b){}}function $c(){try{return new a.ActiveXObject("Microsoft.XMLHTTP")}catch(b){}}m.ajaxSetup({accepts:{script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"},contents:{script:/(?:java|ecma)script/},converters:{"text script":function(a){return m.globalEval(a),a}}}),m.ajaxPrefilter("script",function(a){void 0===a.cache&&(a.cache=!1),a.crossDomain&&(a.type="GET",a.global=!1)}),m.ajaxTransport("script",function(a){if(a.crossDomain){var b,c=y.head||m("head")[0]||y.documentElement;return{send:function(d,e){b=y.createElement("script"),b.async=!0,a.scriptCharset&&(b.charset=a.scriptCharset),b.src=a.url,b.onload=b.onreadystatechange=function(a,c){(c||!b.readyState||/loaded|complete/.test(b.readyState))&&(b.onload=b.onreadystatechange=null,b.parentNode&&b.parentNode.removeChild(b),b=null,c||e(200,"success"))},c.insertBefore(b,c.firstChild)},abort:function(){b&&b.onload(void 0,!0)}}}});var _c=[],ad=/(=)\?(?=&|$)|\?\?/;m.ajaxSetup({jsonp:"callback",jsonpCallback:function(){var a=_c.pop()||m.expando+"_"+vc++;return this[a]=!0,a}}),m.ajaxPrefilter("json jsonp",function(b,c,d){var e,f,g,h=b.jsonp!==!1&&(ad.test(b.url)?"url":"string"==typeof b.data&&!(b.contentType||"").indexOf("application/x-www-form-urlencoded")&&ad.test(b.data)&&"data");return h||"jsonp"===b.dataTypes[0]?(e=b.jsonpCallback=m.isFunction(b.jsonpCallback)?b.jsonpCallback():b.jsonpCallback,h?b[h]=b[h].replace(ad,"$1"+e):b.jsonp!==!1&&(b.url+=(wc.test(b.url)?"&":"?")+b.jsonp+"="+e),b.converters["script json"]=function(){return g||m.error(e+" was not called"),g[0]},b.dataTypes[0]="json",f=a[e],a[e]=function(){g=arguments},d.always(function(){a[e]=f,b[e]&&(b.jsonpCallback=c.jsonpCallback,_c.push(e)),g&&m.isFunction(f)&&f(g[0]),g=f=void 0}),"script"):void 0}),m.parseHTML=function(a,b,c){if(!a||"string"!=typeof a)return null;"boolean"==typeof b&&(c=b,b=!1),b=b||y;var d=u.exec(a),e=!c&&[];return d?[b.createElement(d[1])]:(d=m.buildFragment([a],b,e),e&&e.length&&m(e).remove(),m.merge([],d.childNodes))};var bd=m.fn.load;m.fn.load=function(a,b,c){if("string"!=typeof a&&bd)return bd.apply(this,arguments);var d,e,f,g=this,h=a.indexOf(" ");return h>=0&&(d=m.trim(a.slice(h,a.length)),a=a.slice(0,h)),m.isFunction(b)?(c=b,b=void 0):b&&"object"==typeof b&&(f="POST"),g.length>0&&m.ajax({url:a,type:f,dataType:"html",data:b}).done(function(a){e=arguments,g.html(d?m("<div>").append(m.parseHTML(a)).find(d):a)}).complete(c&&function(a,b){g.each(c,e||[a.responseText,b,a])}),this},m.expr.filters.animated=function(a){return m.grep(m.timers,function(b){return a===b.elem}).length};var cd=a.document.documentElement;function dd(a){return m.isWindow(a)?a:9===a.nodeType?a.defaultView||a.parentWindow:!1}m.offset={setOffset:function(a,b,c){var d,e,f,g,h,i,j,k=m.css(a,"position"),l=m(a),n={};"static"===k&&(a.style.position="relative"),h=l.offset(),f=m.css(a,"top"),i=m.css(a,"left"),j=("absolute"===k||"fixed"===k)&&m.inArray("auto",[f,i])>-1,j?(d=l.position(),g=d.top,e=d.left):(g=parseFloat(f)||0,e=parseFloat(i)||0),m.isFunction(b)&&(b=b.call(a,c,h)),null!=b.top&&(n.top=b.top-h.top+g),null!=b.left&&(n.left=b.left-h.left+e),"using"in b?b.using.call(a,n):l.css(n)}},m.fn.extend({offset:function(a){if(arguments.length)return void 0===a?this:this.each(function(b){m.offset.setOffset(this,a,b)});var b,c,d={top:0,left:0},e=this[0],f=e&&e.ownerDocument;if(f)return b=f.documentElement,m.contains(b,e)?(typeof e.getBoundingClientRect!==K&&(d=e.getBoundingClientRect()),c=dd(f),{top:d.top+(c.pageYOffset||b.scrollTop)-(b.clientTop||0),left:d.left+(c.pageXOffset||b.scrollLeft)-(b.clientLeft||0)}):d},position:function(){if(this[0]){var a,b,c={top:0,left:0},d=this[0];return"fixed"===m.css(d,"position")?b=d.getBoundingClientRect():(a=this.offsetParent(),b=this.offset(),m.nodeName(a[0],"html")||(c=a.offset()),c.top+=m.css(a[0],"borderTopWidth",!0),c.left+=m.css(a[0],"borderLeftWidth",!0)),{top:b.top-c.top-m.css(d,"marginTop",!0),left:b.left-c.left-m.css(d,"marginLeft",!0)}}},offsetParent:function(){return this.map(function(){var a=this.offsetParent||cd;while(a&&!m.nodeName(a,"html")&&"static"===m.css(a,"position"))a=a.offsetParent;return a||cd})}}),m.each({scrollLeft:"pageXOffset",scrollTop:"pageYOffset"},function(a,b){var c=/Y/.test(b);m.fn[a]=function(d){return V(this,function(a,d,e){var f=dd(a);return void 0===e?f?b in f?f[b]:f.document.documentElement[d]:a[d]:void(f?f.scrollTo(c?m(f).scrollLeft():e,c?e:m(f).scrollTop()):a[d]=e)},a,d,arguments.length,null)}}),m.each(["top","left"],function(a,b){m.cssHooks[b]=Lb(k.pixelPosition,function(a,c){return c?(c=Jb(a,b),Hb.test(c)?m(a).position()[b]+"px":c):void 0})}),m.each({Height:"height",Width:"width"},function(a,b){m.each({padding:"inner"+a,content:b,"":"outer"+a},function(c,d){m.fn[d]=function(d,e){var f=arguments.length&&(c||"boolean"!=typeof d),g=c||(d===!0||e===!0?"margin":"border");return V(this,function(b,c,d){var e;return m.isWindow(b)?b.document.documentElement["client"+a]:9===b.nodeType?(e=b.documentElement,Math.max(b.body["scroll"+a],e["scroll"+a],b.body["offset"+a],e["offset"+a],e["client"+a])):void 0===d?m.css(b,c,g):m.style(b,c,d,g)},b,f?d:void 0,f,null)}})}),m.fn.size=function(){return this.length},m.fn.andSelf=m.fn.addBack,"function"==typeof define&&define.amd&&define("jquery",[],function(){return m});var ed=a.jQuery,fd=a.$;return m.noConflict=function(b){return a.$===m&&(a.$=fd),b&&a.jQuery===m&&(a.jQuery=ed),m},typeof b===K&&(a.jQuery=a.$=m),m});
 
 
-/*! jQuery UI - v1.11.4 - 2019-07-12
+/*! jQuery UI - v1.11.4 - 2019-07-20
 * http://jqueryui.com
 * Includes: core.js, widget.js, mouse.js, position.js, draggable.js, resizable.js, button.js, datepicker.js, dialog.js
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
@@ -62,15 +62,15 @@
     $.fn.extend({
         scrollParent: function( includeHidden ) {
             var position = this.css( "position" ),
-                excludeStaticParent = position === "absolute",
-                overflowRegex = includeHidden ? /(auto|scroll|hidden)/ : /(auto|scroll)/,
-                scrollParent = this.parents().filter( function() {
-                    var parent = $( this );
-                    if ( excludeStaticParent && parent.css( "position" ) === "static" ) {
-                        return false;
-                    }
-                    return overflowRegex.test( parent.css( "overflow" ) + parent.css( "overflow-y" ) + parent.css( "overflow-x" ) );
-                }).eq( 0 );
+              excludeStaticParent = position === "absolute",
+              overflowRegex = includeHidden ? /(auto|scroll|hidden)/ : /(auto|scroll)/,
+              scrollParent = this.parents().filter(function () {
+                var parent = $(this);
+                if (excludeStaticParent && parent.css("position") === "static") {
+                  return false;
+                }
+                return overflowRegex.test(parent.css("overflow") + parent.css("overflow-y") + parent.css("overflow-x"));
+              }).eq(0);
 
             return position === "fixed" || !scrollParent.length ? $( this[ 0 ].ownerDocument || document ) : scrollParent;
         },
@@ -99,7 +99,7 @@
 // selectors
     function focusable( element, isTabIndexNotNaN ) {
         var map, mapName, img,
-            nodeName = element.nodeName.toLowerCase();
+          nodeName = element.nodeName.toLowerCase();
         if ( "area" === nodeName ) {
             map = element.parentNode;
             mapName = map.name;
@@ -110,32 +110,32 @@
             return !!img && visible( img );
         }
         return ( /^(input|select|textarea|button|object)$/.test( nodeName ) ?
-            !element.disabled :
-            "a" === nodeName ?
-                element.href || isTabIndexNotNaN :
-                isTabIndexNotNaN) &&
-            // the element and all of its ancestors must be visible
-            visible( element );
+          !element.disabled :
+          "a" === nodeName ?
+            element.href || isTabIndexNotNaN :
+            isTabIndexNotNaN) &&
+          // the element and all of its ancestors must be visible
+          visible(element);
     }
 
     function visible( element ) {
         return $.expr.filters.visible( element ) &&
-            !$( element ).parents().addBack().filter(function() {
-                return $.css( this, "visibility" ) === "hidden";
-            }).length;
+          !$(element).parents().addBack().filter(function () {
+            return $.css(this, "visibility") === "hidden";
+          }).length;
     }
 
     $.extend( $.expr[ ":" ], {
         data: $.expr.createPseudo ?
-            $.expr.createPseudo(function( dataName ) {
-                return function( elem ) {
-                    return !!$.data( elem, dataName );
-                };
-            }) :
-            // support: jQuery <1.8
-            function( elem, i, match ) {
-                return !!$.data( elem, match[ 3 ] );
-            },
+          $.expr.createPseudo(function (dataName) {
+            return function (elem) {
+              return !!$.data(elem, dataName);
+            };
+          }) :
+          // support: jQuery <1.8
+          function (elem, i, match) {
+            return !!$.data(elem, match[3]);
+          },
 
         focusable: function( element ) {
             return focusable( element, !isNaN( $.attr( element, "tabindex" ) ) );
@@ -143,7 +143,7 @@
 
         tabbable: function( element ) {
             var tabIndex = $.attr( element, "tabindex" ),
-                isTabIndexNaN = isNaN( tabIndex );
+              isTabIndexNaN = isNaN(tabIndex);
             return ( isTabIndexNaN || tabIndex >= 0 ) && focusable( element, !isTabIndexNaN );
         }
     });
@@ -152,13 +152,13 @@
     if ( !$( "<a>" ).outerWidth( 1 ).jquery ) {
         $.each( [ "Width", "Height" ], function( i, name ) {
             var side = name === "Width" ? [ "Left", "Right" ] : [ "Top", "Bottom" ],
-                type = name.toLowerCase(),
-                orig = {
-                    innerWidth: $.fn.innerWidth,
-                    innerHeight: $.fn.innerHeight,
-                    outerWidth: $.fn.outerWidth,
-                    outerHeight: $.fn.outerHeight
-                };
+              type = name.toLowerCase(),
+              orig = {
+                innerWidth: $.fn.innerWidth,
+                innerHeight: $.fn.innerHeight,
+                outerWidth: $.fn.outerWidth,
+                outerHeight: $.fn.outerHeight
+              };
 
             function reduce( elem, size, border, margin ) {
                 $.each( side, function() {
@@ -199,7 +199,7 @@
     if ( !$.fn.addBack ) {
         $.fn.addBack = function( selector ) {
             return this.add( selector == null ?
-                this.prevObject : this.prevObject.filter( selector )
+              this.prevObject : this.prevObject.filter(selector)
             );
         };
     }
@@ -224,23 +224,23 @@
         focus: (function( orig ) {
             return function( delay, fn ) {
                 return typeof delay === "number" ?
-                    this.each(function() {
-                        var elem = this;
-                        setTimeout(function() {
-                            $( elem ).focus();
-                            if ( fn ) {
-                                fn.call( elem );
-                            }
-                        }, delay );
-                    }) :
-                    orig.apply( this, arguments );
+                  this.each(function () {
+                    var elem = this;
+                    setTimeout(function () {
+                      $(elem).focus();
+                      if (fn) {
+                        fn.call(elem);
+                      }
+                    }, delay);
+                  }) :
+                  orig.apply(this, arguments);
             };
         })( $.fn.focus ),
 
         disableSelection: (function() {
             var eventType = "onselectstart" in document.createElement( "div" ) ?
-                "selectstart" :
-                "mousedown";
+              "selectstart" :
+              "mousedown";
 
             return function() {
                 return this.bind( eventType + ".ui-disableSelection", function( event ) {
@@ -287,7 +287,7 @@
     $.ui.plugin = {
         add: function( module, option, set ) {
             var i,
-                proto = $.ui[ module ].prototype;
+              proto = $.ui[module].prototype;
             for ( i in set ) {
                 proto.plugins[ i ] = proto.plugins[ i ] || [];
                 proto.plugins[ i ].push( [ option, set[ i ] ] );
@@ -295,7 +295,7 @@
         },
         call: function( instance, name, args, allowDisconnected ) {
             var i,
-                set = instance.plugins[ name ];
+              set = instance.plugins[name];
 
             if ( !set ) {
                 return;
@@ -327,7 +327,7 @@
 
 
     var widget_uuid = 0,
-        widget_slice = Array.prototype.slice;
+      widget_slice = Array.prototype.slice;
 
     $.cleanData = (function( orig ) {
         return function( elems ) {
@@ -350,10 +350,10 @@
 
     $.widget = function( name, base, prototype ) {
         var fullName, existingConstructor, constructor, basePrototype,
-            // proxiedPrototype allows the provided prototype to remain unmodified
-            // so that it can be used as a mixin for multiple widgets (#8876)
-            proxiedPrototype = {},
-            namespace = name.split( "." )[ 0 ];
+          // proxiedPrototype allows the provided prototype to remain unmodified
+          // so that it can be used as a mixin for multiple widgets (#8876)
+          proxiedPrototype = {},
+          namespace = name.split(".")[0];
 
         name = name.split( "." )[ 1 ];
         fullName = namespace + "-" + name;
@@ -405,15 +405,15 @@
             }
             proxiedPrototype[ prop ] = (function() {
                 var _super = function() {
-                        return base.prototype[ prop ].apply( this, arguments );
-                    },
-                    _superApply = function( args ) {
-                        return base.prototype[ prop ].apply( this, args );
-                    };
+                    return base.prototype[prop].apply(this, arguments);
+                  },
+                  _superApply = function (args) {
+                    return base.prototype[prop].apply(this, args);
+                  };
                 return function() {
                     var __super = this._super,
-                        __superApply = this._superApply,
-                        returnValue;
+                      __superApply = this._superApply,
+                      returnValue;
 
                     this._super = _super;
                     this._superApply = _superApply;
@@ -465,10 +465,10 @@
 
     $.widget.extend = function( target ) {
         var input = widget_slice.call( arguments, 1 ),
-            inputIndex = 0,
-            inputLength = input.length,
-            key,
-            value;
+          inputIndex = 0,
+          inputLength = input.length,
+          key,
+          value;
         for ( ; inputIndex < inputLength; inputIndex++ ) {
             for ( key in input[ inputIndex ] ) {
                 value = input[ inputIndex ][ key ];
@@ -476,9 +476,9 @@
                     // Clone objects
                     if ( $.isPlainObject( value ) ) {
                         target[ key ] = $.isPlainObject( target[ key ] ) ?
-                            $.widget.extend( {}, target[ key ], value ) :
-                            // Don't extend strings, arrays, etc. with objects
-                            $.widget.extend( {}, value );
+                          $.widget.extend({}, target[key], value) :
+                          // Don't extend strings, arrays, etc. with objects
+                          $.widget.extend({}, value);
                         // Copy everything else by reference
                     } else {
                         target[ key ] = value;
@@ -493,20 +493,20 @@
         var fullName = object.prototype.widgetFullName || name;
         $.fn[ name ] = function( options ) {
             var isMethodCall = typeof options === "string",
-                args = widget_slice.call( arguments, 1 ),
-                returnValue = this;
+              args = widget_slice.call(arguments, 1),
+              returnValue = this;
 
             if ( isMethodCall ) {
                 this.each(function() {
                     var methodValue,
-                        instance = $.data( this, fullName );
+                      instance = $.data(this, fullName);
                     if ( options === "instance" ) {
                         returnValue = instance;
                         return false;
                     }
                     if ( !instance ) {
                         return $.error( "cannot call methods on " + name + " prior to initialization; " +
-                            "attempted to call method '" + options + "'" );
+                          "attempted to call method '" + options + "'");
                     }
                     if ( !$.isFunction( instance[options] ) || options.charAt( 0 ) === "_" ) {
                         return $.error( "no such method '" + options + "' for " + name + " widget instance" );
@@ -514,8 +514,8 @@
                     methodValue = instance[ options ].apply( instance, args );
                     if ( methodValue !== instance && methodValue !== undefined ) {
                         returnValue = methodValue && methodValue.jquery ?
-                            returnValue.pushStack( methodValue.get() ) :
-                            methodValue;
+                          returnValue.pushStack(methodValue.get()) :
+                          methodValue;
                         return false;
                     }
                 });
@@ -576,17 +576,17 @@
                     }
                 });
                 this.document = $( element.style ?
-                    // element within the document
-                    element.ownerDocument :
-                    // element is window or document
-                    element.document || element );
+                  // element within the document
+                  element.ownerDocument :
+                  // element is window or document
+                  element.document || element);
                 this.window = $( this.document[0].defaultView || this.document[0].parentWindow );
             }
 
             this.options = $.widget.extend( {},
-                this.options,
-                this._getCreateOptions(),
-                options );
+              this.options,
+              this._getCreateOptions(),
+              options);
 
             this._create();
             this._trigger( "create", null, this._getCreateEventData() );
@@ -602,17 +602,17 @@
             // we can probably remove the unbind calls in 2.0
             // all event bindings should go through this._on()
             this.element
-                .unbind( this.eventNamespace )
-                .removeData( this.widgetFullName )
-                // support: jquery <1.6.3
-                // http://bugs.jquery.com/ticket/9413
-                .removeData( $.camelCase( this.widgetFullName ) );
+              .unbind(this.eventNamespace)
+              .removeData(this.widgetFullName)
+              // support: jquery <1.6.3
+              // http://bugs.jquery.com/ticket/9413
+              .removeData($.camelCase(this.widgetFullName));
             this.widget()
-                .unbind( this.eventNamespace )
-                .removeAttr( "aria-disabled" )
-                .removeClass(
-                    this.widgetFullName + "-disabled " +
-                    "ui-state-disabled" );
+              .unbind(this.eventNamespace)
+              .removeAttr("aria-disabled")
+              .removeClass(
+                this.widgetFullName + "-disabled " +
+                "ui-state-disabled");
 
             // clean up events and states
             this.bindings.unbind( this.eventNamespace );
@@ -627,9 +627,9 @@
 
         option: function( key, value ) {
             var options = key,
-                parts,
-                curOption,
-                i;
+              parts,
+              curOption,
+              i;
 
             if ( arguments.length === 0 ) {
                 // don't return a reference to the internal hash
@@ -678,7 +678,7 @@
 
             if ( key === "disabled" ) {
                 this.widget()
-                    .toggleClass( this.widgetFullName + "-disabled", !!value );
+                  .toggleClass(this.widgetFullName + "-disabled", !!value);
 
                 // If the widget is becoming disabled, then nothing is interactive
                 if ( value ) {
@@ -699,7 +699,7 @@
 
         _on: function( suppressDisabledCheck, element, handlers ) {
             var delegateElement,
-                instance = this;
+              instance = this;
 
             // no suppressDisabledCheck flag, shuffle arguments
             if ( typeof suppressDisabledCheck !== "boolean" ) {
@@ -724,23 +724,23 @@
                     // - disabled as an array instead of boolean
                     // - disabled class as method for disabling individual parts
                     if ( !suppressDisabledCheck &&
-                        ( instance.options.disabled === true ||
-                            $( this ).hasClass( "ui-state-disabled" ) ) ) {
+                      (instance.options.disabled === true ||
+                        $(this).hasClass("ui-state-disabled"))) {
                         return;
                     }
                     return ( typeof handler === "string" ? instance[ handler ] : handler )
-                        .apply( instance, arguments );
+                      .apply(instance, arguments);
                 }
 
                 // copy the guid so direct unbinding works
                 if ( typeof handler !== "string" ) {
                     handlerProxy.guid = handler.guid =
-                        handler.guid || handlerProxy.guid || $.guid++;
+                      handler.guid || handlerProxy.guid || $.guid++;
                 }
 
                 var match = event.match( /^([\w:-]*)\s*(.*)$/ ),
-                    eventName = match[1] + instance.eventNamespace,
-                    selector = match[2];
+                  eventName = match[1] + instance.eventNamespace,
+                  selector = match[2];
                 if ( selector ) {
                     delegateElement.delegate( selector, eventName, handlerProxy );
                 } else {
@@ -751,7 +751,7 @@
 
         _off: function( element, eventName ) {
             eventName = (eventName || "").split( " " ).join( this.eventNamespace + " " ) +
-                this.eventNamespace;
+              this.eventNamespace;
             element.unbind( eventName ).undelegate( eventName );
 
             // Clear the stack to avoid memory leaks (#10056)
@@ -763,7 +763,7 @@
         _delay: function( handler, delay ) {
             function handlerProxy() {
                 return ( typeof handler === "string" ? instance[ handler ] : handler )
-                    .apply( instance, arguments );
+                  .apply(instance, arguments);
             }
             var instance = this;
             return setTimeout( handlerProxy, delay || 0 );
@@ -795,13 +795,13 @@
 
         _trigger: function( type, event, data ) {
             var prop, orig,
-                callback = this.options[ type ];
+              callback = this.options[type];
 
             data = data || {};
             event = $.Event( event );
             event.type = ( type === this.widgetEventPrefix ?
-                type :
-                this.widgetEventPrefix + type ).toLowerCase();
+              type :
+              this.widgetEventPrefix + type).toLowerCase();
             // the original event may come from any element
             // so we need to reset the target on the new event
             event.target = this.element[ 0 ];
@@ -818,8 +818,8 @@
 
             this.element.trigger( event, data );
             return !( $.isFunction( callback ) &&
-                callback.apply( this.element[0], [ event ].concat( data ) ) === false ||
-                event.isDefaultPrevented() );
+              callback.apply(this.element[0], [event].concat(data)) === false ||
+              event.isDefaultPrevented());
         }
     };
 
@@ -829,11 +829,11 @@
                 options = { effect: options };
             }
             var hasOptions,
-                effectName = !options ?
-                    method :
-                    options === true || typeof options === "number" ?
-                        defaultEffect :
-                        options.effect || defaultEffect;
+              effectName = !options ?
+                method :
+                options === true || typeof options === "number" ?
+                  defaultEffect :
+                  options.effect || defaultEffect;
             options = options || {};
             if ( typeof options === "number" ) {
                 options = { duration: options };
@@ -890,16 +890,16 @@
             var that = this;
 
             this.element
-                .bind("mousedown." + this.widgetName, function(event) {
-                    return that._mouseDown(event);
-                })
-                .bind("click." + this.widgetName, function(event) {
-                    if (true === $.data(event.target, that.widgetName + ".preventClickEvent")) {
-                        $.removeData(event.target, that.widgetName + ".preventClickEvent");
-                        event.stopImmediatePropagation();
-                        return false;
-                    }
-                });
+              .bind("mousedown." + this.widgetName, function (event) {
+                return that._mouseDown(event);
+              })
+              .bind("click." + this.widgetName, function (event) {
+                if (true === $.data(event.target, that.widgetName + ".preventClickEvent")) {
+                  $.removeData(event.target, that.widgetName + ".preventClickEvent");
+                  event.stopImmediatePropagation();
+                  return false;
+                }
+              });
 
             this.started = false;
         },
@@ -910,8 +910,8 @@
             this.element.unbind("." + this.widgetName);
             if ( this._mouseMoveDelegate ) {
                 this.document
-                    .unbind("mousemove." + this.widgetName, this._mouseMoveDelegate)
-                    .unbind("mouseup." + this.widgetName, this._mouseUpDelegate);
+                  .unbind("mousemove." + this.widgetName, this._mouseMoveDelegate)
+                  .unbind("mouseup." + this.widgetName, this._mouseUpDelegate);
             }
         },
 
@@ -929,10 +929,10 @@
             this._mouseDownEvent = event;
 
             var that = this,
-                btnIsLeft = (event.which === 1),
-                // event.target.nodeName works around a bug in IE 8 with
-                // disabled inputs (#7620)
-                elIsCancel = (typeof this.options.cancel === "string" && event.target.nodeName ? $(event.target).closest(this.options.cancel).length : false);
+              btnIsLeft = (event.which === 1),
+              // event.target.nodeName works around a bug in IE 8 with
+              // disabled inputs (#7620)
+              elIsCancel = (typeof this.options.cancel === "string" && event.target.nodeName ? $(event.target).closest(this.options.cancel).length : false);
             if (!btnIsLeft || elIsCancel || !this._mouseCapture(event)) {
                 return true;
             }
@@ -966,8 +966,8 @@
             };
 
             this.document
-                .bind( "mousemove." + this.widgetName, this._mouseMoveDelegate )
-                .bind( "mouseup." + this.widgetName, this._mouseUpDelegate );
+              .bind("mousemove." + this.widgetName, this._mouseMoveDelegate)
+              .bind("mouseup." + this.widgetName, this._mouseUpDelegate);
 
             event.preventDefault();
 
@@ -1002,7 +1002,7 @@
 
             if (this._mouseDistanceMet(event) && this._mouseDelayMet(event)) {
                 this._mouseStarted =
-                    (this._mouseStart(this._mouseDownEvent, event) !== false);
+                  (this._mouseStart(this._mouseDownEvent, event) !== false);
                 (this._mouseStarted ? this._mouseDrag(event) : this._mouseUp(event));
             }
 
@@ -1011,8 +1011,8 @@
 
         _mouseUp: function(event) {
             this.document
-                .unbind( "mousemove." + this.widgetName, this._mouseMoveDelegate )
-                .unbind( "mouseup." + this.widgetName, this._mouseUpDelegate );
+              .unbind("mousemove." + this.widgetName, this._mouseMoveDelegate)
+              .unbind("mouseup." + this.widgetName, this._mouseUpDelegate);
 
             if (this._mouseStarted) {
                 this._mouseStarted = false;
@@ -1030,9 +1030,9 @@
 
         _mouseDistanceMet: function(event) {
             return (Math.max(
-                    Math.abs(this._mouseDownEvent.pageX - event.pageX),
-                    Math.abs(this._mouseDownEvent.pageY - event.pageY)
-                ) >= this.options.distance
+                Math.abs(this._mouseDownEvent.pageX - event.pageX),
+                Math.abs(this._mouseDownEvent.pageY - event.pageY)
+              ) >= this.options.distance
             );
         },
 
@@ -1064,15 +1064,15 @@
         $.ui = $.ui || {};
 
         var cachedScrollbarWidth, supportsOffsetFractions,
-            max = Math.max,
-            abs = Math.abs,
-            round = Math.round,
-            rhorizontal = /left|center|right/,
-            rvertical = /top|center|bottom/,
-            roffset = /[\+\-]\d+(\.[\d]+)?%?/,
-            rposition = /^\w+/,
-            rpercent = /%$/,
-            _position = $.fn.position;
+          max = Math.max,
+          abs = Math.abs,
+          round = Math.round,
+          rhorizontal = /left|center|right/,
+          rvertical = /top|center|bottom/,
+          roffset = /[\+\-]\d+(\.[\d]+)?%?/,
+          rposition = /^\w+/,
+          rpercent = /%$/,
+          _position = $.fn.position;
 
         function getOffsets( offsets, width, height ) {
             return [
@@ -1121,8 +1121,8 @@
                     return cachedScrollbarWidth;
                 }
                 var w1, w2,
-                    div = $( "<div style='display:block;position:absolute;width:50px;height:50px;overflow:hidden;'><div style='height:100px;width:auto;'></div></div>" ),
-                    innerDiv = div.children()[0];
+                  div = $("<div style='display:block;position:absolute;width:50px;height:50px;overflow:hidden;'><div style='height:100px;width:auto;'></div></div>"),
+                  innerDiv = div.children()[0];
 
                 $( "body" ).append( div );
                 w1 = innerDiv.offsetWidth;
@@ -1140,13 +1140,13 @@
             },
             getScrollInfo: function( within ) {
                 var overflowX = within.isWindow || within.isDocument ? "" :
-                    within.element.css( "overflow-x" ),
-                    overflowY = within.isWindow || within.isDocument ? "" :
-                        within.element.css( "overflow-y" ),
-                    hasOverflowX = overflowX === "scroll" ||
-                        ( overflowX === "auto" && within.width < within.element[0].scrollWidth ),
-                    hasOverflowY = overflowY === "scroll" ||
-                        ( overflowY === "auto" && within.height < within.element[0].scrollHeight );
+                  within.element.css("overflow-x"),
+                  overflowY = within.isWindow || within.isDocument ? "" :
+                    within.element.css("overflow-y"),
+                  hasOverflowX = overflowX === "scroll" ||
+                    (overflowX === "auto" && within.width < within.element[0].scrollWidth),
+                  hasOverflowY = overflowY === "scroll" ||
+                    (overflowY === "auto" && within.height < within.element[0].scrollHeight);
                 return {
                     width: hasOverflowY ? $.position.scrollbarWidth() : 0,
                     height: hasOverflowX ? $.position.scrollbarWidth() : 0
@@ -1154,8 +1154,8 @@
             },
             getWithinInfo: function( element ) {
                 var withinElement = $( element || window ),
-                    isWindow = $.isWindow( withinElement[0] ),
-                    isDocument = !!withinElement[ 0 ] && withinElement[ 0 ].nodeType === 9;
+                  isWindow = $.isWindow(withinElement[0]),
+                  isDocument = !!withinElement[0] && withinElement[0].nodeType === 9;
                 return {
                     element: withinElement,
                     isWindow: isWindow,
@@ -1181,11 +1181,11 @@
             options = $.extend( {}, options );
 
             var atOffset, targetWidth, targetHeight, targetOffset, basePosition, dimensions,
-                target = $( options.of ),
-                within = $.position.getWithinInfo( options.within ),
-                scrollInfo = $.position.getScrollInfo( within ),
-                collision = ( options.collision || "flip" ).split( " " ),
-                offsets = {};
+              target = $(options.of),
+              within = $.position.getWithinInfo(options.within),
+              scrollInfo = $.position.getScrollInfo(within),
+              collision = (options.collision || "flip").split(" "),
+              offsets = {};
 
             dimensions = getDimensions( target );
             if ( target[0].preventDefault ) {
@@ -1202,15 +1202,15 @@
             // if a value is missing or invalid, it will be converted to center
             $.each( [ "my", "at" ], function() {
                 var pos = ( options[ this ] || "" ).split( " " ),
-                    horizontalOffset,
-                    verticalOffset;
+                  horizontalOffset,
+                  verticalOffset;
 
                 if ( pos.length === 1) {
                     pos = rhorizontal.test( pos[ 0 ] ) ?
-                        pos.concat( [ "center" ] ) :
-                        rvertical.test( pos[ 0 ] ) ?
-                            [ "center" ].concat( pos ) :
-                            [ "center", "center" ];
+                      pos.concat(["center"]) :
+                      rvertical.test(pos[0]) ?
+                        ["center"].concat(pos) :
+                        ["center", "center"];
                 }
                 pos[ 0 ] = rhorizontal.test( pos[ 0 ] ) ? pos[ 0 ] : "center";
                 pos[ 1 ] = rvertical.test( pos[ 1 ] ) ? pos[ 1 ] : "center";
@@ -1253,15 +1253,15 @@
 
             return this.each(function() {
                 var collisionPosition, using,
-                    elem = $( this ),
-                    elemWidth = elem.outerWidth(),
-                    elemHeight = elem.outerHeight(),
-                    marginLeft = parseCss( this, "marginLeft" ),
-                    marginTop = parseCss( this, "marginTop" ),
-                    collisionWidth = elemWidth + marginLeft + parseCss( this, "marginRight" ) + scrollInfo.width,
-                    collisionHeight = elemHeight + marginTop + parseCss( this, "marginBottom" ) + scrollInfo.height,
-                    position = $.extend( {}, basePosition ),
-                    myOffset = getOffsets( offsets.my, elem.outerWidth(), elem.outerHeight() );
+                  elem = $(this),
+                  elemWidth = elem.outerWidth(),
+                  elemHeight = elem.outerHeight(),
+                  marginLeft = parseCss(this, "marginLeft"),
+                  marginTop = parseCss(this, "marginTop"),
+                  collisionWidth = elemWidth + marginLeft + parseCss(this, "marginRight") + scrollInfo.width,
+                  collisionHeight = elemHeight + marginTop + parseCss(this, "marginBottom") + scrollInfo.height,
+                  position = $.extend({}, basePosition),
+                  myOffset = getOffsets(offsets.my, elem.outerWidth(), elem.outerHeight());
 
                 if ( options.my[ 0 ] === "right" ) {
                     position.left -= elemWidth;
@@ -1312,27 +1312,27 @@
                     // adds feedback as second argument to using callback, if present
                     using = function( props ) {
                         var left = targetOffset.left - position.left,
-                            right = left + targetWidth - elemWidth,
-                            top = targetOffset.top - position.top,
-                            bottom = top + targetHeight - elemHeight,
-                            feedback = {
-                                target: {
-                                    element: target,
-                                    left: targetOffset.left,
-                                    top: targetOffset.top,
-                                    width: targetWidth,
-                                    height: targetHeight
-                                },
-                                element: {
-                                    element: elem,
-                                    left: position.left,
-                                    top: position.top,
-                                    width: elemWidth,
-                                    height: elemHeight
-                                },
-                                horizontal: right < 0 ? "left" : left > 0 ? "right" : "center",
-                                vertical: bottom < 0 ? "top" : top > 0 ? "bottom" : "middle"
-                            };
+                          right = left + targetWidth - elemWidth,
+                          top = targetOffset.top - position.top,
+                          bottom = top + targetHeight - elemHeight,
+                          feedback = {
+                            target: {
+                              element: target,
+                              left: targetOffset.left,
+                              top: targetOffset.top,
+                              width: targetWidth,
+                              height: targetHeight
+                            },
+                            element: {
+                              element: elem,
+                              left: position.left,
+                              top: position.top,
+                              width: elemWidth,
+                              height: elemHeight
+                            },
+                            horizontal: right < 0 ? "left" : left > 0 ? "right" : "center",
+                            vertical: bottom < 0 ? "top" : top > 0 ? "bottom" : "middle"
+                          };
                         if ( targetWidth < elemWidth && abs( left + right ) < targetWidth ) {
                             feedback.horizontal = "center";
                         }
@@ -1356,12 +1356,12 @@
             fit: {
                 left: function( position, data ) {
                     var within = data.within,
-                        withinOffset = within.isWindow ? within.scrollLeft : within.offset.left,
-                        outerWidth = within.width,
-                        collisionPosLeft = position.left - data.collisionPosition.marginLeft,
-                        overLeft = withinOffset - collisionPosLeft,
-                        overRight = collisionPosLeft + data.collisionWidth - outerWidth - withinOffset,
-                        newOverRight;
+                      withinOffset = within.isWindow ? within.scrollLeft : within.offset.left,
+                      outerWidth = within.width,
+                      collisionPosLeft = position.left - data.collisionPosition.marginLeft,
+                      overLeft = withinOffset - collisionPosLeft,
+                      overRight = collisionPosLeft + data.collisionWidth - outerWidth - withinOffset,
+                      newOverRight;
 
                     // element is wider than within
                     if ( data.collisionWidth > outerWidth ) {
@@ -1393,12 +1393,12 @@
                 },
                 top: function( position, data ) {
                     var within = data.within,
-                        withinOffset = within.isWindow ? within.scrollTop : within.offset.top,
-                        outerHeight = data.within.height,
-                        collisionPosTop = position.top - data.collisionPosition.marginTop,
-                        overTop = withinOffset - collisionPosTop,
-                        overBottom = collisionPosTop + data.collisionHeight - outerHeight - withinOffset,
-                        newOverBottom;
+                      withinOffset = within.isWindow ? within.scrollTop : within.offset.top,
+                      outerHeight = data.within.height,
+                      collisionPosTop = position.top - data.collisionPosition.marginTop,
+                      overTop = withinOffset - collisionPosTop,
+                      overBottom = collisionPosTop + data.collisionHeight - outerHeight - withinOffset,
+                      newOverBottom;
 
                     // element is taller than within
                     if ( data.collisionHeight > outerHeight ) {
@@ -1432,25 +1432,25 @@
             flip: {
                 left: function( position, data ) {
                     var within = data.within,
-                        withinOffset = within.offset.left + within.scrollLeft,
-                        outerWidth = within.width,
-                        offsetLeft = within.isWindow ? within.scrollLeft : within.offset.left,
-                        collisionPosLeft = position.left - data.collisionPosition.marginLeft,
-                        overLeft = collisionPosLeft - offsetLeft,
-                        overRight = collisionPosLeft + data.collisionWidth - outerWidth - offsetLeft,
-                        myOffset = data.my[ 0 ] === "left" ?
-                            -data.elemWidth :
-                            data.my[ 0 ] === "right" ?
-                                data.elemWidth :
-                                0,
-                        atOffset = data.at[ 0 ] === "left" ?
-                            data.targetWidth :
-                            data.at[ 0 ] === "right" ?
-                                -data.targetWidth :
-                                0,
-                        offset = -2 * data.offset[ 0 ],
-                        newOverRight,
-                        newOverLeft;
+                      withinOffset = within.offset.left + within.scrollLeft,
+                      outerWidth = within.width,
+                      offsetLeft = within.isWindow ? within.scrollLeft : within.offset.left,
+                      collisionPosLeft = position.left - data.collisionPosition.marginLeft,
+                      overLeft = collisionPosLeft - offsetLeft,
+                      overRight = collisionPosLeft + data.collisionWidth - outerWidth - offsetLeft,
+                      myOffset = data.my[0] === "left" ?
+                        -data.elemWidth :
+                        data.my[0] === "right" ?
+                          data.elemWidth :
+                          0,
+                      atOffset = data.at[0] === "left" ?
+                        data.targetWidth :
+                        data.at[0] === "right" ?
+                          -data.targetWidth :
+                          0,
+                      offset = -2 * data.offset[0],
+                      newOverRight,
+                      newOverLeft;
 
                     if ( overLeft < 0 ) {
                         newOverRight = position.left + myOffset + atOffset + offset + data.collisionWidth - outerWidth - withinOffset;
@@ -1466,26 +1466,26 @@
                 },
                 top: function( position, data ) {
                     var within = data.within,
-                        withinOffset = within.offset.top + within.scrollTop,
-                        outerHeight = within.height,
-                        offsetTop = within.isWindow ? within.scrollTop : within.offset.top,
-                        collisionPosTop = position.top - data.collisionPosition.marginTop,
-                        overTop = collisionPosTop - offsetTop,
-                        overBottom = collisionPosTop + data.collisionHeight - outerHeight - offsetTop,
-                        top = data.my[ 1 ] === "top",
-                        myOffset = top ?
-                            -data.elemHeight :
-                            data.my[ 1 ] === "bottom" ?
-                                data.elemHeight :
-                                0,
-                        atOffset = data.at[ 1 ] === "top" ?
-                            data.targetHeight :
-                            data.at[ 1 ] === "bottom" ?
-                                -data.targetHeight :
-                                0,
-                        offset = -2 * data.offset[ 1 ],
-                        newOverTop,
-                        newOverBottom;
+                      withinOffset = within.offset.top + within.scrollTop,
+                      outerHeight = within.height,
+                      offsetTop = within.isWindow ? within.scrollTop : within.offset.top,
+                      collisionPosTop = position.top - data.collisionPosition.marginTop,
+                      overTop = collisionPosTop - offsetTop,
+                      overBottom = collisionPosTop + data.collisionHeight - outerHeight - offsetTop,
+                      top = data.my[1] === "top",
+                      myOffset = top ?
+                        -data.elemHeight :
+                        data.my[1] === "bottom" ?
+                          data.elemHeight :
+                          0,
+                      atOffset = data.at[1] === "top" ?
+                        data.targetHeight :
+                        data.at[1] === "bottom" ?
+                          -data.targetHeight :
+                          0,
+                      offset = -2 * data.offset[1],
+                      newOverTop,
+                      newOverBottom;
                     if ( overTop < 0 ) {
                         newOverBottom = position.top + myOffset + atOffset + offset + data.collisionHeight - outerHeight - withinOffset;
                         if ( newOverBottom < 0 || newOverBottom < abs( overTop ) ) {
@@ -1514,8 +1514,8 @@
 // fraction support test
         (function() {
             var testElement, testElementParent, testElementStyle, offsetLeft, i,
-                body = document.getElementsByTagName( "body" )[ 0 ],
-                div = document.createElement( "div" );
+              body = document.getElementsByTagName("body")[0],
+              div = document.createElement("div");
 
             //Create a "fake body" for testing based on method used in jQuery.support
             testElement = document.createElement( body ? "div" : "body" );
@@ -1662,11 +1662,11 @@
                 var iframe = $( this );
 
                 return $( "<div>" )
-                    .css( "position", "absolute" )
-                    .appendTo( iframe.parent() )
-                    .outerWidth( iframe.outerWidth() )
-                    .outerHeight( iframe.outerHeight() )
-                    .offset( iframe.offset() )[ 0 ];
+                  .css("position", "absolute")
+                  .appendTo(iframe.parent())
+                  .outerWidth(iframe.outerWidth())
+                  .outerHeight(iframe.outerHeight())
+                  .offset(iframe.offset())[0];
             });
         },
 
@@ -1824,7 +1824,7 @@
 
             //If we are using droppables, inform the manager about the drop
             var that = this,
-                dropped = false;
+              dropped = false;
             if ($.ui.ddmanager && !this.options.dropBehaviour) {
                 dropped = $.ui.ddmanager.drop(this, event);
             }
@@ -1881,13 +1881,13 @@
 
         _getHandle: function(event) {
             return this.options.handle ?
-                !!$( event.target ).closest( this.element.find( this.options.handle ) ).length :
-                true;
+              !!$(event.target).closest(this.element.find(this.options.handle)).length :
+              true;
         },
 
         _setHandleClassName: function() {
             this.handleElement = this.options.handle ?
-                this.element.find( this.options.handle ) : this.element;
+              this.element.find(this.options.handle) : this.element;
             this.handleElement.addClass( "ui-draggable-handle" );
         },
 
@@ -1898,12 +1898,12 @@
         _createHelper: function(event) {
 
             var o = this.options,
-                helperIsFunction = $.isFunction( o.helper ),
-                helper = helperIsFunction ?
-                    $( o.helper.apply( this.element[ 0 ], [ event ] ) ) :
-                    ( o.helper === "clone" ?
-                        this.element.clone().removeAttr( "id" ) :
-                        this.element );
+              helperIsFunction = $.isFunction(o.helper),
+              helper = helperIsFunction ?
+                $(o.helper.apply(this.element[0], [event])) :
+                (o.helper === "clone" ?
+                  this.element.clone().removeAttr("id") :
+                  this.element);
 
             if (!helper.parents("body").length) {
                 helper.appendTo((o.appendTo === "parent" ? this.element[0].parentNode : o.appendTo));
@@ -1959,7 +1959,7 @@
 
             //Get the offsetParent and cache its position
             var po = this.offsetParent.offset(),
-                document = this.document[ 0 ];
+              document = this.document[0];
 
             // This is a special case where we need to modify a offset calculated on start, since the following happened:
             // 1. The position of the helper is absolute, so it's position is calculated based on the next positioned parent
@@ -1987,7 +1987,7 @@
             }
 
             var p = this.element.position(),
-                scrollIsRootNode = this._isRootNode( this.scrollParent[ 0 ] );
+              scrollIsRootNode = this._isRootNode(this.scrollParent[0]);
 
             return {
                 top: p.top - ( parseInt(this.helper.css( "top" ), 10) || 0 ) + ( !scrollIsRootNode ? this.scrollParent.scrollTop() : 0 ),
@@ -2015,8 +2015,8 @@
         _setContainment: function() {
 
             var isUserScrollable, c, ce,
-                o = this.options,
-                document = this.document[ 0 ];
+              o = this.options,
+              document = this.document[0];
 
             this.relativeContainer = null;
 
@@ -2089,20 +2089,20 @@
             }
 
             var mod = d === "absolute" ? 1 : -1,
-                scrollIsRootNode = this._isRootNode( this.scrollParent[ 0 ] );
+              scrollIsRootNode = this._isRootNode(this.scrollParent[0]);
 
             return {
                 top: (
-                    pos.top	+																// The absolute mouse position
-                    this.offset.relative.top * mod +										// Only for relative positioned nodes: Relative offset from element to offset parent
-                    this.offset.parent.top * mod -										// The offsetParent's offset without borders (offset + border)
-                    ( ( this.cssPosition === "fixed" ? -this.offset.scroll.top : ( scrollIsRootNode ? 0 : this.offset.scroll.top ) ) * mod)
+                  pos.top +																// The absolute mouse position
+                  this.offset.relative.top * mod +										// Only for relative positioned nodes: Relative offset from element to offset parent
+                  this.offset.parent.top * mod -										// The offsetParent's offset without borders (offset + border)
+                  ((this.cssPosition === "fixed" ? -this.offset.scroll.top : (scrollIsRootNode ? 0 : this.offset.scroll.top)) * mod)
                 ),
                 left: (
-                    pos.left +																// The absolute mouse position
-                    this.offset.relative.left * mod +										// Only for relative positioned nodes: Relative offset from element to offset parent
-                    this.offset.parent.left * mod	-										// The offsetParent's offset without borders (offset + border)
-                    ( ( this.cssPosition === "fixed" ? -this.offset.scroll.left : ( scrollIsRootNode ? 0 : this.offset.scroll.left ) ) * mod)
+                  pos.left +																// The absolute mouse position
+                  this.offset.relative.left * mod +										// Only for relative positioned nodes: Relative offset from element to offset parent
+                  this.offset.parent.left * mod -										// The offsetParent's offset without borders (offset + border)
+                  ((this.cssPosition === "fixed" ? -this.offset.scroll.left : (scrollIsRootNode ? 0 : this.offset.scroll.left)) * mod)
                 )
             };
 
@@ -2111,10 +2111,10 @@
         _generatePosition: function( event, constrainPosition ) {
 
             var containment, co, top, left,
-                o = this.options,
-                scrollIsRootNode = this._isRootNode( this.scrollParent[ 0 ] ),
-                pageX = event.pageX,
-                pageY = event.pageY;
+              o = this.options,
+              scrollIsRootNode = this._isRootNode(this.scrollParent[0]),
+              pageX = event.pageX,
+              pageY = event.pageY;
 
             // Cache the scroll
             if ( !scrollIsRootNode || !this.offset.scroll ) {
@@ -2178,18 +2178,18 @@
 
             return {
                 top: (
-                    pageY -																	// The absolute mouse position
-                    this.offset.click.top	-												// Click offset (relative to the element)
-                    this.offset.relative.top -												// Only for relative positioned nodes: Relative offset from element to offset parent
-                    this.offset.parent.top +												// The offsetParent's offset without borders (offset + border)
-                    ( this.cssPosition === "fixed" ? -this.offset.scroll.top : ( scrollIsRootNode ? 0 : this.offset.scroll.top ) )
+                  pageY -																	// The absolute mouse position
+                  this.offset.click.top -												// Click offset (relative to the element)
+                  this.offset.relative.top -												// Only for relative positioned nodes: Relative offset from element to offset parent
+                  this.offset.parent.top +												// The offsetParent's offset without borders (offset + border)
+                  (this.cssPosition === "fixed" ? -this.offset.scroll.top : (scrollIsRootNode ? 0 : this.offset.scroll.top))
                 ),
                 left: (
-                    pageX -																	// The absolute mouse position
-                    this.offset.click.left -												// Click offset (relative to the element)
-                    this.offset.relative.left -												// Only for relative positioned nodes: Relative offset from element to offset parent
-                    this.offset.parent.left +												// The offsetParent's offset without borders (offset + border)
-                    ( this.cssPosition === "fixed" ? -this.offset.scroll.left : ( scrollIsRootNode ? 0 : this.offset.scroll.left ) )
+                  pageX -																	// The absolute mouse position
+                  this.offset.click.left -												// Click offset (relative to the element)
+                  this.offset.relative.left -												// Only for relative positioned nodes: Relative offset from element to offset parent
+                  this.offset.parent.left +												// The offsetParent's offset without borders (offset + border)
+                  (this.cssPosition === "fixed" ? -this.offset.scroll.left : (scrollIsRootNode ? 0 : this.offset.scroll.left))
                 )
             };
 
@@ -2310,7 +2310,7 @@
         drag: function( event, ui, draggable ) {
             $.each( draggable.sortables, function() {
                 var innermostIntersecting = false,
-                    sortable = this;
+                  sortable = this;
 
                 // Copy over variables that sortable's _intersectsWith uses
                 sortable.positionAbs = draggable.positionAbs;
@@ -2327,8 +2327,8 @@
                         this.offset.click = draggable.offset.click;
 
                         if ( this !== sortable &&
-                            this._intersectsWith( this.containerCache ) &&
-                            $.contains( sortable.element[ 0 ], this.element[ 0 ] ) ) {
+                          this._intersectsWith(this.containerCache) &&
+                          $.contains(sortable.element[0], this.element[0])) {
                             innermostIntersecting = false;
                         }
 
@@ -2346,8 +2346,8 @@
                         draggable._parent = ui.helper.parent();
 
                         sortable.currentItem = ui.helper
-                            .appendTo( sortable.element )
-                            .data( "ui-sortable-item", true );
+                          .appendTo(sortable.element)
+                          .data("ui-sortable-item", true);
 
                         // Store helper option to later restore it
                         sortable.options._helper = sortable.options.helper;
@@ -2367,9 +2367,9 @@
                         sortable.offset.click.top = draggable.offset.click.top;
                         sortable.offset.click.left = draggable.offset.click.left;
                         sortable.offset.parent.left -= draggable.offset.parent.left -
-                            sortable.offset.parent.left;
+                          sortable.offset.parent.left;
                         sortable.offset.parent.top -= draggable.offset.parent.top -
-                            sortable.offset.parent.top;
+                          sortable.offset.parent.top;
 
                         draggable._trigger( "toSortable", event );
 
@@ -2446,7 +2446,7 @@
     $.ui.plugin.add("draggable", "cursor", {
         start: function( event, ui, instance ) {
             var t = $( "body" ),
-                o = instance.options;
+              o = instance.options;
 
             if (t.css("cursor")) {
                 o._cursor = t.css("cursor");
@@ -2464,7 +2464,7 @@
     $.ui.plugin.add("draggable", "opacity", {
         start: function( event, ui, instance ) {
             var t = $( ui.helper ),
-                o = instance.options;
+              o = instance.options;
             if (t.css("opacity")) {
                 o._opacity = t.css("opacity");
             }
@@ -2491,9 +2491,9 @@
         drag: function( event, ui, i  ) {
 
             var o = i.options,
-                scrolled = false,
-                scrollParent = i.scrollParentNotHidden[ 0 ],
-                document = i.document[ 0 ];
+              scrolled = false,
+              scrollParent = i.scrollParentNotHidden[0],
+              document = i.document[0];
 
             if ( scrollParent !== document && scrollParent.tagName !== "HTML" ) {
                 if ( !o.axis || o.axis !== "x" ) {
@@ -2548,7 +2548,7 @@
 
             $(o.snap.constructor !== String ? ( o.snap.items || ":data(ui-draggable)" ) : o.snap).each(function() {
                 var $t = $(this),
-                    $o = $t.offset();
+                  $o = $t.offset();
                 if (this !== i.element[0]) {
                     i.snapElements.push({
                         item: this,
@@ -2562,10 +2562,10 @@
         drag: function( event, ui, inst ) {
 
             var ts, bs, ls, rs, l, r, t, b, i, first,
-                o = inst.options,
-                d = o.snapTolerance,
-                x1 = ui.offset.left, x2 = x1 + inst.helperProportions.width,
-                y1 = ui.offset.top, y2 = y1 + inst.helperProportions.height;
+              o = inst.options,
+              d = o.snapTolerance,
+              x1 = ui.offset.left, x2 = x1 + inst.helperProportions.width,
+              y1 = ui.offset.top, y2 = y1 + inst.helperProportions.height;
 
             for (i = inst.snapElements.length - 1; i >= 0; i--){
 
@@ -2635,10 +2635,10 @@
     $.ui.plugin.add("draggable", "stack", {
         start: function( event, ui, instance ) {
             var min,
-                o = instance.options,
-                group = $.makeArray($(o.stack)).sort(function(a, b) {
-                    return (parseInt($(a).css("zIndex"), 10) || 0) - (parseInt($(b).css("zIndex"), 10) || 0);
-                });
+              o = instance.options,
+              group = $.makeArray($(o.stack)).sort(function (a, b) {
+                return (parseInt($(a).css("zIndex"), 10) || 0) - (parseInt($(b).css("zIndex"), 10) || 0);
+              });
 
             if (!group.length) { return; }
 
@@ -2653,7 +2653,7 @@
     $.ui.plugin.add("draggable", "zIndex", {
         start: function( event, ui, instance ) {
             var t = $( ui.helper ),
-                o = instance.options;
+              o = instance.options;
 
             if (t.css("zIndex")) {
                 o._zIndex = t.css("zIndex");
@@ -2727,7 +2727,7 @@
             }
 
             var scroll = ( a && a === "left" ) ? "scrollLeft" : "scrollTop",
-                has = false;
+              has = false;
 
             if ( el[ scroll ] > 0 ) {
                 return true;
@@ -2745,8 +2745,8 @@
         _create: function() {
 
             var n, i, handle, axis, hname,
-                that = this,
-                o = this.options;
+              that = this,
+              o = this.options;
             this.element.addClass("ui-resizable");
 
             $.extend(this, {
@@ -2761,17 +2761,17 @@
             if (this.element[0].nodeName.match(/^(canvas|textarea|input|select|button|img)$/i)) {
 
                 this.element.wrap(
-                    $("<div class='ui-wrapper' style='overflow: hidden;'></div>").css({
-                        position: this.element.css("position"),
-                        width: this.element.outerWidth(),
-                        height: this.element.outerHeight(),
-                        top: this.element.css("top"),
-                        left: this.element.css("left")
-                    })
+                  $("<div class='ui-wrapper' style='overflow: hidden;'></div>").css({
+                    position: this.element.css("position"),
+                    width: this.element.outerWidth(),
+                    height: this.element.outerHeight(),
+                    top: this.element.css("top"),
+                    left: this.element.css("left")
+                  })
                 );
 
                 this.element = this.element.parent().data(
-                    "ui-resizable", this.element.resizable( "instance" )
+                  "ui-resizable", this.element.resizable("instance")
                 );
 
                 this.elementIsWrapper = true;
@@ -2807,17 +2807,17 @@
             }
 
             this.handles = o.handles ||
-                ( !$(".ui-resizable-handle", this.element).length ?
-                    "e,s,se" : {
-                        n: ".ui-resizable-n",
-                        e: ".ui-resizable-e",
-                        s: ".ui-resizable-s",
-                        w: ".ui-resizable-w",
-                        se: ".ui-resizable-se",
-                        sw: ".ui-resizable-sw",
-                        ne: ".ui-resizable-ne",
-                        nw: ".ui-resizable-nw"
-                    } );
+              (!$(".ui-resizable-handle", this.element).length ?
+                "e,s,se" : {
+                  n: ".ui-resizable-n",
+                  e: ".ui-resizable-e",
+                  s: ".ui-resizable-s",
+                  w: ".ui-resizable-w",
+                  se: ".ui-resizable-se",
+                  sw: ".ui-resizable-sw",
+                  ne: ".ui-resizable-ne",
+                  nw: ".ui-resizable-nw"
+                });
 
             this._handles = $();
             if ( this.handles.constructor === String ) {
@@ -2871,8 +2871,8 @@
 
                         padPos = [ "padding",
                             /ne|nw|n/.test(i) ? "Top" :
-                                /se|sw|s/.test(i) ? "Bottom" :
-                                    /^e$/.test(i) ? "Right" : "Left" ].join("");
+                              /se|sw|s/.test(i) ? "Bottom" :
+                                /^e$/.test(i) ? "Right" : "Left"].join("");
 
                         target.css(padPos, padWrapper);
 
@@ -2901,23 +2901,23 @@
             if (o.autoHide) {
                 this._handles.hide();
                 $(this.element)
-                    .addClass("ui-resizable-autohide")
-                    .mouseenter(function() {
-                        if (o.disabled) {
-                            return;
-                        }
-                        $(this).removeClass("ui-resizable-autohide");
-                        that._handles.show();
-                    })
-                    .mouseleave(function() {
-                        if (o.disabled) {
-                            return;
-                        }
-                        if (!that.resizing) {
-                            $(this).addClass("ui-resizable-autohide");
-                            that._handles.hide();
-                        }
-                    });
+                  .addClass("ui-resizable-autohide")
+                  .mouseenter(function () {
+                    if (o.disabled) {
+                      return;
+                    }
+                    $(this).removeClass("ui-resizable-autohide");
+                    that._handles.show();
+                  })
+                  .mouseleave(function () {
+                    if (o.disabled) {
+                      return;
+                    }
+                    if (!that.resizing) {
+                      $(this).addClass("ui-resizable-autohide");
+                      that._handles.hide();
+                    }
+                  });
             }
 
             this._mouseInit();
@@ -2928,15 +2928,15 @@
             this._mouseDestroy();
 
             var wrapper,
-                _destroy = function(exp) {
-                    $(exp)
-                        .removeClass("ui-resizable ui-resizable-disabled ui-resizable-resizing")
-                        .removeData("resizable")
-                        .removeData("ui-resizable")
-                        .unbind(".resizable")
-                        .find(".ui-resizable-handle")
-                        .remove();
-                };
+              _destroy = function (exp) {
+                $(exp)
+                  .removeClass("ui-resizable ui-resizable-disabled ui-resizable-resizing")
+                  .removeData("resizable")
+                  .removeData("ui-resizable")
+                  .unbind(".resizable")
+                  .find(".ui-resizable-handle")
+                  .remove();
+              };
 
             // TODO: Unwrap at same DOM position
             if (this.elementIsWrapper) {
@@ -2960,7 +2960,7 @@
 
         _mouseCapture: function(event) {
             var i, handle,
-                capture = false;
+              capture = false;
 
             for (i in this.handles) {
                 handle = $(this.handles[i])[0];
@@ -2975,8 +2975,8 @@
         _mouseStart: function(event) {
 
             var curleft, curtop, cursor,
-                o = this.options,
-                el = this.element;
+              o = this.options,
+              el = this.element;
 
             this.resizing = true;
 
@@ -3018,8 +3018,8 @@
             this.originalMousePosition = { left: event.pageX, top: event.pageY };
 
             this.aspectRatio = (typeof o.aspectRatio === "number") ?
-                o.aspectRatio :
-                ((this.originalSize.width / this.originalSize.height) || 1);
+              o.aspectRatio :
+              ((this.originalSize.width / this.originalSize.height) || 1);
 
             cursor = $(".ui-resizable-" + this.axis).css("cursor");
             $("body").css("cursor", cursor === "auto" ? this.axis + "-resize" : cursor);
@@ -3032,11 +3032,11 @@
         _mouseDrag: function(event) {
 
             var data, props,
-                smp = this.originalMousePosition,
-                a = this.axis,
-                dx = (event.pageX - smp.left) || 0,
-                dy = (event.pageY - smp.top) || 0,
-                trigger = this._change[a];
+              smp = this.originalMousePosition,
+              a = this.axis,
+              dx = (event.pageX - smp.left) || 0,
+              dy = (event.pageY - smp.top) || 0,
+              trigger = this._change[a];
 
             this._updatePrevProperties();
 
@@ -3076,7 +3076,7 @@
 
             this.resizing = false;
             var pr, ista, soffseth, soffsetw, s, left, top,
-                o = this.options, that = this;
+              o = this.options, that = this;
 
             if (this._helper) {
 
@@ -3090,9 +3090,9 @@
                     height: (that.helper.height() - soffseth)
                 };
                 left = (parseInt(that.element.css("left"), 10) +
-                    (that.position.left - that.originalPosition.left)) || null;
+                  (that.position.left - that.originalPosition.left)) || null;
                 top = (parseInt(that.element.css("top"), 10) +
-                    (that.position.top - that.originalPosition.top)) || null;
+                  (that.position.top - that.originalPosition.top)) || null;
 
                 if (!o.animate) {
                     this.element.css($.extend(s, { top: top, left: left }));
@@ -3154,7 +3154,7 @@
 
         _updateVirtualBoundaries: function(forceAspectRatio) {
             var pMinWidth, pMaxWidth, pMinHeight, pMaxHeight, b,
-                o = this.options;
+              o = this.options;
 
             b = {
                 minWidth: this._isNumber(o.minWidth) ? o.minWidth : 0,
@@ -3204,8 +3204,8 @@
         _updateRatio: function( data ) {
 
             var cpos = this.position,
-                csize = this.size,
-                a = this.axis;
+              csize = this.size,
+              a = this.axis;
 
             if (this._isNumber(data.height)) {
                 data.width = (data.height * this.aspectRatio);
@@ -3228,14 +3228,14 @@
         _respectSize: function( data ) {
 
             var o = this._vBoundaries,
-                a = this.axis,
-                ismaxw = this._isNumber(data.width) && o.maxWidth && (o.maxWidth < data.width),
-                ismaxh = this._isNumber(data.height) && o.maxHeight && (o.maxHeight < data.height),
-                isminw = this._isNumber(data.width) && o.minWidth && (o.minWidth > data.width),
-                isminh = this._isNumber(data.height) && o.minHeight && (o.minHeight > data.height),
-                dw = this.originalPosition.left + this.originalSize.width,
-                dh = this.position.top + this.size.height,
-                cw = /sw|nw|w/.test(a), ch = /nw|ne|n/.test(a);
+              a = this.axis,
+              ismaxw = this._isNumber(data.width) && o.maxWidth && (o.maxWidth < data.width),
+              ismaxh = this._isNumber(data.height) && o.maxHeight && (o.maxHeight < data.height),
+              isminw = this._isNumber(data.width) && o.minWidth && (o.minWidth > data.width),
+              isminh = this._isNumber(data.height) && o.minHeight && (o.minHeight > data.height),
+              dw = this.originalPosition.left + this.originalSize.width,
+              dh = this.position.top + this.size.height,
+              cw = /sw|nw|w/.test(a), ch = /nw|ne|n/.test(a);
             if (isminw) {
                 data.width = o.minWidth;
             }
@@ -3274,19 +3274,19 @@
 
         _getPaddingPlusBorderDimensions: function( element ) {
             var i = 0,
-                widths = [],
-                borders = [
-                    element.css( "borderTopWidth" ),
-                    element.css( "borderRightWidth" ),
-                    element.css( "borderBottomWidth" ),
-                    element.css( "borderLeftWidth" )
-                ],
-                paddings = [
-                    element.css( "paddingTop" ),
-                    element.css( "paddingRight" ),
-                    element.css( "paddingBottom" ),
-                    element.css( "paddingLeft" )
-                ];
+              widths = [],
+              borders = [
+                element.css("borderTopWidth"),
+                element.css("borderRightWidth"),
+                element.css("borderBottomWidth"),
+                element.css("borderLeftWidth")
+              ],
+              paddings = [
+                element.css("paddingTop"),
+                element.css("paddingRight"),
+                element.css("paddingBottom"),
+                element.css("paddingLeft")
+              ];
 
             for ( ; i < 4; i++ ) {
                 widths[ i ] = ( parseInt( borders[ i ], 10 ) || 0 );
@@ -3306,8 +3306,8 @@
             }
 
             var prel,
-                i = 0,
-                element = this.helper || this.element;
+              i = 0,
+              element = this.helper || this.element;
 
             for ( ; i < this._proportionallyResizeElements.length; i++) {
 
@@ -3347,8 +3347,8 @@
                 });
 
                 this.helper
-                    .appendTo("body")
-                    .disableSelection();
+                  .appendTo("body")
+                  .disableSelection();
 
             } else {
                 this.helper = this.element;
@@ -3373,19 +3373,19 @@
             },
             se: function(event, dx, dy) {
                 return $.extend(this._change.s.apply(this, arguments),
-                    this._change.e.apply(this, [ event, dx, dy ]));
+                  this._change.e.apply(this, [event, dx, dy]));
             },
             sw: function(event, dx, dy) {
                 return $.extend(this._change.s.apply(this, arguments),
-                    this._change.w.apply(this, [ event, dx, dy ]));
+                  this._change.w.apply(this, [event, dx, dy]));
             },
             ne: function(event, dx, dy) {
                 return $.extend(this._change.n.apply(this, arguments),
-                    this._change.e.apply(this, [ event, dx, dy ]));
+                  this._change.e.apply(this, [event, dx, dy]));
             },
             nw: function(event, dx, dy) {
                 return $.extend(this._change.n.apply(this, arguments),
-                    this._change.w.apply(this, [ event, dx, dy ]));
+                  this._change.w.apply(this, [event, dx, dy]));
             }
         },
 
@@ -3418,40 +3418,40 @@
 
         stop: function( event ) {
             var that = $(this).resizable( "instance" ),
-                o = that.options,
-                pr = that._proportionallyResizeElements,
-                ista = pr.length && (/textarea/i).test(pr[0].nodeName),
-                soffseth = ista && that._hasScroll(pr[0], "left") ? 0 : that.sizeDiff.height,
-                soffsetw = ista ? 0 : that.sizeDiff.width,
-                style = { width: (that.size.width - soffsetw), height: (that.size.height - soffseth) },
-                left = (parseInt(that.element.css("left"), 10) +
-                    (that.position.left - that.originalPosition.left)) || null,
-                top = (parseInt(that.element.css("top"), 10) +
-                    (that.position.top - that.originalPosition.top)) || null;
+              o = that.options,
+              pr = that._proportionallyResizeElements,
+              ista = pr.length && (/textarea/i).test(pr[0].nodeName),
+              soffseth = ista && that._hasScroll(pr[0], "left") ? 0 : that.sizeDiff.height,
+              soffsetw = ista ? 0 : that.sizeDiff.width,
+              style = {width: (that.size.width - soffsetw), height: (that.size.height - soffseth)},
+              left = (parseInt(that.element.css("left"), 10) +
+                (that.position.left - that.originalPosition.left)) || null,
+              top = (parseInt(that.element.css("top"), 10) +
+                (that.position.top - that.originalPosition.top)) || null;
 
             that.element.animate(
-                $.extend(style, top && left ? { top: top, left: left } : {}), {
-                    duration: o.animateDuration,
-                    easing: o.animateEasing,
-                    step: function() {
+              $.extend(style, top && left ? {top: top, left: left} : {}), {
+                duration: o.animateDuration,
+                easing: o.animateEasing,
+                step: function () {
 
-                        var data = {
-                            width: parseInt(that.element.css("width"), 10),
-                            height: parseInt(that.element.css("height"), 10),
-                            top: parseInt(that.element.css("top"), 10),
-                            left: parseInt(that.element.css("left"), 10)
-                        };
+                  var data = {
+                    width: parseInt(that.element.css("width"), 10),
+                    height: parseInt(that.element.css("height"), 10),
+                    top: parseInt(that.element.css("top"), 10),
+                    left: parseInt(that.element.css("left"), 10)
+                  };
 
-                        if (pr && pr.length) {
-                            $(pr[0]).css({ width: data.width, height: data.height });
-                        }
+                  if (pr && pr.length) {
+                    $(pr[0]).css({width: data.width, height: data.height});
+                  }
 
-                        // propagating resize, and updating values for each animation step
-                        that._updateCache(data);
-                        that._propagate("resize", event);
+                  // propagating resize, and updating values for each animation step
+                  that._updateCache(data);
+                  that._propagate("resize", event);
 
-                    }
                 }
+              }
             );
         }
 
@@ -3461,11 +3461,11 @@
 
         start: function() {
             var element, p, co, ch, cw, width, height,
-                that = $( this ).resizable( "instance" ),
-                o = that.options,
-                el = that.element,
-                oc = o.containment,
-                ce = ( oc instanceof $ ) ? oc.get( 0 ) : ( /parent/.test( oc ) ) ? el.parent().get( 0 ) : oc;
+              that = $(this).resizable("instance"),
+              o = that.options,
+              el = that.element,
+              oc = o.containment,
+              ce = (oc instanceof $) ? oc.get(0) : (/parent/.test(oc)) ? el.parent().get(0) : oc;
 
             if ( !ce ) {
                 return;
@@ -3522,17 +3522,17 @@
 
         resize: function( event ) {
             var woset, hoset, isParent, isOffsetRelative,
-                that = $( this ).resizable( "instance" ),
-                o = that.options,
-                co = that.containerOffset,
-                cp = that.position,
-                pRatio = that._aspectRatio || event.shiftKey,
-                cop = {
-                    top: 0,
-                    left: 0
-                },
-                ce = that.containerElement,
-                continueResize = true;
+              that = $(this).resizable("instance"),
+              o = that.options,
+              co = that.containerOffset,
+              cp = that.position,
+              pRatio = that._aspectRatio || event.shiftKey,
+              cop = {
+                top: 0,
+                left: 0
+              },
+              ce = that.containerElement,
+              continueResize = true;
 
             if ( ce[ 0 ] !== document && ( /static/ ).test( ce.css( "position" ) ) ) {
                 cop = co;
@@ -3540,9 +3540,9 @@
 
             if ( cp.left < ( that._helper ? co.left : 0 ) ) {
                 that.size.width = that.size.width +
-                    ( that._helper ?
-                        ( that.position.left - co.left ) :
-                        ( that.position.left - cop.left ) );
+                  (that._helper ?
+                    (that.position.left - co.left) :
+                    (that.position.left - cop.left));
 
                 if ( pRatio ) {
                     that.size.height = that.size.width / that.aspectRatio;
@@ -3553,9 +3553,9 @@
 
             if ( cp.top < ( that._helper ? co.top : 0 ) ) {
                 that.size.height = that.size.height +
-                    ( that._helper ?
-                        ( that.position.top - co.top ) :
-                        that.position.top );
+                  (that._helper ?
+                    (that.position.top - co.top) :
+                    that.position.top);
 
                 if ( pRatio ) {
                     that.size.width = that.size.height * that.aspectRatio;
@@ -3576,14 +3576,14 @@
             }
 
             woset = Math.abs( that.sizeDiff.width +
-                (that._helper ?
-                    that.offset.left - cop.left :
-                    (that.offset.left - co.left)) );
+              (that._helper ?
+                that.offset.left - cop.left :
+                (that.offset.left - co.left)));
 
             hoset = Math.abs( that.sizeDiff.height +
-                (that._helper ?
-                    that.offset.top - cop.top :
-                    (that.offset.top - co.top)) );
+              (that._helper ?
+                that.offset.top - cop.top :
+                (that.offset.top - co.top)));
 
             if ( woset + that.size.width >= that.parentData.width ) {
                 that.size.width = that.parentData.width - woset;
@@ -3611,14 +3611,14 @@
 
         stop: function() {
             var that = $( this ).resizable( "instance" ),
-                o = that.options,
-                co = that.containerOffset,
-                cop = that.containerPosition,
-                ce = that.containerElement,
-                helper = $( that.helper ),
-                ho = helper.offset(),
-                w = helper.outerWidth() - that.sizeDiff.width,
-                h = helper.outerHeight() - that.sizeDiff.height;
+              o = that.options,
+              co = that.containerOffset,
+              cop = that.containerPosition,
+              ce = that.containerElement,
+              helper = $(that.helper),
+              ho = helper.offset(),
+              w = helper.outerWidth() - that.sizeDiff.width,
+              h = helper.outerHeight() - that.sizeDiff.height;
 
             if ( that._helper && !o.animate && ( /relative/ ).test( ce.css( "position" ) ) ) {
                 $( this ).css({
@@ -3642,7 +3642,7 @@
 
         start: function() {
             var that = $(this).resizable( "instance" ),
-                o = that.options;
+              o = that.options;
 
             $(o.alsoResize).each(function() {
                 var el = $(this);
@@ -3655,21 +3655,21 @@
 
         resize: function(event, ui) {
             var that = $(this).resizable( "instance" ),
-                o = that.options,
-                os = that.originalSize,
-                op = that.originalPosition,
-                delta = {
-                    height: (that.size.height - os.height) || 0,
-                    width: (that.size.width - os.width) || 0,
-                    top: (that.position.top - op.top) || 0,
-                    left: (that.position.left - op.left) || 0
-                };
+              o = that.options,
+              os = that.originalSize,
+              op = that.originalPosition,
+              delta = {
+                height: (that.size.height - os.height) || 0,
+                width: (that.size.width - os.width) || 0,
+                top: (that.position.top - op.top) || 0,
+                left: (that.position.left - op.left) || 0
+              };
 
             $(o.alsoResize).each(function() {
                 var el = $(this), start = $(this).data("ui-resizable-alsoresize"), style = {},
-                    css = el.parents(ui.originalElement[0]).length ?
-                        [ "width", "height" ] :
-                        [ "width", "height", "top", "left" ];
+                  css = el.parents(ui.originalElement[0]).length ?
+                    ["width", "height"] :
+                    ["width", "height", "top", "left"];
 
                 $.each(css, function(i, prop) {
                     var sum = (start[prop] || 0) + (delta[prop] || 0);
@@ -3695,18 +3695,18 @@
 
             that.ghost = that.originalElement.clone();
             that.ghost
-                .css({
-                    opacity: 0.25,
-                    display: "block",
-                    position: "relative",
-                    height: cs.height,
-                    width: cs.width,
-                    margin: 0,
-                    left: 0,
-                    top: 0
-                })
-                .addClass("ui-resizable-ghost")
-                .addClass(typeof o.ghost === "string" ? o.ghost : "");
+              .css({
+                opacity: 0.25,
+                display: "block",
+                position: "relative",
+                height: cs.height,
+                width: cs.width,
+                margin: 0,
+                left: 0,
+                top: 0
+              })
+              .addClass("ui-resizable-ghost")
+              .addClass(typeof o.ghost === "string" ? o.ghost : "");
 
             that.ghost.appendTo(that.helper);
 
@@ -3736,23 +3736,23 @@
 
         resize: function() {
             var outerDimensions,
-                that = $(this).resizable( "instance" ),
-                o = that.options,
-                cs = that.size,
-                os = that.originalSize,
-                op = that.originalPosition,
-                a = that.axis,
-                grid = typeof o.grid === "number" ? [ o.grid, o.grid ] : o.grid,
-                gridX = (grid[0] || 1),
-                gridY = (grid[1] || 1),
-                ox = Math.round((cs.width - os.width) / gridX) * gridX,
-                oy = Math.round((cs.height - os.height) / gridY) * gridY,
-                newWidth = os.width + ox,
-                newHeight = os.height + oy,
-                isMaxWidth = o.maxWidth && (o.maxWidth < newWidth),
-                isMaxHeight = o.maxHeight && (o.maxHeight < newHeight),
-                isMinWidth = o.minWidth && (o.minWidth > newWidth),
-                isMinHeight = o.minHeight && (o.minHeight > newHeight);
+              that = $(this).resizable("instance"),
+              o = that.options,
+              cs = that.size,
+              os = that.originalSize,
+              op = that.originalPosition,
+              a = that.axis,
+              grid = typeof o.grid === "number" ? [o.grid, o.grid] : o.grid,
+              gridX = (grid[0] || 1),
+              gridY = (grid[1] || 1),
+              ox = Math.round((cs.width - os.width) / gridX) * gridX,
+              oy = Math.round((cs.height - os.height) / gridY) * gridY,
+              newWidth = os.width + ox,
+              newHeight = os.height + oy,
+              isMaxWidth = o.maxWidth && (o.maxWidth < newWidth),
+              isMaxHeight = o.maxHeight && (o.maxHeight < newHeight),
+              isMinWidth = o.minWidth && (o.minWidth > newWidth),
+              isMinHeight = o.minHeight && (o.minHeight > newHeight);
 
             o.grid = grid;
 
@@ -3822,31 +3822,31 @@
 
 
     var lastActive,
-        baseClasses = "ui-button ui-widget ui-state-default ui-corner-all",
-        typeClasses = "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
-        formResetHandler = function() {
-            var form = $( this );
-            setTimeout(function() {
-                form.find( ":ui-button" ).button( "refresh" );
-            }, 1 );
-        },
-        radioGroup = function( radio ) {
-            var name = radio.name,
-                form = radio.form,
-                radios = $( [] );
-            if ( name ) {
-                name = name.replace( /'/g, "\\'" );
-                if ( form ) {
-                    radios = $( form ).find( "[name='" + name + "'][type=radio]" );
-                } else {
-                    radios = $( "[name='" + name + "'][type=radio]", radio.ownerDocument )
-                        .filter(function() {
-                            return !this.form;
-                        });
-                }
-            }
-            return radios;
-        };
+      baseClasses = "ui-button ui-widget ui-state-default ui-corner-all",
+      typeClasses = "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
+      formResetHandler = function () {
+        var form = $(this);
+        setTimeout(function () {
+          form.find(":ui-button").button("refresh");
+        }, 1);
+      },
+      radioGroup = function (radio) {
+        var name = radio.name,
+          form = radio.form,
+          radios = $([]);
+        if (name) {
+          name = name.replace(/'/g, "\\'");
+          if (form) {
+            radios = $(form).find("[name='" + name + "'][type=radio]");
+          } else {
+            radios = $("[name='" + name + "'][type=radio]", radio.ownerDocument)
+              .filter(function () {
+                return !this.form;
+              });
+          }
+        }
+        return radios;
+      };
 
     $.widget( "ui.button", {
         version: "1.11.4",
@@ -3862,8 +3862,8 @@
         },
         _create: function() {
             this.element.closest( "form" )
-                .unbind( "reset" + this.eventNamespace )
-                .bind( "reset" + this.eventNamespace, formResetHandler );
+              .unbind("reset" + this.eventNamespace)
+              .bind("reset" + this.eventNamespace, formResetHandler);
 
             if ( typeof this.options.disabled !== "boolean" ) {
                 this.options.disabled = !!this.element.prop( "disabled" );
@@ -3875,9 +3875,9 @@
             this.hasTitle = !!this.buttonElement.attr( "title" );
 
             var that = this,
-                options = this.options,
-                toggleButton = this.type === "checkbox" || this.type === "radio",
-                activeClass = !toggleButton ? "ui-state-active" : "";
+              options = this.options,
+              toggleButton = this.type === "checkbox" || this.type === "radio",
+              activeClass = !toggleButton ? "ui-state-active" : "";
 
             if ( options.label === null ) {
                 options.label = (this.type === "input" ? this.buttonElement.val() : this.buttonElement.html());
@@ -3886,28 +3886,28 @@
             this._hoverable( this.buttonElement );
 
             this.buttonElement
-                .addClass( baseClasses )
-                .attr( "role", "button" )
-                .bind( "mouseenter" + this.eventNamespace, function() {
-                    if ( options.disabled ) {
-                        return;
-                    }
-                    if ( this === lastActive ) {
-                        $( this ).addClass( "ui-state-active" );
-                    }
-                })
-                .bind( "mouseleave" + this.eventNamespace, function() {
-                    if ( options.disabled ) {
-                        return;
-                    }
-                    $( this ).removeClass( activeClass );
-                })
-                .bind( "click" + this.eventNamespace, function( event ) {
-                    if ( options.disabled ) {
-                        event.preventDefault();
-                        event.stopImmediatePropagation();
-                    }
-                });
+              .addClass(baseClasses)
+              .attr("role", "button")
+              .bind("mouseenter" + this.eventNamespace, function () {
+                if (options.disabled) {
+                  return;
+                }
+                if (this === lastActive) {
+                  $(this).addClass("ui-state-active");
+                }
+              })
+              .bind("mouseleave" + this.eventNamespace, function () {
+                if (options.disabled) {
+                  return;
+                }
+                $(this).removeClass(activeClass);
+              })
+              .bind("click" + this.eventNamespace, function (event) {
+                if (options.disabled) {
+                  event.preventDefault();
+                  event.stopImmediatePropagation();
+                }
+              });
 
             // Can't use _focusable() because the element that receives focus
             // and the element that gets the ui-state-focus class are different
@@ -3942,44 +3942,44 @@
 
                     var radio = that.element[ 0 ];
                     radioGroup( radio )
-                        .not( radio )
-                        .map(function() {
-                            return $( this ).button( "widget" )[ 0 ];
-                        })
-                        .removeClass( "ui-state-active" )
-                        .attr( "aria-pressed", "false" );
+                      .not(radio)
+                      .map(function () {
+                        return $(this).button("widget")[0];
+                      })
+                      .removeClass("ui-state-active")
+                      .attr("aria-pressed", "false");
                 });
             } else {
                 this.buttonElement
-                    .bind( "mousedown" + this.eventNamespace, function() {
-                        if ( options.disabled ) {
-                            return false;
-                        }
-                        $( this ).addClass( "ui-state-active" );
-                        lastActive = this;
-                        that.document.one( "mouseup", function() {
-                            lastActive = null;
-                        });
-                    })
-                    .bind( "mouseup" + this.eventNamespace, function() {
-                        if ( options.disabled ) {
-                            return false;
-                        }
-                        $( this ).removeClass( "ui-state-active" );
-                    })
-                    .bind( "keydown" + this.eventNamespace, function(event) {
-                        if ( options.disabled ) {
-                            return false;
-                        }
-                        if ( event.keyCode === $.ui.keyCode.SPACE || event.keyCode === $.ui.keyCode.ENTER ) {
-                            $( this ).addClass( "ui-state-active" );
-                        }
-                    })
-                    // see #8559, we bind to blur here in case the button element loses
-                    // focus between keydown and keyup, it would be left in an "active" state
-                    .bind( "keyup" + this.eventNamespace + " blur" + this.eventNamespace, function() {
-                        $( this ).removeClass( "ui-state-active" );
+                  .bind("mousedown" + this.eventNamespace, function () {
+                    if (options.disabled) {
+                      return false;
+                    }
+                    $(this).addClass("ui-state-active");
+                    lastActive = this;
+                    that.document.one("mouseup", function () {
+                      lastActive = null;
                     });
+                  })
+                  .bind("mouseup" + this.eventNamespace, function () {
+                    if (options.disabled) {
+                      return false;
+                    }
+                    $(this).removeClass("ui-state-active");
+                  })
+                  .bind("keydown" + this.eventNamespace, function (event) {
+                    if (options.disabled) {
+                      return false;
+                    }
+                    if (event.keyCode === $.ui.keyCode.SPACE || event.keyCode === $.ui.keyCode.ENTER) {
+                      $(this).addClass("ui-state-active");
+                    }
+                  })
+                  // see #8559, we bind to blur here in case the button element loses
+                  // focus between keydown and keyup, it would be left in an "active" state
+                  .bind("keyup" + this.eventNamespace + " blur" + this.eventNamespace, function () {
+                    $(this).removeClass("ui-state-active");
+                  });
 
                 if ( this.buttonElement.is("a") ) {
                     this.buttonElement.keyup(function(event) {
@@ -4039,12 +4039,12 @@
 
         _destroy: function() {
             this.element
-                .removeClass( "ui-helper-hidden-accessible" );
+              .removeClass("ui-helper-hidden-accessible");
             this.buttonElement
-                .removeClass( baseClasses + " ui-state-active " + typeClasses )
-                .removeAttr( "role" )
-                .removeAttr( "aria-pressed" )
-                .html( this.buttonElement.find(".ui-button-text").html() );
+              .removeClass(baseClasses + " ui-state-active " + typeClasses)
+              .removeAttr("role")
+              .removeAttr("aria-pressed")
+              .html(this.buttonElement.find(".ui-button-text").html());
 
             if ( !this.hasTitle ) {
                 this.buttonElement.removeAttr( "title" );
@@ -4079,23 +4079,23 @@
                 radioGroup( this.element[0] ).each(function() {
                     if ( $( this ).is( ":checked" ) ) {
                         $( this ).button( "widget" )
-                            .addClass( "ui-state-active" )
-                            .attr( "aria-pressed", "true" );
+                          .addClass("ui-state-active")
+                          .attr("aria-pressed", "true");
                     } else {
                         $( this ).button( "widget" )
-                            .removeClass( "ui-state-active" )
-                            .attr( "aria-pressed", "false" );
+                          .removeClass("ui-state-active")
+                          .attr("aria-pressed", "false");
                     }
                 });
             } else if ( this.type === "checkbox" ) {
                 if ( this.element.is( ":checked" ) ) {
                     this.buttonElement
-                        .addClass( "ui-state-active" )
-                        .attr( "aria-pressed", "true" );
+                      .addClass("ui-state-active")
+                      .attr("aria-pressed", "true");
                 } else {
                     this.buttonElement
-                        .removeClass( "ui-state-active" )
-                        .attr( "aria-pressed", "false" );
+                      .removeClass("ui-state-active")
+                      .attr("aria-pressed", "false");
                 }
             }
         },
@@ -4108,14 +4108,14 @@
                 return;
             }
             var buttonElement = this.buttonElement.removeClass( typeClasses ),
-                buttonText = $( "<span></span>", this.document[0] )
-                    .addClass( "ui-button-text" )
-                    .html( this.options.label )
-                    .appendTo( buttonElement.empty() )
-                    .text(),
-                icons = this.options.icons,
-                multipleIcons = icons.primary && icons.secondary,
-                buttonClasses = [];
+              buttonText = $("<span></span>", this.document[0])
+                .addClass("ui-button-text")
+                .html(this.options.label)
+                .appendTo(buttonElement.empty())
+                .text(),
+              icons = this.options.icons,
+              multipleIcons = icons.primary && icons.secondary,
+              buttonClasses = [];
 
             if ( icons.primary || icons.secondary ) {
                 if ( this.options.text ) {
@@ -4168,8 +4168,8 @@
 
         refresh: function() {
             var rtl = this.element.css( "direction" ) === "rtl",
-                allButtons = this.element.find( this.options.items ),
-                existingButtons = allButtons.filter( ":ui-button" );
+              allButtons = this.element.find(this.options.items),
+              existingButtons = allButtons.filter(":ui-button");
 
             // Initialize new buttons
             allButtons.not( ":ui-button" ).button();
@@ -4178,28 +4178,28 @@
             existingButtons.button( "refresh" );
 
             this.buttons = allButtons
-                .map(function() {
-                    return $( this ).button( "widget" )[ 0 ];
-                })
-                .removeClass( "ui-corner-all ui-corner-left ui-corner-right" )
-                .filter( ":first" )
-                .addClass( rtl ? "ui-corner-right" : "ui-corner-left" )
-                .end()
-                .filter( ":last" )
-                .addClass( rtl ? "ui-corner-left" : "ui-corner-right" )
-                .end()
-                .end();
+              .map(function () {
+                return $(this).button("widget")[0];
+              })
+              .removeClass("ui-corner-all ui-corner-left ui-corner-right")
+              .filter(":first")
+              .addClass(rtl ? "ui-corner-right" : "ui-corner-left")
+              .end()
+              .filter(":last")
+              .addClass(rtl ? "ui-corner-left" : "ui-corner-right")
+              .end()
+              .end();
         },
 
         _destroy: function() {
             this.element.removeClass( "ui-buttonset" );
             this.buttons
-                .map(function() {
-                    return $( this ).button( "widget" )[ 0 ];
-                })
-                .removeClass( "ui-corner-left ui-corner-right" )
-                .end()
-                .button( "destroy" );
+              .map(function () {
+                return $(this).button("widget")[0];
+              })
+              .removeClass("ui-corner-left ui-corner-right")
+              .end()
+              .button("destroy");
         }
     });
 
@@ -4389,7 +4389,8 @@
                 drawMonth: 0, drawYear: 0, // month being drawn
                 inline: inline, // is datepicker inline or not
                 dpDiv: (!inline ? this.dpDiv : // presentation div
-                    datepicker_bindHover($("<div class='" + this._inlineClass + " ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>")))};
+                  datepicker_bindHover($("<div class='" + this._inlineClass + " ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>")))
+            };
         },
 
         /* Attach the date picker to an input field. */
@@ -4414,8 +4415,8 @@
         /* Make attachments based on settings. */
         _attachments: function(input, inst) {
             var showOn, buttonText, buttonImage,
-                appendText = this._get(inst, "appendText"),
-                isRTL = this._get(inst, "isRTL");
+              appendText = this._get(inst, "appendText"),
+              isRTL = this._get(inst, "isRTL");
 
             if (inst.append) {
                 inst.append.remove();
@@ -4439,11 +4440,13 @@
                 buttonText = this._get(inst, "buttonText");
                 buttonImage = this._get(inst, "buttonImage");
                 inst.trigger = $(this._get(inst, "buttonImageOnly") ?
-                    $("<img/>").addClass(this._triggerClass).
-                    attr({ src: buttonImage, alt: buttonText, title: buttonText }) :
-                    $("<button type='button'></button>").addClass(this._triggerClass).
-                    html(!buttonImage ? buttonText : $("<img/>").attr(
-                        { src:buttonImage, alt:buttonText, title:buttonText })));
+                  $("<img/>").addClass(this._triggerClass).attr({
+                    src: buttonImage,
+                    alt: buttonText,
+                    title: buttonText
+                  }) :
+                  $("<button type='button'></button>").addClass(this._triggerClass).html(!buttonImage ? buttonText : $("<img/>").attr(
+                    {src: buttonImage, alt: buttonText, title: buttonText})));
                 input[isRTL ? "before" : "after"](inst.trigger);
                 inst.trigger.click(function() {
                     if ($.datepicker._datepickerShowing && $.datepicker._lastInput === input[0]) {
@@ -4463,8 +4466,8 @@
         _autoSize: function(inst) {
             if (this._get(inst, "autoSize") && !inst.inline) {
                 var findMax, max, maxI, i,
-                    date = new Date(2009, 12 - 1, 20), // Ensure double digits
-                    dateFormat = this._get(inst, "dateFormat");
+                  date = new Date(2009, 12 - 1, 20), // Ensure double digits
+                  dateFormat = this._get(inst, "dateFormat");
 
                 if (dateFormat.match(/[DM]/)) {
                     findMax = function(names) {
@@ -4479,9 +4482,9 @@
                         return maxI;
                     };
                     date.setMonth(findMax(this._get(inst, (dateFormat.match(/MM/) ?
-                        "monthNames" : "monthNamesShort"))));
+                      "monthNames" : "monthNamesShort"))));
                     date.setDate(findMax(this._get(inst, (dateFormat.match(/DD/) ?
-                        "dayNames" : "dayNamesShort"))) + 20 - date.getDay());
+                      "dayNames" : "dayNamesShort"))) + 20 - date.getDay());
                 }
                 inst.input.attr("size", this._formatDate(inst, date).length);
             }
@@ -4519,13 +4522,13 @@
 	 */
         _dialogDatepicker: function(input, date, onSelect, settings, pos) {
             var id, browserWidth, browserHeight, scrollX, scrollY,
-                inst = this._dialogInst; // internal instance
+              inst = this._dialogInst; // internal instance
 
             if (!inst) {
                 this.uuid += 1;
                 id = "dp" + this.uuid;
                 this._dialogInput = $("<input type='text' id='" + id +
-                    "' style='position: absolute; top: -100px; width: 0px;'/>");
+                  "' style='position: absolute; top: -100px; width: 0px;'/>");
                 this._dialogInput.keydown(this._doKeyDown);
                 $("body").append(this._dialogInput);
                 inst = this._dialogInst = this._newInst(this._dialogInput, false);
@@ -4543,7 +4546,7 @@
                 scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
                 scrollY = document.documentElement.scrollTop || document.body.scrollTop;
                 this._pos = // should use actual width/height below
-                    [(browserWidth / 2) - 100 + scrollX, (browserHeight / 2) - 150 + scrollY];
+                  [(browserWidth / 2) - 100 + scrollX, (browserHeight / 2) - 150 + scrollY];
             }
 
             // move input on screen for focus, but hidden behind dialog
@@ -4564,8 +4567,8 @@
 	 */
         _destroyDatepicker: function(target) {
             var nodeName,
-                $target = $(target),
-                inst = $.data(target, "datepicker");
+              $target = $(target),
+              inst = $.data(target, "datepicker");
 
             if (!$target.hasClass(this.markerClassName)) {
                 return;
@@ -4595,8 +4598,8 @@
 	 */
         _enableDatepicker: function(target) {
             var nodeName, inline,
-                $target = $(target),
-                inst = $.data(target, "datepicker");
+              $target = $(target),
+              inst = $.data(target, "datepicker");
 
             if (!$target.hasClass(this.markerClassName)) {
                 return;
@@ -4615,7 +4618,9 @@
                 prop("disabled", false);
             }
             this._disabledInputs = $.map(this._disabledInputs,
-                function(value) { return (value === target ? null : value); }); // delete entry
+              function (value) {
+                return (value === target ? null : value);
+              }); // delete entry
         },
 
         /* Disable the date picker to a jQuery selection.
@@ -4623,8 +4628,8 @@
 	 */
         _disableDatepicker: function(target) {
             var nodeName, inline,
-                $target = $(target),
-                inst = $.data(target, "datepicker");
+              $target = $(target),
+              inst = $.data(target, "datepicker");
 
             if (!$target.hasClass(this.markerClassName)) {
                 return;
@@ -4643,7 +4648,9 @@
                 prop("disabled", true);
             }
             this._disabledInputs = $.map(this._disabledInputs,
-                function(value) { return (value === target ? null : value); }); // delete entry
+              function (value) {
+                return (value === target ? null : value);
+              }); // delete entry
             this._disabledInputs[this._disabledInputs.length] = target;
         },
 
@@ -4688,12 +4695,12 @@
 	 */
         _optionDatepicker: function(target, name, value) {
             var settings, date, minDate, maxDate,
-                inst = this._getInst(target);
+              inst = this._getInst(target);
 
             if (arguments.length === 2 && typeof name === "string") {
                 return (name === "defaults" ? $.extend({}, $.datepicker._defaults) :
-                    (inst ? (name === "all" ? $.extend({}, inst.settings) :
-                        this._get(inst, name)) : null));
+                  (inst ? (name === "all" ? $.extend({}, inst.settings) :
+                    this._get(inst, name)) : null));
             }
 
             settings = name || {};
@@ -4777,9 +4784,9 @@
         /* Handle keystrokes. */
         _doKeyDown: function(event) {
             var onSelect, dateStr, sel,
-                inst = $.datepicker._getInst(event.target),
-                handled = true,
-                isRTL = inst.dpDiv.is(".ui-datepicker-rtl");
+              inst = $.datepicker._getInst(event.target),
+              handled = true,
+              isRTL = inst.dpDiv.is(".ui-datepicker-rtl");
 
             inst._keyEvent = true;
             if ($.datepicker._datepickerShowing) {
@@ -4788,7 +4795,7 @@
                         handled = false;
                         break; // hide on tab out
                     case 13: sel = $("td." + $.datepicker._dayOverClass + ":not(." +
-                        $.datepicker._currentClass + ")", inst.dpDiv);
+                      $.datepicker._currentClass + ")", inst.dpDiv);
                         if (sel[0]) {
                             $.datepicker._selectDay(event.target, inst.selectedMonth, inst.selectedYear, sel[0]);
                         }
@@ -4807,12 +4814,12 @@
                     case 27: $.datepicker._hideDatepicker();
                         break; // hide on escape
                     case 33: $.datepicker._adjustDate(event.target, (event.ctrlKey ?
-                        -$.datepicker._get(inst, "stepBigMonths") :
-                        -$.datepicker._get(inst, "stepMonths")), "M");
+                      -$.datepicker._get(inst, "stepBigMonths") :
+                      -$.datepicker._get(inst, "stepMonths")), "M");
                         break; // previous month/year on page up/+ ctrl
                     case 34: $.datepicker._adjustDate(event.target, (event.ctrlKey ?
-                        +$.datepicker._get(inst, "stepBigMonths") :
-                        +$.datepicker._get(inst, "stepMonths")), "M");
+                      +$.datepicker._get(inst, "stepBigMonths") :
+                      +$.datepicker._get(inst, "stepMonths")), "M");
                         break; // next month/year on page down/+ ctrl
                     case 35: if (event.ctrlKey || event.metaKey) {
                         $.datepicker._clearDate(event.target);
@@ -4831,8 +4838,8 @@
                         // -1 day on ctrl or command +left
                         if (event.originalEvent.altKey) {
                             $.datepicker._adjustDate(event.target, (event.ctrlKey ?
-                                -$.datepicker._get(inst, "stepBigMonths") :
-                                -$.datepicker._get(inst, "stepMonths")), "M");
+                              -$.datepicker._get(inst, "stepBigMonths") :
+                              -$.datepicker._get(inst, "stepMonths")), "M");
                         }
                         // next month/year on alt +left on Mac
                         break;
@@ -4848,8 +4855,8 @@
                         // +1 day on ctrl or command +right
                         if (event.originalEvent.altKey) {
                             $.datepicker._adjustDate(event.target, (event.ctrlKey ?
-                                +$.datepicker._get(inst, "stepBigMonths") :
-                                +$.datepicker._get(inst, "stepMonths")), "M");
+                              +$.datepicker._get(inst, "stepBigMonths") :
+                              +$.datepicker._get(inst, "stepMonths")), "M");
                         }
                         // next month/year on alt +right
                         break;
@@ -4875,7 +4882,7 @@
         /* Filter entered characters - based on date format. */
         _doKeyPress: function(event) {
             var chars, chr,
-                inst = $.datepicker._getInst(event.target);
+              inst = $.datepicker._getInst(event.target);
 
             if ($.datepicker._get(inst, "constrainInput")) {
                 chars = $.datepicker._possibleChars($.datepicker._get(inst, "dateFormat"));
@@ -4887,13 +4894,13 @@
         /* Synchronise manual entry and field/alternate field. */
         _doKeyUp: function(event) {
             var date,
-                inst = $.datepicker._getInst(event.target);
+              inst = $.datepicker._getInst(event.target);
 
             if (inst.input.val() !== inst.lastVal) {
                 try {
                     date = $.datepicker.parseDate($.datepicker._get(inst, "dateFormat"),
-                        (inst.input ? inst.input.val() : null),
-                        $.datepicker._getFormatConfig(inst));
+                      (inst.input ? inst.input.val() : null),
+                      $.datepicker._getFormatConfig(inst));
 
                     if (date) { // only if valid
                         $.datepicker._setDateFromField(inst);
@@ -4923,7 +4930,7 @@
             }
 
             var inst, beforeShow, beforeShowSettings, isFixed,
-                offset, showAnim, duration;
+              offset, showAnim, duration;
 
             inst = $.datepicker._getInst(input);
             if ($.datepicker._curInst && $.datepicker._curInst !== inst) {
@@ -4969,7 +4976,7 @@
             // and adjust position before showing
             offset = $.datepicker._checkOffset(inst, offset, isFixed);
             inst.dpDiv.css({position: ($.datepicker._inDialog && $.blockUI ?
-                    "static" : (isFixed ? "fixed" : "absolute")), display: "none",
+                "static" : (isFixed ? "fixed" : "absolute")), display: "none",
                 left: offset.left + "px", top: offset.top + "px"});
 
             if (!inst.inline) {
@@ -5000,10 +5007,10 @@
             this._attachHandlers(inst);
 
             var origyearshtml,
-                numMonths = this._getNumberOfMonths(inst),
-                cols = numMonths[1],
-                width = 17,
-                activeCell = inst.dpDiv.find( "." + this._dayOverClass + " a" );
+              numMonths = this._getNumberOfMonths(inst),
+              cols = numMonths[1],
+              width = 17,
+              activeCell = inst.dpDiv.find("." + this._dayOverClass + " a");
 
             if ( activeCell.length > 0 ) {
                 datepicker_handleMouseover.apply( activeCell.get( 0 ) );
@@ -5045,11 +5052,11 @@
         /* Check positioning to remain on screen. */
         _checkOffset: function(inst, offset, isFixed) {
             var dpWidth = inst.dpDiv.outerWidth(),
-                dpHeight = inst.dpDiv.outerHeight(),
-                inputWidth = inst.input ? inst.input.outerWidth() : 0,
-                inputHeight = inst.input ? inst.input.outerHeight() : 0,
-                viewWidth = document.documentElement.clientWidth + (isFixed ? 0 : $(document).scrollLeft()),
-                viewHeight = document.documentElement.clientHeight + (isFixed ? 0 : $(document).scrollTop());
+              dpHeight = inst.dpDiv.outerHeight(),
+              inputWidth = inst.input ? inst.input.outerWidth() : 0,
+              inputHeight = inst.input ? inst.input.outerHeight() : 0,
+              viewWidth = document.documentElement.clientWidth + (isFixed ? 0 : $(document).scrollLeft()),
+              viewHeight = document.documentElement.clientHeight + (isFixed ? 0 : $(document).scrollTop());
 
             offset.left -= (this._get(inst, "isRTL") ? (dpWidth - inputWidth) : 0);
             offset.left -= (isFixed && offset.left === inst.input.offset().left) ? $(document).scrollLeft() : 0;
@@ -5057,9 +5064,9 @@
 
             // now check if datepicker is showing outside window viewport - move to a better place if so.
             offset.left -= Math.min(offset.left, (offset.left + dpWidth > viewWidth && viewWidth > dpWidth) ?
-                Math.abs(offset.left + dpWidth - viewWidth) : 0);
+              Math.abs(offset.left + dpWidth - viewWidth) : 0);
             offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
-                Math.abs(dpHeight + inputHeight) : 0);
+              Math.abs(dpHeight + inputHeight) : 0);
 
             return offset;
         },
@@ -5067,8 +5074,8 @@
         /* Find an object's position on the screen. */
         _findPos: function(obj) {
             var position,
-                inst = this._getInst(obj),
-                isRTL = this._get(inst, "isRTL");
+              inst = this._getInst(obj),
+              isRTL = this._get(inst, "isRTL");
 
             while (obj && (obj.type === "hidden" || obj.nodeType !== 1 || $.expr.filters.hidden(obj))) {
                 obj = obj[isRTL ? "previousSibling" : "nextSibling"];
@@ -5083,7 +5090,7 @@
 	 */
         _hideDatepicker: function(input) {
             var showAnim, duration, postProcess, onClose,
-                inst = this._curInst;
+              inst = this._curInst;
 
             if (!inst || (input && inst !== $.data(input, "datepicker"))) {
                 return;
@@ -5101,7 +5108,7 @@
                     inst.dpDiv.hide(showAnim, $.datepicker._get(inst, "showOptions"), duration, postProcess);
                 } else {
                     inst.dpDiv[(showAnim === "slideDown" ? "slideUp" :
-                        (showAnim === "fadeIn" ? "fadeOut" : "hide"))]((showAnim ? duration : null), postProcess);
+                      (showAnim === "fadeIn" ? "fadeOut" : "hide"))]((showAnim ? duration : null), postProcess);
                 }
 
                 if (!showAnim) {
@@ -5138,14 +5145,14 @@
             }
 
             var $target = $(event.target),
-                inst = $.datepicker._getInst($target[0]);
+              inst = $.datepicker._getInst($target[0]);
 
             if ( ( ( $target[0].id !== $.datepicker._mainDivId &&
-                $target.parents("#" + $.datepicker._mainDivId).length === 0 &&
-                !$target.hasClass($.datepicker.markerClassName) &&
-                !$target.closest("." + $.datepicker._triggerClass).length &&
-                $.datepicker._datepickerShowing && !($.datepicker._inDialog && $.blockUI) ) ) ||
-                ( $target.hasClass($.datepicker.markerClassName) && $.datepicker._curInst !== inst ) ) {
+              $target.parents("#" + $.datepicker._mainDivId).length === 0 &&
+              !$target.hasClass($.datepicker.markerClassName) &&
+              !$target.closest("." + $.datepicker._triggerClass).length &&
+              $.datepicker._datepickerShowing && !($.datepicker._inDialog && $.blockUI))) ||
+              ($target.hasClass($.datepicker.markerClassName) && $.datepicker._curInst !== inst)) {
                 $.datepicker._hideDatepicker();
             }
         },
@@ -5153,22 +5160,22 @@
         /* Adjust one of the date sub-fields. */
         _adjustDate: function(id, offset, period) {
             var target = $(id),
-                inst = this._getInst(target[0]);
+              inst = this._getInst(target[0]);
 
             if (this._isDisabledDatepicker(target[0])) {
                 return;
             }
             this._adjustInstDate(inst, offset +
-                (period === "M" ? this._get(inst, "showCurrentAtPos") : 0), // undo positioning
-                period);
+              (period === "M" ? this._get(inst, "showCurrentAtPos") : 0), // undo positioning
+              period);
             this._updateDatepicker(inst);
         },
 
         /* Action for current link. */
         _gotoToday: function(id) {
             var date,
-                target = $(id),
-                inst = this._getInst(target[0]);
+              target = $(id),
+              inst = this._getInst(target[0]);
 
             if (this._get(inst, "gotoCurrent") && inst.currentDay) {
                 inst.selectedDay = inst.currentDay;
@@ -5187,11 +5194,11 @@
         /* Action for selecting a new month/year. */
         _selectMonthYear: function(id, select, period) {
             var target = $(id),
-                inst = this._getInst(target[0]);
+              inst = this._getInst(target[0]);
 
             inst["selected" + (period === "M" ? "Month" : "Year")] =
-                inst["draw" + (period === "M" ? "Month" : "Year")] =
-                    parseInt(select.options[select.selectedIndex].value,10);
+              inst["draw" + (period === "M" ? "Month" : "Year")] =
+                parseInt(select.options[select.selectedIndex].value, 10);
 
             this._notifyChange(inst);
             this._adjustDate(target);
@@ -5200,7 +5207,7 @@
         /* Action for selecting a day. */
         _selectDay: function(id, month, year, td) {
             var inst,
-                target = $(id);
+              target = $(id);
 
             if ($(td).hasClass(this._unselectableClass) || this._isDisabledDatepicker(target[0])) {
                 return;
@@ -5211,7 +5218,7 @@
             inst.selectedMonth = inst.currentMonth = month;
             inst.selectedYear = inst.currentYear = year;
             this._selectDate(id, this._formatDate(inst,
-                inst.currentDay, inst.currentMonth, inst.currentYear));
+              inst.currentDay, inst.currentMonth, inst.currentYear));
         },
 
         /* Erase the input field and hide the date picker. */
@@ -5223,8 +5230,8 @@
         /* Update the input field with the selected date. */
         _selectDate: function(id, dateStr) {
             var onSelect,
-                target = $(id),
-                inst = this._getInst(target[0]);
+              target = $(id),
+              inst = this._getInst(target[0]);
 
             dateStr = (dateStr != null ? dateStr : this._formatDate(inst));
             if (inst.input) {
@@ -5254,7 +5261,7 @@
         /* Update any alternate field to synchronise with the main field. */
         _updateAlternate: function(inst) {
             var altFormat, date, dateStr,
-                altField = this._get(inst, "altField");
+              altField = this._get(inst, "altField");
 
             if (altField) { // update alternate field too
                 altFormat = this._get(inst, "altFormat") || this._get(inst, "dateFormat");
@@ -5279,7 +5286,7 @@
 	 */
         iso8601Week: function(date) {
             var time,
-                checkDate = new Date(date.getTime());
+              checkDate = new Date(date.getTime());
 
             // Find Thursday of this week starting on Monday
             checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
@@ -5314,72 +5321,72 @@
             }
 
             var iFormat, dim, extra,
-                iValue = 0,
-                shortYearCutoffTemp = (settings ? settings.shortYearCutoff : null) || this._defaults.shortYearCutoff,
-                shortYearCutoff = (typeof shortYearCutoffTemp !== "string" ? shortYearCutoffTemp :
-                    new Date().getFullYear() % 100 + parseInt(shortYearCutoffTemp, 10)),
-                dayNamesShort = (settings ? settings.dayNamesShort : null) || this._defaults.dayNamesShort,
-                dayNames = (settings ? settings.dayNames : null) || this._defaults.dayNames,
-                monthNamesShort = (settings ? settings.monthNamesShort : null) || this._defaults.monthNamesShort,
-                monthNames = (settings ? settings.monthNames : null) || this._defaults.monthNames,
-                year = -1,
-                month = -1,
-                day = -1,
-                doy = -1,
-                literal = false,
-                date,
-                // Check whether a format character is doubled
-                lookAhead = function(match) {
-                    var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) === match);
-                    if (matches) {
-                        iFormat++;
-                    }
-                    return matches;
-                },
-                // Extract a number from the string value
-                getNumber = function(match) {
-                    var isDoubled = lookAhead(match),
-                        size = (match === "@" ? 14 : (match === "!" ? 20 :
-                            (match === "y" && isDoubled ? 4 : (match === "o" ? 3 : 2)))),
-                        minSize = (match === "y" ? size : 1),
-                        digits = new RegExp("^\\d{" + minSize + "," + size + "}"),
-                        num = value.substring(iValue).match(digits);
-                    if (!num) {
-                        throw "Missing number at position " + iValue;
-                    }
-                    iValue += num[0].length;
-                    return parseInt(num[0], 10);
-                },
-                // Extract a name from the string value and convert to an index
-                getName = function(match, shortNames, longNames) {
-                    var index = -1,
-                        names = $.map(lookAhead(match) ? longNames : shortNames, function (v, k) {
-                            return [ [k, v] ];
-                        }).sort(function (a, b) {
-                            return -(a[1].length - b[1].length);
-                        });
+              iValue = 0,
+              shortYearCutoffTemp = (settings ? settings.shortYearCutoff : null) || this._defaults.shortYearCutoff,
+              shortYearCutoff = (typeof shortYearCutoffTemp !== "string" ? shortYearCutoffTemp :
+                new Date().getFullYear() % 100 + parseInt(shortYearCutoffTemp, 10)),
+              dayNamesShort = (settings ? settings.dayNamesShort : null) || this._defaults.dayNamesShort,
+              dayNames = (settings ? settings.dayNames : null) || this._defaults.dayNames,
+              monthNamesShort = (settings ? settings.monthNamesShort : null) || this._defaults.monthNamesShort,
+              monthNames = (settings ? settings.monthNames : null) || this._defaults.monthNames,
+              year = -1,
+              month = -1,
+              day = -1,
+              doy = -1,
+              literal = false,
+              date,
+              // Check whether a format character is doubled
+              lookAhead = function (match) {
+                var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) === match);
+                if (matches) {
+                  iFormat++;
+                }
+                return matches;
+              },
+              // Extract a number from the string value
+              getNumber = function (match) {
+                var isDoubled = lookAhead(match),
+                  size = (match === "@" ? 14 : (match === "!" ? 20 :
+                    (match === "y" && isDoubled ? 4 : (match === "o" ? 3 : 2)))),
+                  minSize = (match === "y" ? size : 1),
+                  digits = new RegExp("^\\d{" + minSize + "," + size + "}"),
+                  num = value.substring(iValue).match(digits);
+                if (!num) {
+                  throw "Missing number at position " + iValue;
+                }
+                iValue += num[0].length;
+                return parseInt(num[0], 10);
+              },
+              // Extract a name from the string value and convert to an index
+              getName = function (match, shortNames, longNames) {
+                var index = -1,
+                  names = $.map(lookAhead(match) ? longNames : shortNames, function (v, k) {
+                    return [[k, v]];
+                  }).sort(function (a, b) {
+                    return -(a[1].length - b[1].length);
+                  });
 
-                    $.each(names, function (i, pair) {
-                        var name = pair[1];
-                        if (value.substr(iValue, name.length).toLowerCase() === name.toLowerCase()) {
-                            index = pair[0];
-                            iValue += name.length;
-                            return false;
-                        }
-                    });
-                    if (index !== -1) {
-                        return index + 1;
-                    } else {
-                        throw "Unknown name at position " + iValue;
-                    }
-                },
-                // Confirm that a literal character matches the string value
-                checkLiteral = function() {
-                    if (value.charAt(iValue) !== format.charAt(iFormat)) {
-                        throw "Unexpected literal at position " + iValue;
-                    }
-                    iValue++;
-                };
+                $.each(names, function (i, pair) {
+                  var name = pair[1];
+                  if (value.substr(iValue, name.length).toLowerCase() === name.toLowerCase()) {
+                    index = pair[0];
+                    iValue += name.length;
+                    return false;
+                  }
+                });
+                if (index !== -1) {
+                  return index + 1;
+                } else {
+                  throw "Unknown name at position " + iValue;
+                }
+              },
+              // Confirm that a literal character matches the string value
+              checkLiteral = function () {
+                if (value.charAt(iValue) !== format.charAt(iFormat)) {
+                  throw "Unexpected literal at position " + iValue;
+                }
+                iValue++;
+              };
 
             for (iFormat = 0; iFormat < format.length; iFormat++) {
                 if (literal) {
@@ -5444,7 +5451,7 @@
                 year = new Date().getFullYear();
             } else if (year < 100) {
                 year += new Date().getFullYear() - new Date().getFullYear() % 100 +
-                    (year <= shortYearCutoff ? 0 : -100);
+                  (year <= shortYearCutoff ? 0 : -100);
             }
 
             if (doy > -1) {
@@ -5482,7 +5489,7 @@
         W3C: "yy-mm-dd", // ISO 8601
 
         _ticksTo1970: (((1970 - 1) * 365 + Math.floor(1970 / 4) - Math.floor(1970 / 100) +
-            Math.floor(1970 / 400)) * 24 * 60 * 60 * 10000000),
+          Math.floor(1970 / 400)) * 24 * 60 * 60 * 10000000),
 
         /* Format a date object into a string value.
 	 * The format can be combinations of the following:
@@ -5518,34 +5525,34 @@
             }
 
             var iFormat,
-                dayNamesShort = (settings ? settings.dayNamesShort : null) || this._defaults.dayNamesShort,
-                dayNames = (settings ? settings.dayNames : null) || this._defaults.dayNames,
-                monthNamesShort = (settings ? settings.monthNamesShort : null) || this._defaults.monthNamesShort,
-                monthNames = (settings ? settings.monthNames : null) || this._defaults.monthNames,
-                // Check whether a format character is doubled
-                lookAhead = function(match) {
-                    var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) === match);
-                    if (matches) {
-                        iFormat++;
-                    }
-                    return matches;
-                },
-                // Format a number, with leading zero if necessary
-                formatNumber = function(match, value, len) {
-                    var num = "" + value;
-                    if (lookAhead(match)) {
-                        while (num.length < len) {
-                            num = "0" + num;
-                        }
-                    }
-                    return num;
-                },
-                // Format a name, short or long as requested
-                formatName = function(match, value, shortNames, longNames) {
-                    return (lookAhead(match) ? longNames[value] : shortNames[value]);
-                },
-                output = "",
-                literal = false;
+              dayNamesShort = (settings ? settings.dayNamesShort : null) || this._defaults.dayNamesShort,
+              dayNames = (settings ? settings.dayNames : null) || this._defaults.dayNames,
+              monthNamesShort = (settings ? settings.monthNamesShort : null) || this._defaults.monthNamesShort,
+              monthNames = (settings ? settings.monthNames : null) || this._defaults.monthNames,
+              // Check whether a format character is doubled
+              lookAhead = function (match) {
+                var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) === match);
+                if (matches) {
+                  iFormat++;
+                }
+                return matches;
+              },
+              // Format a number, with leading zero if necessary
+              formatNumber = function (match, value, len) {
+                var num = "" + value;
+                if (lookAhead(match)) {
+                  while (num.length < len) {
+                    num = "0" + num;
+                  }
+                }
+                return num;
+              },
+              // Format a name, short or long as requested
+              formatName = function (match, value, shortNames, longNames) {
+                return (lookAhead(match) ? longNames[value] : shortNames[value]);
+              },
+              output = "",
+              literal = false;
 
             if (date) {
                 for (iFormat = 0; iFormat < format.length; iFormat++) {
@@ -5565,7 +5572,7 @@
                                 break;
                             case "o":
                                 output += formatNumber("o",
-                                    Math.round((new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / 86400000), 3);
+                                  Math.round((new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / 86400000), 3);
                                 break;
                             case "m":
                                 output += formatNumber("m", date.getMonth() + 1, 2);
@@ -5575,7 +5582,7 @@
                                 break;
                             case "y":
                                 output += (lookAhead("y") ? date.getFullYear() :
-                                    (date.getYear() % 100 < 10 ? "0" : "") + date.getYear() % 100);
+                                  (date.getYear() % 100 < 10 ? "0" : "") + date.getYear() % 100);
                                 break;
                             case "@":
                                 output += date.getTime();
@@ -5602,16 +5609,16 @@
         /* Extract all possible characters from the date format. */
         _possibleChars: function (format) {
             var iFormat,
-                chars = "",
-                literal = false,
-                // Check whether a format character is doubled
-                lookAhead = function(match) {
-                    var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) === match);
-                    if (matches) {
-                        iFormat++;
-                    }
-                    return matches;
-                };
+              chars = "",
+              literal = false,
+              // Check whether a format character is doubled
+              lookAhead = function (match) {
+                var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) === match);
+                if (matches) {
+                  iFormat++;
+                }
+                return matches;
+              };
 
             for (iFormat = 0; iFormat < format.length; iFormat++) {
                 if (literal) {
@@ -5645,7 +5652,7 @@
         /* Get a setting value, defaulting if necessary. */
         _get: function(inst, name) {
             return inst.settings[name] !== undefined ?
-                inst.settings[name] : this._defaults[name];
+              inst.settings[name] : this._defaults[name];
         },
 
         /* Parse existing date and initialise date picker. */
@@ -5655,10 +5662,10 @@
             }
 
             var dateFormat = this._get(inst, "dateFormat"),
-                dates = inst.lastVal = inst.input ? inst.input.val() : null,
-                defaultDate = this._getDefaultDate(inst),
-                date = defaultDate,
-                settings = this._getFormatConfig(inst);
+              dates = inst.lastVal = inst.input ? inst.input.val() : null,
+              defaultDate = this._getDefaultDate(inst),
+              date = defaultDate,
+              settings = this._getFormatConfig(inst);
 
             try {
                 date = this.parseDate(dateFormat, dates, settings) || defaultDate;
@@ -5677,54 +5684,59 @@
         /* Retrieve the default date shown on opening. */
         _getDefaultDate: function(inst) {
             return this._restrictMinMax(inst,
-                this._determineDate(inst, this._get(inst, "defaultDate"), new Date()));
+              this._determineDate(inst, this._get(inst, "defaultDate"), new Date()));
         },
 
         /* A date may be specified as an exact value or a relative one. */
         _determineDate: function(inst, date, defaultDate) {
             var offsetNumeric = function(offset) {
-                    var date = new Date();
-                    date.setDate(date.getDate() + offset);
-                    return date;
-                },
-                offsetString = function(offset) {
-                    try {
-                        return $.datepicker.parseDate($.datepicker._get(inst, "dateFormat"),
-                            offset, $.datepicker._getFormatConfig(inst));
-                    }
-                    catch (e) {
-                        // Ignore
-                    }
+                var date = new Date();
+                date.setDate(date.getDate() + offset);
+                return date;
+              },
+              offsetString = function (offset) {
+                try {
+                  return $.datepicker.parseDate($.datepicker._get(inst, "dateFormat"),
+                    offset, $.datepicker._getFormatConfig(inst));
+                } catch (e) {
+                  // Ignore
+                }
 
-                    var date = (offset.toLowerCase().match(/^c/) ?
-                        $.datepicker._getDate(inst) : null) || new Date(),
-                        year = date.getFullYear(),
-                        month = date.getMonth(),
-                        day = date.getDate(),
-                        pattern = /([+\-]?[0-9]+)\s*(d|D|w|W|m|M|y|Y)?/g,
-                        matches = pattern.exec(offset);
+                var date = (offset.toLowerCase().match(/^c/) ?
+                  $.datepicker._getDate(inst) : null) || new Date(),
+                  year = date.getFullYear(),
+                  month = date.getMonth(),
+                  day = date.getDate(),
+                  pattern = /([+\-]?[0-9]+)\s*(d|D|w|W|m|M|y|Y)?/g,
+                  matches = pattern.exec(offset);
 
-                    while (matches) {
-                        switch (matches[2] || "d") {
-                            case "d" : case "D" :
-                                day += parseInt(matches[1],10); break;
-                            case "w" : case "W" :
-                                day += parseInt(matches[1],10) * 7; break;
-                            case "m" : case "M" :
-                                month += parseInt(matches[1],10);
-                                day = Math.min(day, $.datepicker._getDaysInMonth(year, month));
-                                break;
-                            case "y": case "Y" :
-                                year += parseInt(matches[1],10);
-                                day = Math.min(day, $.datepicker._getDaysInMonth(year, month));
-                                break;
-                        }
-                        matches = pattern.exec(offset);
-                    }
-                    return new Date(year, month, day);
-                },
-                newDate = (date == null || date === "" ? defaultDate : (typeof date === "string" ? offsetString(date) :
-                    (typeof date === "number" ? (isNaN(date) ? defaultDate : offsetNumeric(date)) : new Date(date.getTime()))));
+                while (matches) {
+                  switch (matches[2] || "d") {
+                    case "d" :
+                    case "D" :
+                      day += parseInt(matches[1], 10);
+                      break;
+                    case "w" :
+                    case "W" :
+                      day += parseInt(matches[1], 10) * 7;
+                      break;
+                    case "m" :
+                    case "M" :
+                      month += parseInt(matches[1], 10);
+                      day = Math.min(day, $.datepicker._getDaysInMonth(year, month));
+                      break;
+                    case "y":
+                    case "Y" :
+                      year += parseInt(matches[1], 10);
+                      day = Math.min(day, $.datepicker._getDaysInMonth(year, month));
+                      break;
+                  }
+                  matches = pattern.exec(offset);
+                }
+                return new Date(year, month, day);
+              },
+              newDate = (date == null || date === "" ? defaultDate : (typeof date === "string" ? offsetString(date) :
+                (typeof date === "number" ? (isNaN(date) ? defaultDate : offsetNumeric(date)) : new Date(date.getTime()))));
 
             newDate = (newDate && newDate.toString() === "Invalid Date" ? defaultDate : newDate);
             if (newDate) {
@@ -5754,9 +5766,9 @@
         /* Set the date(s) directly. */
         _setDate: function(inst, date, noChange) {
             var clear = !date,
-                origMonth = inst.selectedMonth,
-                origYear = inst.selectedYear,
-                newDate = this._restrictMinMax(inst, this._determineDate(inst, date, new Date()));
+              origMonth = inst.selectedMonth,
+              origYear = inst.selectedYear,
+              newDate = this._restrictMinMax(inst, this._determineDate(inst, date, new Date()));
 
             inst.selectedDay = inst.currentDay = newDate.getDate();
             inst.drawMonth = inst.selectedMonth = inst.currentMonth = newDate.getMonth();
@@ -5773,8 +5785,8 @@
         /* Retrieve the date(s) directly. */
         _getDate: function(inst) {
             var startDate = (!inst.currentYear || (inst.input && inst.input.val() === "") ? null :
-                this._daylightSavingAdjust(new Date(
-                    inst.currentYear, inst.currentMonth, inst.currentDay)));
+              this._daylightSavingAdjust(new Date(
+                inst.currentYear, inst.currentMonth, inst.currentDay)));
             return startDate;
         },
 
@@ -5783,7 +5795,7 @@
 	 */
         _attachHandlers: function(inst) {
             var stepMonths = this._get(inst, "stepMonths"),
-                id = "#" + inst.id.replace( /\\\\/g, "\\" );
+              id = "#" + inst.id.replace(/\\\\/g, "\\");
             inst.dpDiv.find("[data-handler]").map(function () {
                 var handler = {
                     prev: function () {
@@ -5818,28 +5830,28 @@
         /* Generate the HTML for the current state of the date picker. */
         _generateHTML: function(inst) {
             var maxDraw, prevText, prev, nextText, next, currentText, gotoDate,
-                controls, buttonPanel, firstDay, showWeek, dayNames, dayNamesMin,
-                monthNames, monthNamesShort, beforeShowDay, showOtherMonths,
-                selectOtherMonths, defaultDate, html, dow, row, group, col, selectedDate,
-                cornerClass, calender, thead, day, daysInMonth, leadDays, curRows, numRows,
-                printDate, dRow, tbody, daySettings, otherMonth, unselectable,
-                tempDate = new Date(),
-                today = this._daylightSavingAdjust(
-                    new Date(tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate())), // clear time
-                isRTL = this._get(inst, "isRTL"),
-                showButtonPanel = this._get(inst, "showButtonPanel"),
-                hideIfNoPrevNext = this._get(inst, "hideIfNoPrevNext"),
-                navigationAsDateFormat = this._get(inst, "navigationAsDateFormat"),
-                numMonths = this._getNumberOfMonths(inst),
-                showCurrentAtPos = this._get(inst, "showCurrentAtPos"),
-                stepMonths = this._get(inst, "stepMonths"),
-                isMultiMonth = (numMonths[0] !== 1 || numMonths[1] !== 1),
-                currentDate = this._daylightSavingAdjust((!inst.currentDay ? new Date(9999, 9, 9) :
-                    new Date(inst.currentYear, inst.currentMonth, inst.currentDay))),
-                minDate = this._getMinMaxDate(inst, "min"),
-                maxDate = this._getMinMaxDate(inst, "max"),
-                drawMonth = inst.drawMonth - showCurrentAtPos,
-                drawYear = inst.drawYear;
+              controls, buttonPanel, firstDay, showWeek, dayNames, dayNamesMin,
+              monthNames, monthNamesShort, beforeShowDay, showOtherMonths,
+              selectOtherMonths, defaultDate, html, dow, row, group, col, selectedDate,
+              cornerClass, calender, thead, day, daysInMonth, leadDays, curRows, numRows,
+              printDate, dRow, tbody, daySettings, otherMonth, unselectable,
+              tempDate = new Date(),
+              today = this._daylightSavingAdjust(
+                new Date(tempDate.getFullYear(), tempDate.getMonth(), tempDate.getDate())), // clear time
+              isRTL = this._get(inst, "isRTL"),
+              showButtonPanel = this._get(inst, "showButtonPanel"),
+              hideIfNoPrevNext = this._get(inst, "hideIfNoPrevNext"),
+              navigationAsDateFormat = this._get(inst, "navigationAsDateFormat"),
+              numMonths = this._getNumberOfMonths(inst),
+              showCurrentAtPos = this._get(inst, "showCurrentAtPos"),
+              stepMonths = this._get(inst, "stepMonths"),
+              isMultiMonth = (numMonths[0] !== 1 || numMonths[1] !== 1),
+              currentDate = this._daylightSavingAdjust((!inst.currentDay ? new Date(9999, 9, 9) :
+                new Date(inst.currentYear, inst.currentMonth, inst.currentDay))),
+              minDate = this._getMinMaxDate(inst, "min"),
+              maxDate = this._getMinMaxDate(inst, "max"),
+              drawMonth = inst.drawMonth - showCurrentAtPos,
+              drawYear = inst.drawYear;
 
             if (drawMonth < 0) {
                 drawMonth += 12;
@@ -5847,7 +5859,7 @@
             }
             if (maxDate) {
                 maxDraw = this._daylightSavingAdjust(new Date(maxDate.getFullYear(),
-                    maxDate.getMonth() - (numMonths[0] * numMonths[1]) + 1, maxDate.getDate()));
+                  maxDate.getMonth() - (numMonths[0] * numMonths[1]) + 1, maxDate.getDate()));
                 maxDraw = (minDate && maxDraw < minDate ? minDate : maxDraw);
                 while (this._daylightSavingAdjust(new Date(drawYear, drawMonth, 1)) > maxDraw) {
                     drawMonth--;
@@ -5862,35 +5874,35 @@
 
             prevText = this._get(inst, "prevText");
             prevText = (!navigationAsDateFormat ? prevText : this.formatDate(prevText,
-                this._daylightSavingAdjust(new Date(drawYear, drawMonth - stepMonths, 1)),
-                this._getFormatConfig(inst)));
+              this._daylightSavingAdjust(new Date(drawYear, drawMonth - stepMonths, 1)),
+              this._getFormatConfig(inst)));
 
             prev = (this._canAdjustMonth(inst, -1, drawYear, drawMonth) ?
-                "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click'" +
-                " title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w") + "'>" + prevText + "</span></a>" :
-                (hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='"+ prevText +"'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w") + "'>" + prevText + "</span></a>"));
+              "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click'" +
+              " title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "e" : "w") + "'>" + prevText + "</span></a>" :
+              (hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "e" : "w") + "'>" + prevText + "</span></a>"));
 
             nextText = this._get(inst, "nextText");
             nextText = (!navigationAsDateFormat ? nextText : this.formatDate(nextText,
-                this._daylightSavingAdjust(new Date(drawYear, drawMonth + stepMonths, 1)),
-                this._getFormatConfig(inst)));
+              this._daylightSavingAdjust(new Date(drawYear, drawMonth + stepMonths, 1)),
+              this._getFormatConfig(inst)));
 
             next = (this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
-                "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click'" +
-                " title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "w" : "e") + "'>" + nextText + "</span></a>" :
-                (hideIfNoPrevNext ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='"+ nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "w" : "e") + "'>" + nextText + "</span></a>"));
+              "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click'" +
+              " title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "w" : "e") + "'>" + nextText + "</span></a>" :
+              (hideIfNoPrevNext ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "w" : "e") + "'>" + nextText + "</span></a>"));
 
             currentText = this._get(inst, "currentText");
             gotoDate = (this._get(inst, "gotoCurrent") && inst.currentDay ? currentDate : today);
             currentText = (!navigationAsDateFormat ? currentText :
-                this.formatDate(currentText, gotoDate, this._getFormatConfig(inst)));
+              this.formatDate(currentText, gotoDate, this._getFormatConfig(inst)));
 
             controls = (!inst.inline ? "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" +
-                this._get(inst, "closeText") + "</button>" : "");
+              this._get(inst, "closeText") + "</button>" : "");
 
             buttonPanel = (showButtonPanel) ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + (isRTL ? controls : "") +
-                (this._isInRange(inst, gotoDate) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'" +
-                    ">" + currentText + "</button>" : "") + (isRTL ? "" : controls) + "</div>" : "";
+              (this._isInRange(inst, gotoDate) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'" +
+                ">" + currentText + "</button>" : "") + (isRTL ? "" : controls) + "</div>" : "";
 
             firstDay = parseInt(this._get(inst, "firstDay"),10);
             firstDay = (isNaN(firstDay) ? 0 : firstDay);
@@ -5927,17 +5939,17 @@
                         calender += "'>";
                     }
                     calender += "<div class='ui-datepicker-header ui-widget-header ui-helper-clearfix" + cornerClass + "'>" +
-                        (/all|left/.test(cornerClass) && row === 0 ? (isRTL ? next : prev) : "") +
-                        (/all|right/.test(cornerClass) && row === 0 ? (isRTL ? prev : next) : "") +
-                        this._generateMonthYearHeader(inst, drawMonth, drawYear, minDate, maxDate,
-                            row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
-                        "</div><table class='ui-datepicker-calendar'><thead>" +
-                        "<tr>";
+                      (/all|left/.test(cornerClass) && row === 0 ? (isRTL ? next : prev) : "") +
+                      (/all|right/.test(cornerClass) && row === 0 ? (isRTL ? prev : next) : "") +
+                      this._generateMonthYearHeader(inst, drawMonth, drawYear, minDate, maxDate,
+                        row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
+                      "</div><table class='ui-datepicker-calendar'><thead>" +
+                      "<tr>";
                     thead = (showWeek ? "<th class='ui-datepicker-week-col'>" + this._get(inst, "weekHeader") + "</th>" : "");
                     for (dow = 0; dow < 7; dow++) { // days of the week
                         day = (dow + firstDay) % 7;
                         thead += "<th scope='col'" + ((dow + firstDay + 6) % 7 >= 5 ? " class='ui-datepicker-week-end'" : "") + ">" +
-                            "<span title='" + dayNames[day] + "'>" + dayNamesMin[day] + "</span></th>";
+                          "<span title='" + dayNames[day] + "'>" + dayNamesMin[day] + "</span></th>";
                     }
                     calender += thead + "</tr></thead><tbody>";
                     daysInMonth = this._getDaysInMonth(drawYear, drawMonth);
@@ -5952,32 +5964,32 @@
                     for (dRow = 0; dRow < numRows; dRow++) { // create date picker rows
                         calender += "<tr>";
                         tbody = (!showWeek ? "" : "<td class='ui-datepicker-week-col'>" +
-                            this._get(inst, "calculateWeek")(printDate) + "</td>");
+                          this._get(inst, "calculateWeek")(printDate) + "</td>");
                         for (dow = 0; dow < 7; dow++) { // create date picker days
                             daySettings = (beforeShowDay ?
-                                beforeShowDay.apply((inst.input ? inst.input[0] : null), [printDate]) : [true, ""]);
+                              beforeShowDay.apply((inst.input ? inst.input[0] : null), [printDate]) : [true, ""]);
                             otherMonth = (printDate.getMonth() !== drawMonth);
                             unselectable = (otherMonth && !selectOtherMonths) || !daySettings[0] ||
-                                (minDate && printDate < minDate) || (maxDate && printDate > maxDate);
+                              (minDate && printDate < minDate) || (maxDate && printDate > maxDate);
                             tbody += "<td class='" +
-                                ((dow + firstDay + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + // highlight weekends
-                                (otherMonth ? " ui-datepicker-other-month" : "") + // highlight days from other months
-                                ((printDate.getTime() === selectedDate.getTime() && drawMonth === inst.selectedMonth && inst._keyEvent) || // user pressed key
-                                (defaultDate.getTime() === printDate.getTime() && defaultDate.getTime() === selectedDate.getTime()) ?
-                                    // or defaultDate is current printedDate and defaultDate is selectedDate
-                                    " " + this._dayOverClass : "") + // highlight selected day
-                                (unselectable ? " " + this._unselectableClass + " ui-state-disabled": "") +  // highlight unselectable days
-                                (otherMonth && !showOtherMonths ? "" : " " + daySettings[1] + // highlight custom dates
-                                    (printDate.getTime() === currentDate.getTime() ? " " + this._currentClass : "") + // highlight selected day
-                                    (printDate.getTime() === today.getTime() ? " ui-datepicker-today" : "")) + "'" + // highlight today (if different)
-                                ((!otherMonth || showOtherMonths) && daySettings[2] ? " title='" + daySettings[2].replace(/'/g, "&#39;") + "'" : "") + // cell title
-                                (unselectable ? "" : " data-handler='selectDay' data-event='click' data-month='" + printDate.getMonth() + "' data-year='" + printDate.getFullYear() + "'") + ">" + // actions
-                                (otherMonth && !showOtherMonths ? "&#xa0;" : // display for other months
-                                    (unselectable ? "<span class='ui-state-default'>" + printDate.getDate() + "</span>" : "<a class='ui-state-default" +
-                                        (printDate.getTime() === today.getTime() ? " ui-state-highlight" : "") +
-                                        (printDate.getTime() === currentDate.getTime() ? " ui-state-active" : "") + // highlight selected day
-                                        (otherMonth ? " ui-priority-secondary" : "") + // distinguish dates from other months
-                                        "' href='#'>" + printDate.getDate() + "</a>")) + "</td>"; // display selectable date
+                              ((dow + firstDay + 6) % 7 >= 5 ? " ui-datepicker-week-end" : "") + // highlight weekends
+                              (otherMonth ? " ui-datepicker-other-month" : "") + // highlight days from other months
+                              ((printDate.getTime() === selectedDate.getTime() && drawMonth === inst.selectedMonth && inst._keyEvent) || // user pressed key
+                              (defaultDate.getTime() === printDate.getTime() && defaultDate.getTime() === selectedDate.getTime()) ?
+                                // or defaultDate is current printedDate and defaultDate is selectedDate
+                                " " + this._dayOverClass : "") + // highlight selected day
+                              (unselectable ? " " + this._unselectableClass + " ui-state-disabled" : "") +  // highlight unselectable days
+                              (otherMonth && !showOtherMonths ? "" : " " + daySettings[1] + // highlight custom dates
+                                (printDate.getTime() === currentDate.getTime() ? " " + this._currentClass : "") + // highlight selected day
+                                (printDate.getTime() === today.getTime() ? " ui-datepicker-today" : "")) + "'" + // highlight today (if different)
+                              ((!otherMonth || showOtherMonths) && daySettings[2] ? " title='" + daySettings[2].replace(/'/g, "&#39;") + "'" : "") + // cell title
+                              (unselectable ? "" : " data-handler='selectDay' data-event='click' data-month='" + printDate.getMonth() + "' data-year='" + printDate.getFullYear() + "'") + ">" + // actions
+                              (otherMonth && !showOtherMonths ? "&#xa0;" : // display for other months
+                                (unselectable ? "<span class='ui-state-default'>" + printDate.getDate() + "</span>" : "<a class='ui-state-default" +
+                                  (printDate.getTime() === today.getTime() ? " ui-state-highlight" : "") +
+                                  (printDate.getTime() === currentDate.getTime() ? " ui-state-active" : "") + // highlight selected day
+                                  (otherMonth ? " ui-priority-secondary" : "") + // distinguish dates from other months
+                                  "' href='#'>" + printDate.getDate() + "</a>")) + "</td>"; // display selectable date
                             printDate.setDate(printDate.getDate() + 1);
                             printDate = this._daylightSavingAdjust(printDate);
                         }
@@ -5989,7 +6001,7 @@
                         drawYear++;
                     }
                     calender += "</tbody></table>" + (isMultiMonth ? "</div>" +
-                        ((numMonths[0] > 0 && col === numMonths[1]-1) ? "<div class='ui-datepicker-row-break'></div>" : "") : "");
+                      ((numMonths[0] > 0 && col === numMonths[1] - 1) ? "<div class='ui-datepicker-row-break'></div>" : "") : "");
                     group += calender;
                 }
                 html += group;
@@ -6004,11 +6016,11 @@
                                            secondary, monthNames, monthNamesShort) {
 
             var inMinYear, inMaxYear, month, years, thisYear, determineYear, year, endYear,
-                changeMonth = this._get(inst, "changeMonth"),
-                changeYear = this._get(inst, "changeYear"),
-                showMonthAfterYear = this._get(inst, "showMonthAfterYear"),
-                html = "<div class='ui-datepicker-title'>",
-                monthHtml = "";
+              changeMonth = this._get(inst, "changeMonth"),
+              changeYear = this._get(inst, "changeYear"),
+              showMonthAfterYear = this._get(inst, "showMonthAfterYear"),
+              html = "<div class='ui-datepicker-title'>",
+              monthHtml = "";
 
             // month selection
             if (secondary || !changeMonth) {
@@ -6020,8 +6032,8 @@
                 for ( month = 0; month < 12; month++) {
                     if ((!inMinYear || month >= minDate.getMonth()) && (!inMaxYear || month <= maxDate.getMonth())) {
                         monthHtml += "<option value='" + month + "'" +
-                            (month === drawMonth ? " selected='selected'" : "") +
-                            ">" + monthNamesShort[month] + "</option>";
+                          (month === drawMonth ? " selected='selected'" : "") +
+                          ">" + monthNamesShort[month] + "</option>";
                     }
                 }
                 monthHtml += "</select>";
@@ -6042,8 +6054,8 @@
                     thisYear = new Date().getFullYear();
                     determineYear = function(value) {
                         var year = (value.match(/c[+\-].*/) ? drawYear + parseInt(value.substring(1), 10) :
-                            (value.match(/[+\-].*/) ? thisYear + parseInt(value, 10) :
-                                parseInt(value, 10)));
+                          (value.match(/[+\-].*/) ? thisYear + parseInt(value, 10) :
+                            parseInt(value, 10)));
                         return (isNaN(year) ? thisYear : year);
                     };
                     year = determineYear(years[0]);
@@ -6053,8 +6065,8 @@
                     inst.yearshtml += "<select class='ui-datepicker-year' data-handler='selectYear' data-event='change'>";
                     for (; year <= endYear; year++) {
                         inst.yearshtml += "<option value='" + year + "'" +
-                            (year === drawYear ? " selected='selected'" : "") +
-                            ">" + year + "</option>";
+                          (year === drawYear ? " selected='selected'" : "") +
+                          ">" + year + "</option>";
                     }
                     inst.yearshtml += "</select>";
 
@@ -6074,9 +6086,9 @@
         /* Adjust one of the date sub-fields. */
         _adjustInstDate: function(inst, offset, period) {
             var year = inst.drawYear + (period === "Y" ? offset : 0),
-                month = inst.drawMonth + (period === "M" ? offset : 0),
-                day = Math.min(inst.selectedDay, this._getDaysInMonth(year, month)) + (period === "D" ? offset : 0),
-                date = this._restrictMinMax(inst, this._daylightSavingAdjust(new Date(year, month, day)));
+              month = inst.drawMonth + (period === "M" ? offset : 0),
+              day = Math.min(inst.selectedDay, this._getDaysInMonth(year, month)) + (period === "D" ? offset : 0),
+              date = this._restrictMinMax(inst, this._daylightSavingAdjust(new Date(year, month, day)));
 
             inst.selectedDay = date.getDate();
             inst.drawMonth = inst.selectedMonth = date.getMonth();
@@ -6089,8 +6101,8 @@
         /* Ensure a date is within any min/max bounds. */
         _restrictMinMax: function(inst, date) {
             var minDate = this._getMinMaxDate(inst, "min"),
-                maxDate = this._getMinMaxDate(inst, "max"),
-                newDate = (minDate && date < minDate ? minDate : date);
+              maxDate = this._getMinMaxDate(inst, "max"),
+              newDate = (minDate && date < minDate ? minDate : date);
             return (maxDate && newDate > maxDate ? maxDate : newDate);
         },
 
@@ -6099,7 +6111,7 @@
             var onChange = this._get(inst, "onChangeMonthYear");
             if (onChange) {
                 onChange.apply((inst.input ? inst.input[0] : null),
-                    [inst.selectedYear, inst.selectedMonth + 1, inst]);
+                  [inst.selectedYear, inst.selectedMonth + 1, inst]);
             }
         },
 
@@ -6127,8 +6139,8 @@
         /* Determines if we should allow a "next/prev" month display change. */
         _canAdjustMonth: function(inst, offset, curYear, curMonth) {
             var numMonths = this._getNumberOfMonths(inst),
-                date = this._daylightSavingAdjust(new Date(curYear,
-                    curMonth + (offset < 0 ? offset : numMonths[0] * numMonths[1]), 1));
+              date = this._daylightSavingAdjust(new Date(curYear,
+                curMonth + (offset < 0 ? offset : numMonths[0] * numMonths[1]), 1));
 
             if (offset < 0) {
                 date.setDate(this._getDaysInMonth(date.getFullYear(), date.getMonth()));
@@ -6139,11 +6151,11 @@
         /* Is the given date in the accepted range? */
         _isInRange: function(inst, date) {
             var yearSplit, currentYear,
-                minDate = this._getMinMaxDate(inst, "min"),
-                maxDate = this._getMinMaxDate(inst, "max"),
-                minYear = null,
-                maxYear = null,
-                years = this._get(inst, "yearRange");
+              minDate = this._getMinMaxDate(inst, "min"),
+              maxDate = this._getMinMaxDate(inst, "max"),
+              minYear = null,
+              maxYear = null,
+              years = this._get(inst, "yearRange");
             if (years){
                 yearSplit = years.split(":");
                 currentYear = new Date().getFullYear();
@@ -6158,16 +6170,16 @@
             }
 
             return ((!minDate || date.getTime() >= minDate.getTime()) &&
-                (!maxDate || date.getTime() <= maxDate.getTime()) &&
-                (!minYear || date.getFullYear() >= minYear) &&
-                (!maxYear || date.getFullYear() <= maxYear));
+              (!maxDate || date.getTime() <= maxDate.getTime()) &&
+              (!minYear || date.getFullYear() >= minYear) &&
+              (!maxYear || date.getFullYear() <= maxYear));
         },
 
         /* Provide the configuration settings for formatting/parsing. */
         _getFormatConfig: function(inst) {
             var shortYearCutoff = this._get(inst, "shortYearCutoff");
             shortYearCutoff = (typeof shortYearCutoff !== "string" ? shortYearCutoff :
-                new Date().getFullYear() % 100 + parseInt(shortYearCutoff, 10));
+              new Date().getFullYear() % 100 + parseInt(shortYearCutoff, 10));
             return {shortYearCutoff: shortYearCutoff,
                 dayNamesShort: this._get(inst, "dayNamesShort"), dayNames: this._get(inst, "dayNames"),
                 monthNamesShort: this._get(inst, "monthNamesShort"), monthNames: this._get(inst, "monthNames")};
@@ -6181,8 +6193,8 @@
                 inst.currentYear = inst.selectedYear;
             }
             var date = (day ? (typeof day === "object" ? day :
-                this._daylightSavingAdjust(new Date(year, month, day))) :
-                this._daylightSavingAdjust(new Date(inst.currentYear, inst.currentMonth, inst.currentDay)));
+              this._daylightSavingAdjust(new Date(year, month, day))) :
+              this._daylightSavingAdjust(new Date(inst.currentYear, inst.currentMonth, inst.currentDay)));
             return this.formatDate(this._get(inst, "dateFormat"), date, this._getFormatConfig(inst));
         }
     });
@@ -6203,7 +6215,7 @@
                 $(this).removeClass("ui-datepicker-next-hover");
             }
         })
-            .delegate( selector, "mouseover", datepicker_handleMouseover );
+          .delegate(selector, "mouseover", datepicker_handleMouseover);
     }
 
     function datepicker_handleMouseover() {
@@ -6263,9 +6275,8 @@
         }
         return this.each(function() {
             typeof options === "string" ?
-                $.datepicker["_" + options + "Datepicker"].
-                apply($.datepicker, [this].concat(otherArgs)) :
-                $.datepicker._attachDatepicker(this, options);
+              $.datepicker["_" + options + "Datepicker"].apply($.datepicker, [this].concat(otherArgs)) :
+              $.datepicker._attachDatepicker(this, options);
         });
     };
 
@@ -6372,10 +6383,10 @@
             this._createWrapper();
 
             this.element
-                .show()
-                .removeAttr( "title" )
-                .addClass( "ui-dialog-content ui-widget-content" )
-                .appendTo( this.uiDialog );
+              .show()
+              .removeAttr("title")
+              .addClass("ui-dialog-content ui-widget-content")
+              .appendTo(this.uiDialog);
 
             this._createTitlebar();
             this._createButtonPane();
@@ -6408,17 +6419,17 @@
 
         _destroy: function() {
             var next,
-                originalPosition = this.originalPosition;
+              originalPosition = this.originalPosition;
 
             this._untrackInstance();
             this._destroyOverlay();
 
             this.element
-                .removeUniqueId()
-                .removeClass( "ui-dialog-content ui-widget-content" )
-                .css( this.originalCss )
-                // Without detaching first, the following becomes really slow
-                .detach();
+              .removeUniqueId()
+              .removeClass("ui-dialog-content ui-widget-content")
+              .css(this.originalCss)
+              // Without detaching first, the following becomes really slow
+              .detach();
 
             this.uiDialog.stop( true, true ).remove();
 
@@ -6444,7 +6455,7 @@
 
         close: function( event ) {
             var activeElement,
-                that = this;
+              that = this;
 
             if ( !this._isOpen || this._trigger( "beforeClose", event ) === false ) {
                 return;
@@ -6489,10 +6500,10 @@
 
         _moveToTop: function( event, silent ) {
             var moved = false,
-                zIndices = this.uiDialog.siblings( ".ui-front:visible" ).map(function() {
-                    return +$( this ).css( "z-index" );
-                }).get(),
-                zIndexMax = Math.max.apply( null, zIndices );
+              zIndices = this.uiDialog.siblings(".ui-front:visible").map(function () {
+                return +$(this).css("z-index");
+              }).get(),
+              zIndexMax = Math.max.apply(null, zIndices);
 
             if ( zIndexMax >= +this.uiDialog.css( "z-index" ) ) {
                 this.uiDialog.css( "z-index", zIndexMax + 1 );
@@ -6572,8 +6583,8 @@
         _keepFocus: function( event ) {
             function checkFocus() {
                 var activeElement = this.document[0].activeElement,
-                    isActive = this.uiDialog[0] === activeElement ||
-                        $.contains( this.uiDialog[0], activeElement );
+                  isActive = this.uiDialog[0] === activeElement ||
+                    $.contains(this.uiDialog[0], activeElement);
                 if ( !isActive ) {
                     this._focusTabbable();
                 }
@@ -6588,20 +6599,20 @@
 
         _createWrapper: function() {
             this.uiDialog = $("<div>")
-                .addClass( "ui-dialog ui-widget ui-widget-content ui-corner-all ui-front " +
-                    this.options.dialogClass )
-                .hide()
-                .attr({
-                    // Setting tabIndex makes the div focusable
-                    tabIndex: -1,
-                    role: "dialog"
-                })
-                .appendTo( this._appendTo() );
+              .addClass("ui-dialog ui-widget ui-widget-content ui-corner-all ui-front " +
+                this.options.dialogClass)
+              .hide()
+              .attr({
+                // Setting tabIndex makes the div focusable
+                tabIndex: -1,
+                role: "dialog"
+              })
+              .appendTo(this._appendTo());
 
             this._on( this.uiDialog, {
                 keydown: function( event ) {
                     if ( this.options.closeOnEscape && !event.isDefaultPrevented() && event.keyCode &&
-                        event.keyCode === $.ui.keyCode.ESCAPE ) {
+                      event.keyCode === $.ui.keyCode.ESCAPE) {
                         event.preventDefault();
                         this.close( event );
                         return;
@@ -6612,8 +6623,8 @@
                         return;
                     }
                     var tabbables = this.uiDialog.find( ":tabbable" ),
-                        first = tabbables.filter( ":first" ),
-                        last = tabbables.filter( ":last" );
+                      first = tabbables.filter(":first"),
+                      last = tabbables.filter(":last");
 
                     if ( ( event.target === last[0] || event.target === this.uiDialog[0] ) && !event.shiftKey ) {
                         this._delay(function() {
@@ -6648,8 +6659,8 @@
             var uiDialogTitle;
 
             this.uiDialogTitlebar = $( "<div>" )
-                .addClass( "ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" )
-                .prependTo( this.uiDialog );
+              .addClass("ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix")
+              .prependTo(this.uiDialog);
             this._on( this.uiDialogTitlebar, {
                 mousedown: function( event ) {
                     // Don't prevent click on close button (#8838)
@@ -6666,15 +6677,15 @@
             // Use type="button" to prevent enter keypresses in textboxes from closing the
             // dialog in IE (#9312)
             this.uiDialogTitlebarClose = $( "<button type='button'></button>" )
-                .button({
-                    label: this.options.closeText,
-                    icons: {
-                        primary: "ui-icon-closethick"
-                    },
-                    text: false
-                })
-                .addClass( "ui-dialog-titlebar-close" )
-                .appendTo( this.uiDialogTitlebar );
+              .button({
+                label: this.options.closeText,
+                icons: {
+                  primary: "ui-icon-closethick"
+                },
+                text: false
+              })
+              .addClass("ui-dialog-titlebar-close")
+              .appendTo(this.uiDialogTitlebar);
             this._on( this.uiDialogTitlebarClose, {
                 click: function( event ) {
                     event.preventDefault();
@@ -6683,9 +6694,9 @@
             });
 
             uiDialogTitle = $( "<span>" )
-                .uniqueId()
-                .addClass( "ui-dialog-title" )
-                .prependTo( this.uiDialogTitlebar );
+              .uniqueId()
+              .addClass("ui-dialog-title")
+              .prependTo(this.uiDialogTitlebar);
             this._title( uiDialogTitle );
 
             this.uiDialog.attr({
@@ -6702,18 +6713,18 @@
 
         _createButtonPane: function() {
             this.uiDialogButtonPane = $( "<div>" )
-                .addClass( "ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" );
+              .addClass("ui-dialog-buttonpane ui-widget-content ui-helper-clearfix");
 
             this.uiButtonSet = $( "<div>" )
-                .addClass( "ui-dialog-buttonset" )
-                .appendTo( this.uiDialogButtonPane );
+              .addClass("ui-dialog-buttonset")
+              .appendTo(this.uiDialogButtonPane);
 
             this._createButtons();
         },
 
         _createButtons: function() {
             var that = this,
-                buttons = this.options.buttons;
+              buttons = this.options.buttons;
 
             // if we already have a button pane, remove it
             this.uiDialogButtonPane.remove();
@@ -6727,8 +6738,8 @@
             $.each( buttons, function( name, props ) {
                 var click, buttonOptions;
                 props = $.isFunction( props ) ?
-                    { click: props, text: name } :
-                    props;
+                  {click: props, text: name} :
+                  props;
                 // Default to a non-submitting button
                 props = $.extend( { type: "button" }, props );
                 // Change the context for the click callback to be the main element
@@ -6743,8 +6754,8 @@
                 delete props.icons;
                 delete props.showText;
                 $( "<button></button>", props )
-                    .button( buttonOptions )
-                    .appendTo( that.uiButtonSet );
+                  .button(buttonOptions)
+                  .appendTo(that.uiButtonSet);
             });
             this.uiDialog.addClass( "ui-dialog-buttons" );
             this.uiDialogButtonPane.appendTo( this.uiDialog );
@@ -6752,7 +6763,7 @@
 
         _makeDraggable: function() {
             var that = this,
-                options = this.options;
+              options = this.options;
 
             function filteredUi( ui ) {
                 return {
@@ -6775,12 +6786,12 @@
                 },
                 stop: function( event, ui ) {
                     var left = ui.offset.left - that.document.scrollLeft(),
-                        top = ui.offset.top - that.document.scrollTop();
+                      top = ui.offset.top - that.document.scrollTop();
 
                     options.position = {
                         my: "left top",
                         at: "left" + (left >= 0 ? "+" : "") + left + " " +
-                            "top" + (top >= 0 ? "+" : "") + top,
+                          "top" + (top >= 0 ? "+" : "") + top,
                         of: that.window
                     };
                     $( this ).removeClass( "ui-dialog-dragging" );
@@ -6792,14 +6803,14 @@
 
         _makeResizable: function() {
             var that = this,
-                options = this.options,
-                handles = options.resizable,
-                // .ui-resizable has position: relative defined in the stylesheet
-                // but dialogs have to use absolute or fixed positioning
-                position = this.uiDialog.css("position"),
-                resizeHandles = typeof handles === "string" ?
-                    handles	:
-                    "n,e,s,w,se,sw,ne,nw";
+              options = this.options,
+              handles = options.resizable,
+              // .ui-resizable has position: relative defined in the stylesheet
+              // but dialogs have to use absolute or fixed positioning
+              position = this.uiDialog.css("position"),
+              resizeHandles = typeof handles === "string" ?
+                handles :
+                "n,e,s,w,se,sw,ne,nw";
 
             function filteredUi( ui ) {
                 return {
@@ -6829,15 +6840,15 @@
                 },
                 stop: function( event, ui ) {
                     var offset = that.uiDialog.offset(),
-                        left = offset.left - that.document.scrollLeft(),
-                        top = offset.top - that.document.scrollTop();
+                      left = offset.left - that.document.scrollLeft(),
+                      top = offset.top - that.document.scrollTop();
 
                     options.height = that.uiDialog.height();
                     options.width = that.uiDialog.width();
                     options.position = {
                         my: "left top",
                         at: "left" + (left >= 0 ? "+" : "") + left + " " +
-                            "top" + (top >= 0 ? "+" : "") + top,
+                          "top" + (top >= 0 ? "+" : "") + top,
                         of: that.window
                     };
                     $( this ).removeClass( "ui-dialog-resizing" );
@@ -6845,7 +6856,7 @@
                     that._trigger( "resizeStop", event, filteredUi( ui ) );
                 }
             })
-                .css( "position", position );
+              .css("position", position);
         },
 
         _trackFocus: function() {
@@ -6864,7 +6875,7 @@
 
         _untrackInstance: function() {
             var instances = this._trackingInstances(),
-                exists = $.inArray( this, instances );
+              exists = $.inArray(this, instances);
             if ( exists !== -1 ) {
                 instances.splice( exists, 1 );
             }
@@ -6883,8 +6894,8 @@
             var options = this.options;
 
             return options.height === "auto" ?
-                options.minHeight :
-                Math.min( options.minHeight, options.height );
+              options.minHeight :
+              Math.min(options.minHeight, options.height);
         },
 
         _position: function() {
@@ -6901,8 +6912,8 @@
 
         _setOptions: function( options ) {
             var that = this,
-                resize = false,
-                resizableOptions = {};
+              resize = false,
+              resizableOptions = {};
 
             $.each( options, function( key, value ) {
                 that._setOption( key, value );
@@ -6926,12 +6937,12 @@
 
         _setOption: function( key, value ) {
             var isDraggable, isResizable,
-                uiDialog = this.uiDialog;
+              uiDialog = this.uiDialog;
 
             if ( key === "dialogClass" ) {
                 uiDialog
-                    .removeClass( this.options.dialogClass )
-                    .addClass( value );
+                  .removeClass(this.options.dialogClass)
+                  .addClass(value);
             }
 
             if ( key === "disabled" ) {
@@ -6997,7 +7008,7 @@
             // If the user has resized the dialog, the .ui-dialog and .ui-dialog-content
             // divs will both have width and height set, so we need to reset them
             var nonContentHeight, minContentHeight, maxContentHeight,
-                options = this.options;
+              options = this.options;
 
             // Reset content sizing
             this.element.show().css({
@@ -7017,11 +7028,11 @@
                 height: "auto",
                 width: options.width
             })
-                .outerHeight();
+              .outerHeight();
             minContentHeight = Math.max( 0, options.minHeight - nonContentHeight );
             maxContentHeight = typeof options.maxHeight === "number" ?
-                Math.max( 0, options.maxHeight - nonContentHeight ) :
-                "none";
+              Math.max(0, options.maxHeight - nonContentHeight) :
+              "none";
 
             if ( options.height === "auto" ) {
                 this.element.css({
@@ -7043,13 +7054,13 @@
                 var iframe = $( this );
 
                 return $( "<div>" )
-                    .css({
-                        position: "absolute",
-                        width: iframe.outerWidth(),
-                        height: iframe.outerHeight()
-                    })
-                    .appendTo( iframe.parent() )
-                    .offset( iframe.offset() )[0];
+                  .css({
+                    position: "absolute",
+                    width: iframe.outerWidth(),
+                    height: iframe.outerHeight()
+                  })
+                  .appendTo(iframe.parent())
+                  .offset(iframe.offset())[0];
             });
         },
 
@@ -7102,13 +7113,13 @@
             }
 
             this.overlay = $( "<div>" )
-                .addClass( "ui-widget-overlay ui-front" )
-                .appendTo( this._appendTo() );
+              .addClass("ui-widget-overlay ui-front")
+              .appendTo(this._appendTo());
             this._on( this.overlay, {
                 mousedown: "_keepFocus"
             });
             this.document.data( "ui-dialog-overlays",
-                (this.document.data( "ui-dialog-overlays" ) || 0) + 1 );
+              (this.document.data("ui-dialog-overlays") || 0) + 1);
         },
 
         _destroyOverlay: function() {
@@ -7121,8 +7132,8 @@
 
                 if ( !overlays ) {
                     this.document
-                        .unbind( "focusin" )
-                        .removeData( "ui-dialog-overlays" );
+                      .unbind("focusin")
+                      .removeData("ui-dialog-overlays");
                 } else {
                     this.document.data( "ui-dialog-overlays", overlays );
                 }
@@ -7451,3 +7462,1555 @@
     };
 
 })(jQuery);
+
+
+/*
+ * jQuery UI Timepicker
+ *
+ * Copyright 2010-2013, Francois Gelinas
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://fgelinas.com/code/timepicker
+ *
+ * Depends:
+ *	jquery.ui.core.js
+ *  jquery.ui.position.js (only if position settings are used)
+ *
+ * Change version 0.1.0 - moved the t-rex up here
+ *
+                                                  ____
+       ___                                      .-~. /_"-._
+      `-._~-.                                  / /_ "~o\  :Y
+          \  \                                / : \~x.  ` ')
+           ]  Y                              /  |  Y< ~-.__j
+          /   !                        _.--~T : l  l<  /.-~
+         /   /                 ____.--~ .   ` l /~\ \<|Y
+        /   /             .-~~"        /| .    ',-~\ \L|
+       /   /             /     .^   \ Y~Y \.^>/l_   "--'
+      /   Y           .-"(  .  l__  j_j l_/ /~_.-~    .
+     Y    l          /    \  )    ~~~." / `/"~ / \.__/l_
+     |     \     _.-"      ~-{__     l  :  l._Z~-.___.--~
+     |      ~---~           /   ~~"---\_  ' __[>
+     l  .                _.^   ___     _>-y~
+      \  \     .      .-~   .-~   ~>--"  /
+       \  ~---"            /     ./  _.-'
+        "-.,_____.,_  _.--~\     _.-~
+                    ~~     (   _}       -Row
+                           `. ~(
+                             )  \
+                            /,`--'~\--'~\
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                             ->T-Rex<-
+*/
+
+(function ($) {
+
+  $.extend($.ui, {timepicker: {version: "0.3.3"}});
+
+  var PROP_NAME = 'timepicker',
+    tpuuid = new Date().getTime();
+
+  /* Time picker manager.
+  Use the singleton instance of this class, $.timepicker, to interact with the time picker.
+  Settings for (groups of) time pickers are maintained in an instance object,
+  allowing multiple different settings on the same page. */
+
+  function Timepicker() {
+    this.debug = true; // Change this to true to start debugging
+    this._curInst = null; // The current instance in use
+    this._disabledInputs = []; // List of time picker inputs that have been disabled
+    this._timepickerShowing = false; // True if the popup picker is showing , false if not
+    this._inDialog = false; // True if showing within a "dialog", false if not
+    this._dialogClass = 'ui-timepicker-dialog'; // The name of the dialog marker class
+    this._mainDivId = 'ui-timepicker-div'; // The ID of the main timepicker division
+    this._inlineClass = 'ui-timepicker-inline'; // The name of the inline marker class
+    this._currentClass = 'ui-timepicker-current'; // The name of the current hour / minutes marker class
+    this._dayOverClass = 'ui-timepicker-days-cell-over'; // The name of the day hover marker class
+
+    this.regional = []; // Available regional settings, indexed by language code
+    this.regional[''] = { // Default regional settings
+      hourText: 'Hour',           // Display text for hours section
+      minuteText: 'Minute',       // Display text for minutes link
+      amPmText: ['AM', 'PM'],     // Display text for AM PM
+      closeButtonText: 'Done',        // Text for the confirmation button (ok button)
+      nowButtonText: 'Now',           // Text for the now button
+      deselectButtonText: 'Deselect'  // Text for the deselect button
+    };
+    this._defaults = { // Global defaults for all the time picker instances
+      showOn: 'focus',    // 'focus' for popup on focus,
+                          // 'button' for trigger button, or 'both' for either (not yet implemented)
+      button: null,                   // 'button' element that will trigger the timepicker
+      showAnim: 'fadeIn',             // Name of jQuery animation for popup
+      showOptions: {},                // Options for enhanced animations
+      appendText: '',                 // Display text following the input box, e.g. showing the format
+
+      beforeShow: null,               // Define a callback function executed before the timepicker is shown
+      onSelect: null,                 // Define a callback function when a hour / minutes is selected
+      onClose: null,                  // Define a callback function when the timepicker is closed
+
+      timeSeparator: ':',             // The character to use to separate hours and minutes.
+      periodSeparator: ' ',           // The character to use to separate the time from the time period.
+      showPeriod: false,              // Define whether or not to show AM/PM with selected time
+      showPeriodLabels: true,         // Show the AM/PM labels on the left of the time picker
+      showLeadingZero: true,          // Define whether or not to show a leading zero for hours < 10. [true/false]
+      showMinutesLeadingZero: true,   // Define whether or not to show a leading zero for minutes < 10.
+      altField: '',                   // Selector for an alternate field to store selected time into
+      defaultTime: 'now',             // Used as default time when input field is empty or for inline timePicker
+                                      // (set to 'now' for the current time, '' for no highlighted time)
+      myPosition: 'left top',         // Position of the dialog relative to the input.
+                                      // see the position utility for more info : http://jqueryui.com/demos/position/
+      atPosition: 'left bottom',      // Position of the input element to match
+                                      // Note : if the position utility is not loaded, the timepicker will attach left top to left bottom
+      //NEW: 2011-02-03
+      onHourShow: null,			    // callback for enabling / disabling on selectable hours  ex : function(hour) { return true; }
+      onMinuteShow: null,             // callback for enabling / disabling on time selection  ex : function(hour,minute) { return true; }
+
+      hours: {
+        starts: 0,                  // first displayed hour
+        ends: 23                    // last displayed hour
+      },
+      minutes: {
+        starts: 0,                  // first displayed minute
+        ends: 55,                   // last displayed minute
+        interval: 5,                // interval of displayed minutes
+        manual: []                  // optional extra manual entries for minutes
+      },
+      rows: 4,                        // number of rows for the input tables, minimum 2, makes more sense if you use multiple of 2
+      // 2011-08-05 0.2.4
+      showHours: true,                // display the hours section of the dialog
+      showMinutes: true,              // display the minute section of the dialog
+      optionalMinutes: false,         // optionally parse inputs of whole hours with minutes omitted
+
+      // buttons
+      showCloseButton: false,         // shows an OK button to confirm the edit
+      showNowButton: false,           // Shows the 'now' button
+      showDeselectButton: false,       // Shows the deselect time button
+
+      maxTime: {
+        hour: null,
+        minute: null
+      },
+      minTime: {
+        hour: null,
+        minute: null
+      }
+
+    };
+    $.extend(this._defaults, this.regional['']);
+
+    this.tpDiv = $('<div id="' + this._mainDivId + '" class="ui-timepicker ui-widget ui-helper-clearfix ui-corner-all " style="display: none"></div>');
+  }
+
+  $.extend(Timepicker.prototype, {
+    /* Class name added to elements to indicate already configured with a time picker. */
+    markerClassName: 'hasTimepicker',
+
+    /* Debug logging (if enabled). */
+    log: function () {
+      if (this.debug)
+        console.log.apply('', arguments);
+    },
+
+    _widgetTimepicker: function () {
+      return this.tpDiv;
+    },
+
+    /* Override the default settings for all instances of the time picker.
+    @param  settings  object - the new settings to use as defaults (anonymous object)
+    @return the manager object */
+    setDefaults: function (settings) {
+      extendRemove(this._defaults, settings || {});
+      return this;
+    },
+
+    /* Attach the time picker to a jQuery selection.
+    @param  target    element - the target input field or division or span
+    @param  settings  object - the new settings to use for this time picker instance (anonymous) */
+    _attachTimepicker: function (target, settings) {
+      // check for settings on the control itself - in namespace 'time:'
+      var inlineSettings = null;
+      for (var attrName in this._defaults) {
+        var attrValue = target.getAttribute('time:' + attrName);
+        if (attrValue) {
+          inlineSettings = inlineSettings || {};
+          try {
+            inlineSettings[attrName] = eval(attrValue);
+          } catch (err) {
+            inlineSettings[attrName] = attrValue;
+          }
+        }
+      }
+      var nodeName = target.nodeName.toLowerCase();
+      var inline = (nodeName == 'div' || nodeName == 'span');
+
+      if (!target.id) {
+        this.uuid += 1;
+        target.id = 'tp' + this.uuid;
+      }
+      var inst = this._newInst($(target), inline);
+      inst.settings = $.extend({}, settings || {}, inlineSettings || {});
+      if (nodeName == 'input') {
+        this._connectTimepicker(target, inst);
+        // init inst.hours and inst.minutes from the input value
+        this._setTimeFromField(inst);
+      } else if (inline) {
+        this._inlineTimepicker(target, inst);
+      }
+
+
+    },
+
+    /* Create a new instance object. */
+    _newInst: function (target, inline) {
+      var id = target[0].id.replace(/([^A-Za-z0-9_-])/g, '\\\\$1'); // escape jQuery meta chars
+      return {
+        id: id, input: target, // associated target
+        inline: inline, // is timepicker inline or not :
+        tpDiv: (!inline ? this.tpDiv : // presentation div
+          $('<div class="' + this._inlineClass + ' ui-timepicker ui-widget  ui-helper-clearfix"></div>'))
+      };
+    },
+
+    /* Attach the time picker to an input field. */
+    _connectTimepicker: function (target, inst) {
+      var input = $(target);
+      inst.append = $([]);
+      inst.trigger = $([]);
+      if (input.hasClass(this.markerClassName)) {
+        return;
+      }
+      this._attachments(input, inst);
+      input.addClass(this.markerClassName).keydown(this._doKeyDown).keyup(this._doKeyUp).bind("setData.timepicker", function (event, key, value) {
+        inst.settings[key] = value;
+      }).bind("getData.timepicker", function (event, key) {
+        return this._get(inst, key);
+      });
+      $.data(target, PROP_NAME, inst);
+    },
+
+    /* Handle keystrokes. */
+    _doKeyDown: function (event) {
+      var inst = $.timepicker._getInst(event.target);
+      var handled = true;
+      inst._keyEvent = true;
+      if ($.timepicker._timepickerShowing) {
+        switch (event.keyCode) {
+          case 9:
+            $.timepicker._hideTimepicker();
+            handled = false;
+            break; // hide on tab out
+          case 13:
+            $.timepicker._updateSelectedValue(inst);
+            $.timepicker._hideTimepicker();
+
+            return false; // don't submit the form
+            break; // select the value on enter
+          case 27:
+            $.timepicker._hideTimepicker();
+            break; // hide on escape
+          default:
+            handled = false;
+        }
+      } else if (event.keyCode == 36 && event.ctrlKey) { // display the time picker on ctrl+home
+        $.timepicker._showTimepicker(this);
+      } else {
+        handled = false;
+      }
+      if (handled) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    },
+
+    /* Update selected time on keyUp */
+    /* Added verion 0.0.5 */
+    _doKeyUp: function (event) {
+      var inst = $.timepicker._getInst(event.target);
+      $.timepicker._setTimeFromField(inst);
+      $.timepicker._updateTimepicker(inst);
+    },
+
+    /* Make attachments based on settings. */
+    _attachments: function (input, inst) {
+      var appendText = this._get(inst, 'appendText');
+      var isRTL = this._get(inst, 'isRTL');
+      if (inst.append) {
+        inst.append.remove();
+      }
+      if (appendText) {
+        inst.append = $('<span class="' + this._appendClass + '">' + appendText + '</span>');
+        input[isRTL ? 'before' : 'after'](inst.append);
+      }
+      input.unbind('focus.timepicker', this._showTimepicker);
+      input.unbind('click.timepicker', this._adjustZIndex);
+
+      if (inst.trigger) {
+        inst.trigger.remove();
+      }
+
+      var showOn = this._get(inst, 'showOn');
+      if (showOn == 'focus' || showOn == 'both') { // pop-up time picker when in the marked field
+        input.bind("focus.timepicker", this._showTimepicker);
+        input.bind("click.timepicker", this._adjustZIndex);
+      }
+      if (showOn == 'button' || showOn == 'both') { // pop-up time picker when 'button' element is clicked
+        var button = this._get(inst, 'button');
+
+        // Add button if button element is not set
+        if (button == null) {
+          button = $('<button class="ui-timepicker-trigger" type="button">...</button>');
+          input.after(button);
+        }
+
+        $(button).bind("click.timepicker", function () {
+          if ($.timepicker._timepickerShowing && $.timepicker._lastInput == input[0]) {
+            $.timepicker._hideTimepicker();
+          } else if (!inst.input.is(':disabled')) {
+            $.timepicker._showTimepicker(input[0]);
+          }
+          return false;
+        });
+
+      }
+    },
+
+
+    /* Attach an inline time picker to a div. */
+    _inlineTimepicker: function (target, inst) {
+      var divSpan = $(target);
+      if (divSpan.hasClass(this.markerClassName))
+        return;
+      divSpan.addClass(this.markerClassName).append(inst.tpDiv).bind("setData.timepicker", function (event, key, value) {
+        inst.settings[key] = value;
+      }).bind("getData.timepicker", function (event, key) {
+        return this._get(inst, key);
+      });
+      $.data(target, PROP_NAME, inst);
+
+      this._setTimeFromField(inst);
+      this._updateTimepicker(inst);
+      inst.tpDiv.show();
+    },
+
+    _adjustZIndex: function (input) {
+      input = input.target || input;
+      var inst = $.timepicker._getInst(input);
+      inst.tpDiv.css('zIndex', $.timepicker._getZIndex(input) + 1);
+    },
+
+    /* Pop-up the time picker for a given input field.
+    @param  input  element - the input field attached to the time picker or
+    event - if triggered by focus */
+    _showTimepicker: function (input) {
+      input = input.target || input;
+      if (input.nodeName.toLowerCase() != 'input') {
+        input = $('input', input.parentNode)[0];
+      } // find from button/image trigger
+
+      if ($.timepicker._isDisabledTimepicker(input) || $.timepicker._lastInput == input) {
+        return;
+      } // already here
+
+      // fix v 0.0.8 - close current timepicker before showing another one
+      $.timepicker._hideTimepicker();
+
+      var inst = $.timepicker._getInst(input);
+      if ($.timepicker._curInst && $.timepicker._curInst != inst) {
+        $.timepicker._curInst.tpDiv.stop(true, true);
+      }
+      var beforeShow = $.timepicker._get(inst, 'beforeShow');
+      extendRemove(inst.settings, (beforeShow ? beforeShow.apply(input, [input, inst]) : {}));
+      inst.lastVal = null;
+      $.timepicker._lastInput = input;
+
+      $.timepicker._setTimeFromField(inst);
+
+      // calculate default position
+      if ($.timepicker._inDialog) {
+        input.value = '';
+      } // hide cursor
+      if (!$.timepicker._pos) { // position below input
+        $.timepicker._pos = $.timepicker._findPos(input);
+        $.timepicker._pos[1] += input.offsetHeight; // add the height
+      }
+      var isFixed = false;
+      $(input).parents().each(function () {
+        isFixed |= $(this).css('position') == 'fixed';
+        return !isFixed;
+      });
+
+      var offset = {left: $.timepicker._pos[0], top: $.timepicker._pos[1]};
+
+      $.timepicker._pos = null;
+      // determine sizing offscreen
+      inst.tpDiv.css({position: 'absolute', display: 'block', top: '-1000px'});
+      $.timepicker._updateTimepicker(inst);
+
+
+      // position with the ui position utility, if loaded
+      if ((!inst.inline) && (typeof $.ui.position == 'object')) {
+        inst.tpDiv.position({
+          of: inst.input,
+          my: $.timepicker._get(inst, 'myPosition'),
+          at: $.timepicker._get(inst, 'atPosition'),
+          // offset: $( "#offset" ).val(),
+          // using: using,
+          collision: 'flip'
+        });
+        var offset = inst.tpDiv.offset();
+        $.timepicker._pos = [offset.top, offset.left];
+      }
+
+
+      // reset clicked state
+      inst._hoursClicked = false;
+      inst._minutesClicked = false;
+
+      // fix width for dynamic number of time pickers
+      // and adjust position before showing
+      offset = $.timepicker._checkOffset(inst, offset, isFixed);
+      inst.tpDiv.css({
+        position: ($.timepicker._inDialog && $.blockUI ?
+          'static' : (isFixed ? 'fixed' : 'absolute')), display: 'none',
+        left: offset.left + 'px', top: offset.top + 'px'
+      });
+      if (!inst.inline) {
+        var showAnim = $.timepicker._get(inst, 'showAnim');
+        var duration = $.timepicker._get(inst, 'duration');
+
+        var postProcess = function () {
+          $.timepicker._timepickerShowing = true;
+          var borders = $.timepicker._getBorders(inst.tpDiv);
+          inst.tpDiv.find('iframe.ui-timepicker-cover').// IE6- only
+          css({
+            left: -borders[0], top: -borders[1],
+            width: inst.tpDiv.outerWidth(), height: inst.tpDiv.outerHeight()
+          });
+        };
+
+        // Fixed the zIndex problem for real (I hope) - FG - v 0.2.9
+        $.timepicker._adjustZIndex(input);
+        //inst.tpDiv.css('zIndex', $.timepicker._getZIndex(input) +1);
+
+        if ($.effects && $.effects[showAnim]) {
+          inst.tpDiv.show(showAnim, $.timepicker._get(inst, 'showOptions'), duration, postProcess);
+        } else {
+          inst.tpDiv.show((showAnim ? duration : null), postProcess);
+        }
+        if (!showAnim || !duration) {
+          postProcess();
+        }
+        if (inst.input.is(':visible') && !inst.input.is(':disabled')) {
+          inst.input.focus();
+        }
+        $.timepicker._curInst = inst;
+      }
+    },
+
+    // This is an enhanced copy of the zIndex function of UI core 1.8.?? For backward compatibility.
+    // Enhancement returns maximum zindex value discovered while traversing parent elements,
+    // rather than the first zindex value found. Ensures the timepicker popup will be in front,
+    // even in funky scenarios like non-jq dialog containers with large fixed zindex values and
+    // nested zindex-influenced elements of their own.
+    _getZIndex: function (target) {
+      var elem = $(target);
+      var maxValue = 0;
+      var position, value;
+      while (elem.length && elem[0] !== document) {
+        position = elem.css("position");
+        if (position === "absolute" || position === "relative" || position === "fixed") {
+          value = parseInt(elem.css("zIndex"), 10);
+          if (!isNaN(value) && value !== 0) {
+            if (value > maxValue) {
+              maxValue = value;
+            }
+          }
+        }
+        elem = elem.parent();
+      }
+
+      return maxValue;
+    },
+
+    /* Refresh the time picker
+       @param   target  element - The target input field or inline container element. */
+    _refreshTimepicker: function (target) {
+      var inst = this._getInst(target);
+      if (inst) {
+        this._updateTimepicker(inst);
+      }
+    },
+
+
+    /* Generate the time picker content. */
+    _updateTimepicker: function (inst) {
+      inst.tpDiv.empty().append(this._generateHTML(inst));
+      this._rebindDialogEvents(inst);
+
+    },
+
+    _rebindDialogEvents: function (inst) {
+      var borders = $.timepicker._getBorders(inst.tpDiv),
+        self = this;
+      inst.tpDiv
+        .find('iframe.ui-timepicker-cover') // IE6- only
+        .css({
+          left: -borders[0], top: -borders[1],
+          width: inst.tpDiv.outerWidth(), height: inst.tpDiv.outerHeight()
+        })
+        .end()
+        // after the picker html is appended bind the click & double click events (faster in IE this way
+        // then letting the browser interpret the inline events)
+        // the binding for the minute cells also exists in _updateMinuteDisplay
+        .find('.ui-timepicker-minute-cell')
+        .unbind()
+        .bind("click", {fromDoubleClick: false}, $.proxy($.timepicker.selectMinutes, this))
+        .bind("dblclick", {fromDoubleClick: true}, $.proxy($.timepicker.selectMinutes, this))
+        .end()
+        .find('.ui-timepicker-hour-cell')
+        .unbind()
+        .bind("click", {fromDoubleClick: false}, $.proxy($.timepicker.selectHours, this))
+        .bind("dblclick", {fromDoubleClick: true}, $.proxy($.timepicker.selectHours, this))
+        .end()
+        .find('.ui-timepicker td a')
+        .unbind()
+        .bind('mouseout', function () {
+          $(this).removeClass('ui-state-hover');
+          if (this.className.indexOf('ui-timepicker-prev') != -1) $(this).removeClass('ui-timepicker-prev-hover');
+          if (this.className.indexOf('ui-timepicker-next') != -1) $(this).removeClass('ui-timepicker-next-hover');
+        })
+        .bind('mouseover', function () {
+          if (!self._isDisabledTimepicker(inst.inline ? inst.tpDiv.parent()[0] : inst.input[0])) {
+            $(this).parents('.ui-timepicker-calendar').find('a').removeClass('ui-state-hover');
+            $(this).addClass('ui-state-hover');
+            if (this.className.indexOf('ui-timepicker-prev') != -1) $(this).addClass('ui-timepicker-prev-hover');
+            if (this.className.indexOf('ui-timepicker-next') != -1) $(this).addClass('ui-timepicker-next-hover');
+          }
+        })
+        .end()
+        .find('.' + this._dayOverClass + ' a')
+        .trigger('mouseover')
+        .end()
+        .find('.ui-timepicker-now').bind("click", function (e) {
+        $.timepicker.selectNow(e);
+      }).end()
+        .find('.ui-timepicker-deselect').bind("click", function (e) {
+        $.timepicker.deselectTime(e);
+      }).end()
+        .find('.ui-timepicker-close').bind("click", function (e) {
+        $.timepicker._hideTimepicker();
+      }).end();
+    },
+
+    /* Generate the HTML for the current state of the time picker. */
+    _generateHTML: function (inst) {
+
+      var h, m, row, col, html, hoursHtml, minutesHtml = '',
+        showPeriod = (this._get(inst, 'showPeriod') == true),
+        showPeriodLabels = (this._get(inst, 'showPeriodLabels') == true),
+        showLeadingZero = (this._get(inst, 'showLeadingZero') == true),
+        showHours = (this._get(inst, 'showHours') == true),
+        showMinutes = (this._get(inst, 'showMinutes') == true),
+        amPmText = this._get(inst, 'amPmText'),
+        rows = this._get(inst, 'rows'),
+        amRows = 0,
+        pmRows = 0,
+        amItems = 0,
+        pmItems = 0,
+        amFirstRow = 0,
+        pmFirstRow = 0,
+        hours = Array(),
+        hours_options = this._get(inst, 'hours'),
+        hoursPerRow = null,
+        hourCounter = 0,
+        hourLabel = this._get(inst, 'hourText'),
+        showCloseButton = this._get(inst, 'showCloseButton'),
+        closeButtonText = this._get(inst, 'closeButtonText'),
+        showNowButton = this._get(inst, 'showNowButton'),
+        nowButtonText = this._get(inst, 'nowButtonText'),
+        showDeselectButton = this._get(inst, 'showDeselectButton'),
+        deselectButtonText = this._get(inst, 'deselectButtonText'),
+        showButtonPanel = showCloseButton || showNowButton || showDeselectButton;
+
+
+      // prepare all hours and minutes, makes it easier to distribute by rows
+      for (h = hours_options.starts; h <= hours_options.ends; h++) {
+        hours.push(h);
+      }
+      hoursPerRow = Math.ceil(hours.length / rows); // always round up
+
+      if (showPeriodLabels) {
+        for (hourCounter = 0; hourCounter < hours.length; hourCounter++) {
+          if (hours[hourCounter] < 12) {
+            amItems++;
+          } else {
+            pmItems++;
+          }
+        }
+        hourCounter = 0;
+
+        amRows = Math.floor(amItems / hours.length * rows);
+        pmRows = Math.floor(pmItems / hours.length * rows);
+
+        // assign the extra row to the period that is more densely populated
+        if (rows != amRows + pmRows) {
+          // Make sure: AM Has Items and either PM Does Not, AM has no rows yet, or AM is more dense
+          if (amItems && (!pmItems || !amRows || (pmRows && amItems / amRows >= pmItems / pmRows))) {
+            amRows++;
+          } else {
+            pmRows++;
+          }
+        }
+        amFirstRow = Math.min(amRows, 1);
+        pmFirstRow = amRows + 1;
+
+        if (amRows == 0) {
+          hoursPerRow = Math.ceil(pmItems / pmRows);
+        } else if (pmRows == 0) {
+          hoursPerRow = Math.ceil(amItems / amRows);
+        } else {
+          hoursPerRow = Math.ceil(Math.max(amItems / amRows, pmItems / pmRows));
+        }
+      }
+
+
+      html = '<table class="ui-timepicker-table ui-widget-content ui-corner-all"><tr>';
+
+      if (showHours) {
+
+        html += '<td class="ui-timepicker-hours">' +
+          '<div class="ui-timepicker-title ui-widget-header ui-helper-clearfix ui-corner-all">' +
+          hourLabel +
+          '</div>' +
+          '<table class="ui-timepicker">';
+
+        for (row = 1; row <= rows; row++) {
+          html += '<tr>';
+          // AM
+          if (row == amFirstRow && showPeriodLabels) {
+            html += '<th rowspan="' + amRows.toString() + '" class="periods" scope="row">' + amPmText[0] + '</th>';
+          }
+          // PM
+          if (row == pmFirstRow && showPeriodLabels) {
+            html += '<th rowspan="' + pmRows.toString() + '" class="periods" scope="row">' + amPmText[1] + '</th>';
+          }
+          for (col = 1; col <= hoursPerRow; col++) {
+            if (showPeriodLabels && row < pmFirstRow && hours[hourCounter] >= 12) {
+              html += this._generateHTMLHourCell(inst, undefined, showPeriod, showLeadingZero);
+            } else {
+              html += this._generateHTMLHourCell(inst, hours[hourCounter], showPeriod, showLeadingZero);
+              hourCounter++;
+            }
+          }
+          html += '</tr>';
+        }
+        html += '</table>' + // Close the hours cells table
+          '</td>'; // Close the Hour td
+      }
+
+      if (showMinutes) {
+        html += '<td class="ui-timepicker-minutes">';
+        html += this._generateHTMLMinutes(inst);
+        html += '</td>';
+      }
+
+      html += '</tr>';
+
+
+      if (showButtonPanel) {
+        var buttonPanel = '<tr><td colspan="3"><div class="ui-timepicker-buttonpane ui-widget-content">';
+        if (showNowButton) {
+          buttonPanel += '<button type="button" class="ui-timepicker-now ui-state-default ui-corner-all" '
+            + ' data-timepicker-instance-id="#' + inst.id.replace(/\\\\/g, "\\") + '" >'
+            + nowButtonText + '</button>';
+        }
+        if (showDeselectButton) {
+          buttonPanel += '<button type="button" class="ui-timepicker-deselect ui-state-default ui-corner-all" '
+            + ' data-timepicker-instance-id="#' + inst.id.replace(/\\\\/g, "\\") + '" >'
+            + deselectButtonText + '</button>';
+        }
+        if (showCloseButton) {
+          buttonPanel += '<button type="button" class="ui-timepicker-close ui-state-default ui-corner-all" '
+            + ' data-timepicker-instance-id="#' + inst.id.replace(/\\\\/g, "\\") + '" >'
+            + closeButtonText + '</button>';
+        }
+
+        html += buttonPanel + '</div></td></tr>';
+      }
+      html += '</table>';
+
+      return html;
+    },
+
+    /* Special function that update the minutes selection in currently visible timepicker
+     * called on hour selection when onMinuteShow is defined  */
+    _updateMinuteDisplay: function (inst) {
+      var newHtml = this._generateHTMLMinutes(inst);
+      inst.tpDiv.find('td.ui-timepicker-minutes').html(newHtml);
+      this._rebindDialogEvents(inst);
+      // after the picker html is appended bind the click & double click events (faster in IE this way
+      // then letting the browser interpret the inline events)
+      // yes I know, duplicate code, sorry
+      /*                .find('.ui-timepicker-minute-cell')
+                          .bind("click", { fromDoubleClick:false }, $.proxy($.timepicker.selectMinutes, this))
+                          .bind("dblclick", { fromDoubleClick:true }, $.proxy($.timepicker.selectMinutes, this));
+      */
+
+    },
+
+    /*
+     * Generate the minutes table
+     * This is separated from the _generateHTML function because is can be called separately (when hours changes)
+     */
+    _generateHTMLMinutes: function (inst) {
+
+      var m, row, html = '',
+        rows = this._get(inst, 'rows'),
+        minutes = Array(),
+        minutes_options = this._get(inst, 'minutes'),
+        minutesPerRow = null,
+        minuteCounter = 0,
+        showMinutesLeadingZero = (this._get(inst, 'showMinutesLeadingZero') == true),
+        onMinuteShow = this._get(inst, 'onMinuteShow'),
+        minuteLabel = this._get(inst, 'minuteText');
+
+      if (!minutes_options.starts) {
+        minutes_options.starts = 0;
+      }
+      if (!minutes_options.ends) {
+        minutes_options.ends = 59;
+      }
+      if (!minutes_options.manual) {
+        minutes_options.manual = [];
+      }
+      for (m = minutes_options.starts; m <= minutes_options.ends; m += minutes_options.interval) {
+        minutes.push(m);
+      }
+      for (i = 0; i < minutes_options.manual.length; i++) {
+        var currMin = minutes_options.manual[i];
+
+        // Validate & filter duplicates of manual minute input
+        if (typeof currMin != 'number' || currMin < 0 || currMin > 59 || $.inArray(currMin, minutes) >= 0) {
+          continue;
+        }
+        minutes.push(currMin);
+      }
+
+      // Sort to get correct order after adding manual minutes
+      // Use compare function to sort by number, instead of string (default)
+      minutes.sort(function (a, b) {
+        return a - b;
+      });
+
+      minutesPerRow = Math.round(minutes.length / rows + 0.49); // always round up
+
+      /*
+       * The minutes table
+       */
+      // if currently selected minute is not enabled, we have a problem and need to select a new minute.
+      if (onMinuteShow &&
+        (onMinuteShow.apply((inst.input ? inst.input[0] : null), [inst.hours, inst.minutes]) == false)) {
+        // loop minutes and select first available
+        for (minuteCounter = 0; minuteCounter < minutes.length; minuteCounter += 1) {
+          m = minutes[minuteCounter];
+          if (onMinuteShow.apply((inst.input ? inst.input[0] : null), [inst.hours, m])) {
+            inst.minutes = m;
+            break;
+          }
+        }
+      }
+
+
+      html += '<div class="ui-timepicker-title ui-widget-header ui-helper-clearfix ui-corner-all">' +
+        minuteLabel +
+        '</div>' +
+        '<table class="ui-timepicker">';
+
+      minuteCounter = 0;
+      for (row = 1; row <= rows; row++) {
+        html += '<tr>';
+        while (minuteCounter < row * minutesPerRow) {
+          var m = minutes[minuteCounter];
+          var displayText = '';
+          if (m !== undefined) {
+            displayText = (m < 10) && showMinutesLeadingZero ? "0" + m.toString() : m.toString();
+          }
+          html += this._generateHTMLMinuteCell(inst, m, displayText);
+          minuteCounter++;
+        }
+        html += '</tr>';
+      }
+
+      html += '</table>';
+
+      return html;
+    },
+
+    /* Generate the content of a "Hour" cell */
+    _generateHTMLHourCell: function (inst, hour, showPeriod, showLeadingZero) {
+
+      var displayHour = hour;
+      if ((hour > 12) && showPeriod) {
+        displayHour = hour - 12;
+      }
+      if ((displayHour == 0) && showPeriod) {
+        displayHour = 12;
+      }
+      if ((displayHour < 10) && showLeadingZero) {
+        displayHour = '0' + displayHour;
+      }
+
+      var html = "";
+      var enabled = true;
+      var onHourShow = this._get(inst, 'onHourShow');		//custom callback
+      var maxTime = this._get(inst, 'maxTime');
+      var minTime = this._get(inst, 'minTime');
+
+      if (hour == undefined) {
+        html = '<td><span class="ui-state-default ui-state-disabled">&nbsp;</span></td>';
+        return html;
+      }
+
+      if (onHourShow) {
+        enabled = onHourShow.apply((inst.input ? inst.input[0] : null), [hour]);
+      }
+
+      if (enabled) {
+        if (!isNaN(parseInt(maxTime.hour)) && hour > maxTime.hour) enabled = false;
+        if (!isNaN(parseInt(minTime.hour)) && hour < minTime.hour) enabled = false;
+      }
+
+      if (enabled) {
+        html = '<td class="ui-timepicker-hour-cell" data-timepicker-instance-id="#' + inst.id.replace(/\\\\/g, "\\") + '" data-hour="' + hour.toString() + '">' +
+          '<a class="ui-state-default ' +
+          (hour == inst.hours ? 'ui-state-active' : '') +
+          '">' +
+          displayHour.toString() +
+          '</a></td>';
+      } else {
+        html =
+          '<td>' +
+          '<span class="ui-state-default ui-state-disabled ' +
+          (hour == inst.hours ? ' ui-state-active ' : ' ') +
+          '">' +
+          displayHour.toString() +
+          '</span>' +
+          '</td>';
+      }
+      return html;
+    },
+
+    /* Generate the content of a "Hour" cell */
+    _generateHTMLMinuteCell: function (inst, minute, displayText) {
+      var html = "";
+      var enabled = true;
+      var hour = inst.hours;
+      var onMinuteShow = this._get(inst, 'onMinuteShow');		//custom callback
+      var maxTime = this._get(inst, 'maxTime');
+      var minTime = this._get(inst, 'minTime');
+
+      if (onMinuteShow) {
+        //NEW: 2011-02-03  we should give the hour as a parameter as well!
+        enabled = onMinuteShow.apply((inst.input ? inst.input[0] : null), [inst.hours, minute]);		//trigger callback
+      }
+
+      if (minute == undefined) {
+        html = '<td><span class="ui-state-default ui-state-disabled">&nbsp;</span></td>';
+        return html;
+      }
+
+      if (enabled && hour !== null) {
+        if (!isNaN(parseInt(maxTime.hour)) && !isNaN(parseInt(maxTime.minute)) && hour >= maxTime.hour && minute > maxTime.minute) enabled = false;
+        if (!isNaN(parseInt(minTime.hour)) && !isNaN(parseInt(minTime.minute)) && hour <= minTime.hour && minute < minTime.minute) enabled = false;
+      }
+
+      if (enabled) {
+        html = '<td class="ui-timepicker-minute-cell" data-timepicker-instance-id="#' + inst.id.replace(/\\\\/g, "\\") + '" data-minute="' + minute.toString() + '" >' +
+          '<a class="ui-state-default ' +
+          (minute == inst.minutes ? 'ui-state-active' : '') +
+          '" >' +
+          displayText +
+          '</a></td>';
+      } else {
+
+        html = '<td>' +
+          '<span class="ui-state-default ui-state-disabled" >' +
+          displayText +
+          '</span>' +
+          '</td>';
+      }
+      return html;
+    },
+
+
+    /* Detach a timepicker from its control.
+       @param  target    element - the target input field or division or span */
+    _destroyTimepicker: function (target) {
+      var $target = $(target);
+      var inst = $.data(target, PROP_NAME);
+      if (!$target.hasClass(this.markerClassName)) {
+        return;
+      }
+      var nodeName = target.nodeName.toLowerCase();
+      $.removeData(target, PROP_NAME);
+      if (nodeName == 'input') {
+        inst.append.remove();
+        inst.trigger.remove();
+        $target.removeClass(this.markerClassName)
+          .unbind('focus.timepicker', this._showTimepicker)
+          .unbind('click.timepicker', this._adjustZIndex);
+      } else if (nodeName == 'div' || nodeName == 'span')
+        $target.removeClass(this.markerClassName).empty();
+    },
+
+    /* Enable the date picker to a jQuery selection.
+       @param  target    element - the target input field or division or span */
+    _enableTimepicker: function (target) {
+      var $target = $(target),
+        target_id = $target.attr('id'),
+        inst = $.data(target, PROP_NAME);
+
+      if (!$target.hasClass(this.markerClassName)) {
+        return;
+      }
+      var nodeName = target.nodeName.toLowerCase();
+      if (nodeName == 'input') {
+        target.disabled = false;
+        var button = this._get(inst, 'button');
+        $(button).removeClass('ui-state-disabled').disabled = false;
+        inst.trigger.filter('button').each(function () {
+          this.disabled = false;
+        }).end();
+      } else if (nodeName == 'div' || nodeName == 'span') {
+        var inline = $target.children('.' + this._inlineClass);
+        inline.children().removeClass('ui-state-disabled');
+        inline.find('button').each(
+          function () {
+            this.disabled = false
+          }
+        )
+      }
+      this._disabledInputs = $.map(this._disabledInputs,
+        function (value) {
+          return (value == target_id ? null : value);
+        }); // delete entry
+    },
+
+    /* Disable the time picker to a jQuery selection.
+       @param  target    element - the target input field or division or span */
+    _disableTimepicker: function (target) {
+      var $target = $(target);
+      var inst = $.data(target, PROP_NAME);
+      if (!$target.hasClass(this.markerClassName)) {
+        return;
+      }
+      var nodeName = target.nodeName.toLowerCase();
+      if (nodeName == 'input') {
+        var button = this._get(inst, 'button');
+
+        $(button).addClass('ui-state-disabled').disabled = true;
+        target.disabled = true;
+
+        inst.trigger.filter('button').each(function () {
+          this.disabled = true;
+        }).end();
+
+      } else if (nodeName == 'div' || nodeName == 'span') {
+        var inline = $target.children('.' + this._inlineClass);
+        inline.children().addClass('ui-state-disabled');
+        inline.find('button').each(
+          function () {
+            this.disabled = true
+          }
+        )
+
+      }
+      this._disabledInputs = $.map(this._disabledInputs,
+        function (value) {
+          return (value == target ? null : value);
+        }); // delete entry
+      this._disabledInputs[this._disabledInputs.length] = $target.attr('id');
+    },
+
+    /* Is the first field in a jQuery collection disabled as a timepicker?
+    @param  target_id element - the target input field or division or span
+    @return boolean - true if disabled, false if enabled */
+    _isDisabledTimepicker: function (target_id) {
+      if (!target_id) {
+        return false;
+      }
+      for (var i = 0; i < this._disabledInputs.length; i++) {
+        if (this._disabledInputs[i] == target_id) {
+          return true;
+        }
+      }
+      return false;
+    },
+
+    /* Check positioning to remain on screen. */
+    _checkOffset: function (inst, offset, isFixed) {
+      var tpWidth = inst.tpDiv.outerWidth();
+      var tpHeight = inst.tpDiv.outerHeight();
+      var inputWidth = inst.input ? inst.input.outerWidth() : 0;
+      var inputHeight = inst.input ? inst.input.outerHeight() : 0;
+      var viewWidth = document.documentElement.clientWidth + $(document).scrollLeft();
+      var viewHeight = document.documentElement.clientHeight + $(document).scrollTop();
+
+      offset.left -= (this._get(inst, 'isRTL') ? (tpWidth - inputWidth) : 0);
+      offset.left -= (isFixed && offset.left == inst.input.offset().left) ? $(document).scrollLeft() : 0;
+      offset.top -= (isFixed && offset.top == (inst.input.offset().top + inputHeight)) ? $(document).scrollTop() : 0;
+
+      // now check if timepicker is showing outside window viewport - move to a better place if so.
+      offset.left -= Math.min(offset.left, (offset.left + tpWidth > viewWidth && viewWidth > tpWidth) ?
+        Math.abs(offset.left + tpWidth - viewWidth) : 0);
+      offset.top -= Math.min(offset.top, (offset.top + tpHeight > viewHeight && viewHeight > tpHeight) ?
+        Math.abs(tpHeight + inputHeight) : 0);
+
+      return offset;
+    },
+
+    /* Find an object's position on the screen. */
+    _findPos: function (obj) {
+      var inst = this._getInst(obj);
+      var isRTL = this._get(inst, 'isRTL');
+      while (obj && (obj.type == 'hidden' || obj.nodeType != 1)) {
+        obj = obj[isRTL ? 'previousSibling' : 'nextSibling'];
+      }
+      var position = $(obj).offset();
+      return [position.left, position.top];
+    },
+
+    /* Retrieve the size of left and top borders for an element.
+    @param  elem  (jQuery object) the element of interest
+    @return  (number[2]) the left and top borders */
+    _getBorders: function (elem) {
+      var convert = function (value) {
+        return {thin: 1, medium: 2, thick: 3}[value] || value;
+      };
+      return [parseFloat(convert(elem.css('border-left-width'))),
+        parseFloat(convert(elem.css('border-top-width')))];
+    },
+
+
+    /* Close time picker if clicked elsewhere. */
+    _checkExternalClick: function (event) {
+      if (!$.timepicker._curInst) {
+        return;
+      }
+      var $target = $(event.target);
+      if ($target[0].id != $.timepicker._mainDivId &&
+        $target.parents('#' + $.timepicker._mainDivId).length == 0 &&
+        !$target.hasClass($.timepicker.markerClassName) &&
+        !$target.hasClass($.timepicker._triggerClass) &&
+        $.timepicker._timepickerShowing && !($.timepicker._inDialog && $.blockUI))
+        $.timepicker._hideTimepicker();
+    },
+
+    /* Hide the time picker from view.
+    @param  input  element - the input field attached to the time picker */
+    _hideTimepicker: function (input) {
+      var inst = this._curInst;
+      if (!inst || (input && inst != $.data(input, PROP_NAME))) {
+        return;
+      }
+      if (this._timepickerShowing) {
+        var showAnim = this._get(inst, 'showAnim');
+        var duration = this._get(inst, 'duration');
+        var postProcess = function () {
+          $.timepicker._tidyDialog(inst);
+          this._curInst = null;
+        };
+        if ($.effects && $.effects[showAnim]) {
+          inst.tpDiv.hide(showAnim, $.timepicker._get(inst, 'showOptions'), duration, postProcess);
+        } else {
+          inst.tpDiv[(showAnim == 'slideDown' ? 'slideUp' :
+            (showAnim == 'fadeIn' ? 'fadeOut' : 'hide'))]((showAnim ? duration : null), postProcess);
+        }
+        if (!showAnim) {
+          postProcess();
+        }
+
+        this._timepickerShowing = false;
+
+        this._lastInput = null;
+        if (this._inDialog) {
+          this._dialogInput.css({position: 'absolute', left: '0', top: '-100px'});
+          if ($.blockUI) {
+            $.unblockUI();
+            $('body').append(this.tpDiv);
+          }
+        }
+        this._inDialog = false;
+
+        var onClose = this._get(inst, 'onClose');
+        if (onClose) {
+          onClose.apply(
+            (inst.input ? inst.input[0] : null),
+            [(inst.input ? inst.input.val() : ''), inst]);  // trigger custom callback
+        }
+
+      }
+    },
+
+
+    /* Tidy up after a dialog display. */
+    _tidyDialog: function (inst) {
+      inst.tpDiv.removeClass(this._dialogClass).unbind('.ui-timepicker');
+    },
+
+    /* Retrieve the instance data for the target control.
+    @param  target  element - the target input field or division or span
+    @return  object - the associated instance data
+    @throws  error if a jQuery problem getting data */
+    _getInst: function (target) {
+      try {
+        return $.data(target, PROP_NAME);
+      } catch (err) {
+        throw 'Missing instance data for this timepicker';
+      }
+    },
+
+    /* Get a setting value, defaulting if necessary. */
+    _get: function (inst, name) {
+      return inst.settings[name] !== undefined ?
+        inst.settings[name] : this._defaults[name];
+    },
+
+    /* Parse existing time and initialise time picker. */
+    _setTimeFromField: function (inst) {
+      if (inst.input.val() == inst.lastVal) {
+        return;
+      }
+      var defaultTime = this._get(inst, 'defaultTime');
+
+      var timeToParse = defaultTime == 'now' ? this._getCurrentTimeRounded(inst) : defaultTime;
+      if ((inst.inline == false) && (inst.input.val() != '')) {
+        timeToParse = inst.input.val()
+      }
+
+      if (timeToParse instanceof Date) {
+        inst.hours = timeToParse.getHours();
+        inst.minutes = timeToParse.getMinutes();
+      } else {
+        var timeVal = inst.lastVal = timeToParse;
+        if (timeToParse == '') {
+          inst.hours = -1;
+          inst.minutes = -1;
+        } else {
+          var time = this.parseTime(inst, timeVal);
+          inst.hours = time.hours;
+          inst.minutes = time.minutes;
+        }
+      }
+
+
+      $.timepicker._updateTimepicker(inst);
+    },
+
+    /* Update or retrieve the settings for an existing time picker.
+       @param  target  element - the target input field or division or span
+       @param  name    object - the new settings to update or
+                       string - the name of the setting to change or retrieve,
+                       when retrieving also 'all' for all instance settings or
+                       'defaults' for all global defaults
+       @param  value   any - the new value for the setting
+                   (omit if above is an object or to retrieve a value) */
+    _optionTimepicker: function (target, name, value) {
+      var inst = this._getInst(target);
+      if (arguments.length == 2 && typeof name == 'string') {
+        return (name == 'defaults' ? $.extend({}, $.timepicker._defaults) :
+          (inst ? (name == 'all' ? $.extend({}, inst.settings) :
+            this._get(inst, name)) : null));
+      }
+      var settings = name || {};
+      if (typeof name == 'string') {
+        settings = {};
+        settings[name] = value;
+      }
+      if (inst) {
+        extendRemove(inst.settings, settings);
+        if (this._curInst == inst) {
+          this._hideTimepicker();
+          this._updateTimepicker(inst);
+        }
+        if (inst.inline) {
+          this._updateTimepicker(inst);
+        }
+      }
+    },
+
+
+    /* Set the time for a jQuery selection.
+  @param  target  element - the target input field or division or span
+  @param  time    String - the new time */
+    _setTimeTimepicker: function (target, time) {
+      var inst = this._getInst(target);
+      if (inst) {
+        this._setTime(inst, time);
+        this._updateTimepicker(inst);
+        this._updateAlternate(inst, time);
+      }
+    },
+
+    /* Set the time directly. */
+    _setTime: function (inst, time, noChange) {
+      var origHours = inst.hours;
+      var origMinutes = inst.minutes;
+      if (time instanceof Date) {
+        inst.hours = time.getHours();
+        inst.minutes = time.getMinutes();
+      } else {
+        var time = this.parseTime(inst, time);
+        inst.hours = time.hours;
+        inst.minutes = time.minutes;
+      }
+
+      if ((origHours != inst.hours || origMinutes != inst.minutes) && !noChange) {
+        inst.input.trigger('change');
+      }
+      this._updateTimepicker(inst);
+      this._updateSelectedValue(inst);
+    },
+
+    /* Return the current time, ready to be parsed, rounded to the closest minute by interval */
+    _getCurrentTimeRounded: function (inst) {
+      var currentTime = new Date(),
+        currentMinutes = currentTime.getMinutes(),
+        minutes_options = this._get(inst, 'minutes'),
+        // round to closest interval
+        adjustedMinutes = Math.round(currentMinutes / minutes_options.interval) * minutes_options.interval;
+      currentTime.setMinutes(adjustedMinutes);
+      return currentTime;
+    },
+
+    /*
+    * Parse a time string into hours and minutes
+    */
+    parseTime: function (inst, timeVal) {
+      var retVal = new Object();
+      retVal.hours = -1;
+      retVal.minutes = -1;
+
+      if (!timeVal)
+        return '';
+
+      var timeSeparator = this._get(inst, 'timeSeparator'),
+        amPmText = this._get(inst, 'amPmText'),
+        showHours = this._get(inst, 'showHours'),
+        showMinutes = this._get(inst, 'showMinutes'),
+        optionalMinutes = this._get(inst, 'optionalMinutes'),
+        showPeriod = (this._get(inst, 'showPeriod') == true),
+        p = timeVal.indexOf(timeSeparator);
+
+      // check if time separator found
+      if (p != -1) {
+        retVal.hours = parseInt(timeVal.substr(0, p), 10);
+        retVal.minutes = parseInt(timeVal.substr(p + 1), 10);
+      }
+      // check for hours only
+      else if ((showHours) && (!showMinutes || optionalMinutes)) {
+        retVal.hours = parseInt(timeVal, 10);
+      }
+      // check for minutes only
+      else if ((!showHours) && (showMinutes)) {
+        retVal.minutes = parseInt(timeVal, 10);
+      }
+
+      if (showHours) {
+        var timeValUpper = timeVal.toUpperCase();
+        if ((retVal.hours < 12) && (showPeriod) && (timeValUpper.indexOf(amPmText[1].toUpperCase()) != -1)) {
+          retVal.hours += 12;
+        }
+        // fix for 12 AM
+        if ((retVal.hours == 12) && (showPeriod) && (timeValUpper.indexOf(amPmText[0].toUpperCase()) != -1)) {
+          retVal.hours = 0;
+        }
+      }
+
+      return retVal;
+    },
+
+    selectNow: function (event) {
+      var id = $(event.target).attr("data-timepicker-instance-id"),
+        $target = $(id),
+        inst = this._getInst($target[0]);
+      //if (!inst || (input && inst != $.data(input, PROP_NAME))) { return; }
+      var currentTime = new Date();
+      inst.hours = currentTime.getHours();
+      inst.minutes = currentTime.getMinutes();
+      this._updateSelectedValue(inst);
+      this._updateTimepicker(inst);
+      this._hideTimepicker();
+    },
+
+    deselectTime: function (event) {
+      var id = $(event.target).attr("data-timepicker-instance-id"),
+        $target = $(id),
+        inst = this._getInst($target[0]);
+      inst.hours = -1;
+      inst.minutes = -1;
+      this._updateSelectedValue(inst);
+      this._hideTimepicker();
+    },
+
+
+    selectHours: function (event) {
+      var $td = $(event.currentTarget),
+        id = $td.attr("data-timepicker-instance-id"),
+        newHours = parseInt($td.attr("data-hour")),
+        fromDoubleClick = event.data.fromDoubleClick,
+        $target = $(id),
+        inst = this._getInst($target[0]),
+        showMinutes = (this._get(inst, 'showMinutes') == true);
+
+      // don't select if disabled
+      if ($.timepicker._isDisabledTimepicker($target.attr('id'))) {
+        return false
+      }
+
+      $td.parents('.ui-timepicker-hours:first').find('a').removeClass('ui-state-active');
+      $td.children('a').addClass('ui-state-active');
+      inst.hours = newHours;
+
+      // added for onMinuteShow callback
+      var onMinuteShow = this._get(inst, 'onMinuteShow'),
+        maxTime = this._get(inst, 'maxTime'),
+        minTime = this._get(inst, 'minTime');
+      if (onMinuteShow || !isNaN(parseInt(maxTime.minute)) || !isNaN(parseInt(minTime.minute))) {
+        // this will trigger a callback on selected hour to make sure selected minute is allowed.
+        this._updateMinuteDisplay(inst);
+      }
+
+      this._updateSelectedValue(inst);
+
+      inst._hoursClicked = true;
+      if ((inst._minutesClicked) || (fromDoubleClick) || (showMinutes == false)) {
+        $.timepicker._hideTimepicker();
+      }
+      // return false because if used inline, prevent the url to change to a hashtag
+      return false;
+    },
+
+    selectMinutes: function (event) {
+      var $td = $(event.currentTarget),
+        id = $td.attr("data-timepicker-instance-id"),
+        newMinutes = parseInt($td.attr("data-minute")),
+        fromDoubleClick = event.data.fromDoubleClick,
+        $target = $(id),
+        inst = this._getInst($target[0]),
+        showHours = (this._get(inst, 'showHours') == true);
+
+      // don't select if disabled
+      if ($.timepicker._isDisabledTimepicker($target.attr('id'))) {
+        return false
+      }
+
+      $td.parents('.ui-timepicker-minutes:first').find('a').removeClass('ui-state-active');
+      $td.children('a').addClass('ui-state-active');
+
+      inst.minutes = newMinutes;
+      this._updateSelectedValue(inst);
+
+      inst._minutesClicked = true;
+      if ((inst._hoursClicked) || (fromDoubleClick) || (showHours == false)) {
+        $.timepicker._hideTimepicker();
+        // return false because if used inline, prevent the url to change to a hashtag
+        return false;
+      }
+
+      // return false because if used inline, prevent the url to change to a hashtag
+      return false;
+    },
+
+    _updateSelectedValue: function (inst) {
+      var newTime = this._getParsedTime(inst);
+      if (inst.input) {
+        inst.input.val(newTime);
+        inst.input.trigger('change');
+      }
+      var onSelect = this._get(inst, 'onSelect');
+      if (onSelect) {
+        onSelect.apply((inst.input ? inst.input[0] : null), [newTime, inst]);
+      } // trigger custom callback
+      this._updateAlternate(inst, newTime);
+      return newTime;
+    },
+
+    /* this function process selected time and return it parsed according to instance options */
+    _getParsedTime: function (inst) {
+
+      if (inst.hours == -1 && inst.minutes == -1) {
+        return '';
+      }
+
+      // default to 0 AM if hours is not valid
+      if ((inst.hours < inst.hours.starts) || (inst.hours > inst.hours.ends)) {
+        inst.hours = 0;
+      }
+      // default to 0 minutes if minute is not valid
+      if ((inst.minutes < inst.minutes.starts) || (inst.minutes > inst.minutes.ends)) {
+        inst.minutes = 0;
+      }
+
+      var period = "",
+        showPeriod = (this._get(inst, 'showPeriod') == true),
+        showLeadingZero = (this._get(inst, 'showLeadingZero') == true),
+        showHours = (this._get(inst, 'showHours') == true),
+        showMinutes = (this._get(inst, 'showMinutes') == true),
+        optionalMinutes = (this._get(inst, 'optionalMinutes') == true),
+        amPmText = this._get(inst, 'amPmText'),
+        selectedHours = inst.hours ? inst.hours : 0,
+        selectedMinutes = inst.minutes ? inst.minutes : 0,
+        displayHours = selectedHours ? selectedHours : 0,
+        parsedTime = '';
+
+      // fix some display problem when hours or minutes are not selected yet
+      if (displayHours == -1) {
+        displayHours = 0
+      }
+      if (selectedMinutes == -1) {
+        selectedMinutes = 0
+      }
+
+      if (showPeriod) {
+        if (inst.hours == 0) {
+          displayHours = 12;
+        }
+        if (inst.hours < 12) {
+          period = amPmText[0];
+        } else {
+          period = amPmText[1];
+          if (displayHours > 12) {
+            displayHours -= 12;
+          }
+        }
+      }
+
+      var h = displayHours.toString();
+      if (showLeadingZero && (displayHours < 10)) {
+        h = '0' + h;
+      }
+
+      var m = selectedMinutes.toString();
+      if (selectedMinutes < 10) {
+        m = '0' + m;
+      }
+
+      if (showHours) {
+        parsedTime += h;
+      }
+      if (showHours && showMinutes && (!optionalMinutes || m != 0)) {
+        parsedTime += this._get(inst, 'timeSeparator');
+      }
+      if (showMinutes && (!optionalMinutes || m != 0)) {
+        parsedTime += m;
+      }
+      if (showHours) {
+        if (period.length > 0) {
+          parsedTime += this._get(inst, 'periodSeparator') + period;
+        }
+      }
+
+      return parsedTime;
+    },
+
+    /* Update any alternate field to synchronise with the main field. */
+    _updateAlternate: function (inst, newTime) {
+      var altField = this._get(inst, 'altField');
+      if (altField) { // update alternate field too
+        $(altField).each(function (i, e) {
+          $(e).val(newTime);
+        });
+      }
+    },
+
+    _getTimeAsDateTimepicker: function (input) {
+      var inst = this._getInst(input);
+      if (inst.hours == -1 && inst.minutes == -1) {
+        return '';
+      }
+
+      // default to 0 AM if hours is not valid
+      if ((inst.hours < inst.hours.starts) || (inst.hours > inst.hours.ends)) {
+        inst.hours = 0;
+      }
+      // default to 0 minutes if minute is not valid
+      if ((inst.minutes < inst.minutes.starts) || (inst.minutes > inst.minutes.ends)) {
+        inst.minutes = 0;
+      }
+
+      return new Date(0, 0, 0, inst.hours, inst.minutes, 0);
+    },
+    /* This might look unused but it's called by the $.fn.timepicker function with param getTime */
+    /* added v 0.2.3 - gitHub issue #5 - Thanks edanuff */
+    _getTimeTimepicker: function (input) {
+      var inst = this._getInst(input);
+      return this._getParsedTime(inst);
+    },
+    _getHourTimepicker: function (input) {
+      var inst = this._getInst(input);
+      if (inst == undefined) {
+        return -1;
+      }
+      return inst.hours;
+    },
+    _getMinuteTimepicker: function (input) {
+      var inst = this._getInst(input);
+      if (inst == undefined) {
+        return -1;
+      }
+      return inst.minutes;
+    }
+
+  });
+
+
+  /* Invoke the timepicker functionality.
+  @param  options  string - a command, optionally followed by additional parameters or
+  Object - settings for attaching new timepicker functionality
+  @return  jQuery object */
+  $.fn.timepicker = function (options) {
+    /* Initialise the time picker. */
+    if (!$.timepicker.initialized) {
+      $(document).mousedown($.timepicker._checkExternalClick);
+      $.timepicker.initialized = true;
+    }
+
+    /* Append timepicker main container to body if not exist. */
+    if ($("#" + $.timepicker._mainDivId).length === 0) {
+      $('body').append($.timepicker.tpDiv);
+    }
+
+    var otherArgs = Array.prototype.slice.call(arguments, 1);
+    if (typeof options == 'string' && (options == 'getTime' || options == 'getTimeAsDate' || options == 'getHour' || options == 'getMinute'))
+      return $.timepicker['_' + options + 'Timepicker'].apply($.timepicker, [this[0]].concat(otherArgs));
+    if (options == 'option' && arguments.length == 2 && typeof arguments[1] == 'string')
+      return $.timepicker['_' + options + 'Timepicker'].apply($.timepicker, [this[0]].concat(otherArgs));
+    return this.each(function () {
+      typeof options == 'string' ?
+        $.timepicker['_' + options + 'Timepicker'].apply($.timepicker, [this].concat(otherArgs)) :
+        $.timepicker._attachTimepicker(this, options);
+    });
+  };
+
+  /* jQuery extend now ignores nulls! */
+  function extendRemove(target, props) {
+    $.extend(target, props);
+    for (var name in props)
+      if (props[name] == null || props[name] == undefined)
+        target[name] = props[name];
+    return target;
+  };
+
+  $.timepicker = new Timepicker(); // singleton instance
+  $.timepicker.initialized = false;
+  $.timepicker.uuid = new Date().getTime();
+  $.timepicker.version = "0.3.3";
+
+  // Workaround for #4055
+  // Add another global to avoid noConflict issues with inline event handlers
+  window['TP_jQuery_' + tpuuid] = $;
+
+})(jQuery);
+
