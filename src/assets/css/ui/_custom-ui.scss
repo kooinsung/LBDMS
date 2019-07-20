@@ -365,6 +365,29 @@
     }
   }
 
+  &.timepicker {
+    background: transparent;
+
+    input {
+      z-index: 2;
+      position: relative;
+      background: transparent;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      width: 25px;
+      height: 22px;
+      background: url('#{$imgPath}ico_time.svg') center center no-repeat;
+      background-size: cover;
+      z-index: 1;
+    }
+
+  }
+
   &.datepicker-month {
     .cal {
       position: absolute;
@@ -453,6 +476,17 @@
         height: 17px;
         border: 1px solid #c9c9c9;
       }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        vertical-align: top;
+        width: 17px;
+        height: 17px;
+      }
     }
 
     &:checked {
@@ -464,6 +498,8 @@
 
         &:after {
           content: '';
+          background: url('#{$imgPath}ico_check.svg') center center no-repeat;
+          background-size: 12px 10px;
         }
       }
     }
@@ -485,6 +521,8 @@
       &:checked {
         & + label {
           border: 1px solid #3d62e7;
+          background: url('#{$imgPath}ico_check.svg') center center no-repeat;
+          background-size: 12px 10px;
         }
       }
     }
@@ -880,8 +918,6 @@
 
 .scroll-tbs {
   position: relative;
-  overflow: hidden;
-  overflow-x: scroll;
 
   .checkbox {
     @include center-both;
@@ -892,6 +928,10 @@
     padding-right: 50px;
   }
 
+  .scroll {
+    overflow: hidden;
+    overflow-x: scroll;
+  }
   table {
     width: 500%;
     table-layout: fixed;
@@ -1490,6 +1530,7 @@
 }
 
 .check-tabs {
+  margin-bottom: 20px;
   ul {
 
   }
@@ -1497,6 +1538,61 @@
   li {
     display: inline-block;
     vertical-align: top;
+    margin-right: 10px;
+  }
+
+  input {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+
+    & + label {
+      position: relative;
+      display: block;
+      height: 17px;
+      line-height: 17px;
+      font-size: 20px;
+      color: #000;
+      cursor: pointer;
+      padding: 0 5px 5px 24px;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        vertical-align: top;
+        width: 17px;
+        height: 17px;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        vertical-align: top;
+        width: 17px;
+        height: 17px;
+      }
+    }
+
+    &:checked {
+      & + label {
+        border-bottom: 2px solid #3d62e8;
+
+        &:before {
+        }
+
+        &:after {
+          content: '';
+          background: url('#{$imgPath}ico_check.svg') center center no-repeat;
+          background-size: 12px 10px;
+        }
+      }
+    }
   }
 }
 
@@ -1837,6 +1933,15 @@
   cursor: pointer;
 }
 
+.switch-txt {
+  font-size: 17px;
+  height: 35px;
+  line-height: 35px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+}
+
 .switch-input {
   position: absolute;
   top: 0;
@@ -1855,6 +1960,7 @@
   font-weight: 700;
   line-height: 35px;
   border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 .switch-label:before, .switch-label:after {
@@ -1867,6 +1973,7 @@
   transition: inherit;
   font-size: 15px;
   line-height: 35px;
+  box-sizing: border-box;
 }
 
 .switch-label:before {
@@ -1898,19 +2005,19 @@
   position: absolute;
   top: 3px;
   left: 3px;
-  width: 31px;
-  height: 31px;
-  border-radius: 31px;
+  width: 29px;
+  height: 29px;
+  border-radius: 29px;
   background: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
   -webkit-transition: left 0.15s ease-out;
   -moz-transition: left 0.15s ease-out;
   -o-transition: left 0.15s ease-out;
   transition: left 0.15s ease-out;
-  bprder: 1px solid red;
+  box-sizing: border-box;
 }
 
 .switch-input:checked ~ .switch-handle {
-  left: 60px;
+  left: 62px;
 }
 
 .mix-form {

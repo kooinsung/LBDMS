@@ -24,9 +24,172 @@
     <div class="cols">
       <div class="col col-1">
         <div class="in-box">
+          <label class="switch">
+            <input type="checkbox" class="switch-input" checked/>
+            <span class="switch-label" data-on="ON" data-off="OFF"></span>
+            <span class="switch-handle"></span>
+          </label>
+          <span class="switch-txt">예비관리데몬 사용</span>
+
+          <div class="cycle-lists">
+            <ul>
+              <li>
+                <div class="ele">
+
+                </div>
+                <strong>전체관리데몬</strong>
+              </li>
+              <li>
+                <div class="ele">
+
+                </div>
+                <strong>내부망수집관리데몬</strong>
+              </li>
+              <li>
+                <div class="ele">
+
+                </div>
+                <strong>외부망수집관리데몬</strong>
+              </li>
+              <li>
+                <div class="ele">
+
+                </div>
+                <strong>사용자GEO서버</strong>
+              </li>
+              <li>
+                <div class="ele">
+
+                </div>
+                <strong>운영GEO서버</strong>
+              </li>
+              <li>
+                <div class="ele">
+
+                </div>
+                <strong>외부GEO서버</strong>
+              </li>
+            </ul>
+          </div>
+
+          <ul class="tabs-txt">
+            <li class="is-active"><a href="">하둡</a></li>
+            <li><a href="">포스트그레</a></li>
+            <li><a href="">서버 총괄 현황</a></li>
+          </ul>
+
+          <div class="status-charts">
+            <div class="total">
+
+            </div>
+            <ul>
+              <li>
+                <div class="sm-chart">
+                  <canvas id="sm-chart1" width="200" height="200"></canvas>
+                </div>
+                <dl>
+                  <dt>
+                    메모리
+                  </dt>
+                  <dd>총 용량 : <strong>0 B</strong></dd>
+                  <dd>사용량 : <strong>0 B</strong></dd>
+                  <dd>남은 용량 : <strong>0 B</strong></dd>
+                </dl>
+              </li>
+              <li>
+                <div class="sm-chart">
+                  <canvas id="sm-chart2" width="200" height="200"></canvas>
+                </div>
+                <dl>
+                  <dt>
+                    CPU
+                  </dt>
+                  <dd>총 용량 : <strong>100%</strong></dd>
+                  <dd>사용량 : <strong>100%</strong></dd>
+                  <dd>남은 용량 : <strong>100%</strong></dd>
+                </dl>
+              </li>
+              <li class="two">
+                <div class="sm-chart">
+                  <canvas id="sm-chart3" width="200" height="200"></canvas>
+                </div>
+                <dl class="two">
+                  <dt>
+                    디스크
+                  </dt>
+                  <dd>전체 용량 : <strong></strong></dd>
+                  <dd>사용된 용량(%) : <strong></strong></dd>
+                  <dd>DFS 사용된 용량 : <strong></strong></dd>
+                  <dd>남은 용량(%) : <strong></strong></dd>
+                  <dd>Non DFS 사용된 용량 : <strong></strong></dd>
+                  <dd>Block Pool 사용량: : <strong></strong></dd>
+                  <dd>남은 용량 : <strong></strong></dd>
+                  <dd>Block Pool 사용량(%) : <strong></strong></dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <!-- @@close -->
+
+<!-- @@block  =  chart-->
+<script>
+  var ctx = document.getElementById('sm-chart1').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['사용량'],
+      datasets: [{
+        label: '사용량',
+        data: [100],
+        backgroundColor: 'rgba(0, 43, 255, 0.5)'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      }
+    }
+  });
+
+  var ctx = document.getElementById('sm-chart2').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['사용량'],
+      datasets: [{
+        label: '사용량',
+        data: [100],
+        backgroundColor: 'rgba(0, 43, 255, 0.5)'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      }
+    }
+  });
+
+  var ctx = document.getElementById('sm-chart3').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['사용량'],
+      datasets: [{
+        label: '사용량',
+        data: [100],
+        backgroundColor: 'rgba(0, 43, 255, 0.5)'
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      }
+    }
+  });
+</script>
+<!-- @@close-->
